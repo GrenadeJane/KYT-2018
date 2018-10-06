@@ -100,5 +100,11 @@ public class HiveBase : MonoBehaviour {
 			swarm.AddSwarmObject(bee);
 		}
 	}
+
+	public void BackToHive(FestBeeSwarm swarm)
+	{
+		m_festbeeSwarmList.Remove(swarm);
+		Destroy(swarm.gameObject);
+	}
 	#endregion
 }

@@ -7,7 +7,7 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 {
 	#region Constants
 
-	private const float TIME_BEFORE_RETURN = 20.0f;
+	private const float TIME_BEFORE_RETURN = 5.0f;
 
 	#endregion
 
@@ -127,8 +127,8 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 				}
 			case FestBeesSwarmState.GoBackToHive:
 				{
-                  //  HiveBase.OnSwarmComeBack(this);
-                    break;
+					HiveMain.m_Instance.BackToHive(this);    
+					break;
 				}
 			case FestBeesSwarmState.Harvesting:
 				{
