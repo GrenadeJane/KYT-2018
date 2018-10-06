@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114868130837838654}
   - component: {fileID: 65732896914682430}
   m_Layer: 0
-  m_Name: HiveBase
+  m_Name: HiveMain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155,6 +155,7 @@ MonoBehaviour:
     type: 2}
   m_BeePrefab: {fileID: 114813845975133488, guid: 89c2d13c38c29ac428893574dc2261c7,
     type: 2}
+  m_MayaBeePrefab: {fileID: 0}
   m_SwarmExits:
   - {fileID: 4028409691500368}
   m_festbeeSwarmList: []

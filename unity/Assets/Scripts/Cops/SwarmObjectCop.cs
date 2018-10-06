@@ -26,7 +26,7 @@ public class SwarmObjectCop : SwarmObject
 
     public void AssignNewTarget(Vector3 position )
     {
-        RelativeTargetPosition = position;
+        WorldTargetPosition = position;
         GoesToUniqueTarget = true;
     }
 }
