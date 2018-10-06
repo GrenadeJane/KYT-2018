@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class SwarmBase : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class SwarmBase : MonoBehaviour
 	protected float m_SwarmRadius = 2.0f;
 
 	protected bool m_Moving = false;
+
 	#endregion
 
 	#region Properties
@@ -24,12 +26,12 @@ public class SwarmBase : MonoBehaviour
 	#endregion
 
 	#region Methods
-	protected void Awake()
+	protected virtual void Awake()
 	{
 		SwarmObjects = new List<SwarmObject>();
 	}
 
-	protected void Update()
+	protected virtual void Update()
 	{
 		if(ReachedTarget())
 		{
@@ -55,6 +57,7 @@ public class SwarmBase : MonoBehaviour
 			{
 				swarmObject.StopMoving();
 			}
+			OnReachedTarget();
 		}
 		else
 		{
@@ -70,7 +73,7 @@ public class SwarmBase : MonoBehaviour
 		{
 			if (swarmObject.ReachedTargetPosition)
 			{
-				swarmObject.RelativeTargetPosition = Random.insideUnitSphere * m_SwarmRadius;
+				swarmObject.RelativeTargetPosition = UnityEngine.Random.insideUnitSphere * m_SwarmRadius;
 			}
 			swarmObject.UpdatePosition();
 		}
@@ -100,6 +103,11 @@ public class SwarmBase : MonoBehaviour
 	}
 
 	#endregion
+
+	protected virtual void OnReachedTarget()
+	{
+
+	}
 
 	#region Debug
 
