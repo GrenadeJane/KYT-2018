@@ -54,7 +54,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4738616934218082}
-  - component: {fileID: 114729219955571450}
   m_Layer: 0
   m_Name: cops container
   m_TagString: Untagged
@@ -145,22 +144,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1075590498901726}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114729219955571450
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1181122724239070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1727f70fdefa1904784a975ba2bdd1d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SwarmBasePrefab: {fileID: 114181899645400242, guid: 687511e3da3bbdb4783fa11547025327,
-    type: 2}
-  m_SwarmObjectPrefab: {fileID: 114078871781335728, guid: ec9da55b5917dff4fbbaecae83b04866,
-    type: 2}
-  _amountObject: 2
 --- !u!114 &114828169286293010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -179,8 +162,10 @@ MonoBehaviour:
   basePoliTest: 10
   legalAlcoholAmount: 10
   collider: {fileID: 135327988137114654}
-  mainHive: {fileID: 0}
-  swarmManager: {fileID: 114729219955571450}
+  copSwarmPrefab: {fileID: 114181899645400242, guid: 687511e3da3bbdb4783fa11547025327,
+    type: 2}
+  copPrefab: {fileID: 114078871781335728, guid: ec9da55b5917dff4fbbaecae83b04866,
+    type: 2}
 --- !u!135 &135327988137114654
 SphereCollider:
   m_ObjectHideFlags: 1

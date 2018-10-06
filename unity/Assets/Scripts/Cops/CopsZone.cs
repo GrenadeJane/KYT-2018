@@ -12,6 +12,7 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
     #region Types
     enum CopState
     {
+        None = -1,
         Idle = 0,
         GoToHive,
         Placement,
@@ -37,7 +38,9 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
 
 
     [SerializeField] SphereCollider collider;
-    [SerializeField] CopsSwarmManager swarmManager;
+
+    [SerializeField] SwarmBaseCop copSwarmPrefab;
+    [SerializeField] SwarmObjectCop copPrefab;
 
     #endregion
 
@@ -47,7 +50,9 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
 
     int _countPoliTest;
 
-    CopState state = CopState.Placement;
+    CopState state = CopState.None;
+
+    SwarmBaseCop currentSwarm;
 
     #endregion
 
@@ -96,7 +101,7 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
 
     void SendCopToPlace(FestBeeSwarm swarm, Vector3 targetPos)
     {
-        SwarmObjectCop cop = ((swarmManager.Swarm) as SwarmBaseCop).GetRandomnlyObject();
+        SwarmObjectCop cop = currentSwarm.GetRandomnlyObject();
         if ( cop != null )
         {
             cop.AssignNewTarget(targetPos);
@@ -139,9 +144,9 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
     void GoToHive()
     {
         state = CopState.GoToHive;
-        swarmManager.SetTargetPosition( HiveMain.m_Instance.gameObject.transform.position);
-        swarmManager.Swarm.OnTargetReached = null;
-        swarmManager.Swarm.OnTargetReached = ReturnFromHive;
+        currentSwarm.TargetPosition =  HiveMain.m_Instance.gameObject.transform.position;
+        currentSwarm.OnTargetReached = null;
+        currentSwarm.OnTargetReached = ReturnFromHive;
     }
 
     void ReturnFromHive()
@@ -149,9 +154,9 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
         CoroutineUtils.ExecuteWhenFinished(this, new WaitForSeconds(timeToReload), () =>
         {
             _countPoliTest = basePoliTest;
-            swarmManager.SetTargetPosition(transform.position);
-            swarmManager.Swarm.OnTargetReached = null;
-            swarmManager.Swarm.OnTargetReached = EndHiveAction;
+            currentSwarm.TargetPosition = transform.position;
+            currentSwarm.OnTargetReached = null;
+            currentSwarm.OnTargetReached = EndHiveAction;
         });
     }
 
@@ -165,7 +170,6 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
     void Start ()
     {
         _countPoliTest = basePoliTest;
-        swarmManager.Swarm.m_SwarmRadius = startRange;
 	}
     
 
@@ -192,10 +196,27 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
         }
     }
 
+    void GenerateCopSwarm()
+    {
+        Transform swarmExit = HiveMain.m_Instance.gameObject.transform;
+
+        currentSwarm = Instantiate(copSwarmPrefab, swarmExit.position, Quaternion.identity);
+
+        for (int i = 0; i < baseCountCops; i++)
+        {
+            SwarmObjectCop cop = Instantiate(copPrefab, currentSwarm.transform.position, Quaternion.identity);
+            currentSwarm.AddSwarmObject(cop);
+        }
+
+    }
+
     public void FixPosition()
     {
+        if (currentSwarm == null)
+            GenerateCopSwarm();
+
+        currentSwarm.TargetPosition = transform.position;
         state = CopState.JustPlaced;
-        swarmManager.SetTargetPosition(transform.position);
     }
 
     public void ChangePosition()
