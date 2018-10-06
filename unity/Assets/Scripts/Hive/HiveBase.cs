@@ -57,14 +57,16 @@ public class HiveBase : MonoBehaviour {
 	/// </summary>
 	public void GenerateBeeSwarm(int beeNumber)
 	{
-		if (Random.Range(0, 4) == 1)
-		{
-			GenerateMayaBeeSwarm(beeNumber);
-		}
-		else
-		{
-			GenerateFestBeeSwarm(beeNumber);
-		}
+		GenerateMayaBeeSwarm(beeNumber);
+
+		//if (Random.Range(0,4) == 1)
+		//{
+		//	GenerateMayaBeeSwarm(beeNumber);
+		//}
+		//else
+		//{
+		//	GenerateFestBeeSwarm(beeNumber);
+		//}
 	}
 
 	public void GenerateFestBeeSwarm(int beeNumber)

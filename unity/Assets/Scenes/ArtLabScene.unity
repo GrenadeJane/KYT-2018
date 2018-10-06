@@ -1408,6 +1408,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2088602706}
+  - component: {fileID: 121663340}
   m_Layer: 0
   m_Name: Flower (15)
   m_TagString: Untagged
@@ -1415,6 +1416,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &121663340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 121663339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &125369690
 Transform:
   m_ObjectHideFlags: 0
@@ -1693,10 +1711,9 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 148884809}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26.07, y: 7.7, z: -6.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1471836266}
+  m_Children: []
   m_Father: {fileID: 1724295619}
   m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1711,10 +1728,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad192d564f7f13d43b307425b62851c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FlowerPrefabs:
-  - {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f, type: 2}
+  m_FlowerPrefabs: []
   m_FlowerSpawnSpots: []
-  m_GardenZone: {fileID: 1471836266}
 --- !u!1 &150757670 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100024, guid: bae2a3dc512fa6d49afc82d1d6ed49c1,
@@ -2298,6 +2313,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 448166627}
+  - component: {fileID: 225376196}
   m_Layer: 0
   m_Name: Flower (5)
   m_TagString: Untagged
@@ -2305,6 +2321,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &225376196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 225376195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &228580960
 Transform:
   m_ObjectHideFlags: 0
@@ -2320,41 +2353,6 @@ Transform:
   m_Father: {fileID: 1724295619}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: -55.070004, y: -345.83398, z: 26.809002}
---- !u!1 &241359757 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1370352539295140, guid: d555fe8000b235c4497fb99e905cd594,
-    type: 2}
-  m_PrefabInternal: {fileID: 505297151}
---- !u!4 &241359758 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4692546459647522, guid: d555fe8000b235c4497fb99e905cd594,
-    type: 2}
-  m_PrefabInternal: {fileID: 505297151}
---- !u!114 &241359759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 241359757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d85e5b85d3f9664db01e186485ef614, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SPAWN_RATE: 15
-  m_BeeSwarmPrefab: {fileID: 114911737839579952, guid: a3f22d62f1d009d48b5ec2e16c9e013b,
-    type: 2}
-  m_BeePrefab: {fileID: 114813845975133488, guid: 89c2d13c38c29ac428893574dc2261c7,
-    type: 2}
-  m_MayaBeePrefab: {fileID: 114295708502688810, guid: a87494edcc7cb98499cce7566bf420c6,
-    type: 2}
-  m_SwarmExits:
-  - {fileID: 1067463481}
-  m_festbeeSwarmList: []
-  buttonContainer: {fileID: 1762516480}
-  zoneButton: {fileID: 1738424846}
-  copButton: {fileID: 519179748}
-  politestButton: {fileID: 1999728670}
 --- !u!4 &258197672
 Transform:
   m_ObjectHideFlags: 0
@@ -2577,6 +2575,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 258197672}
+  - component: {fileID: 273451800}
   m_Layer: 0
   m_Name: Flower (14)
   m_TagString: Untagged
@@ -2584,6 +2583,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &273451800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 273451799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &288901281
 Transform:
   m_ObjectHideFlags: 0
@@ -3245,6 +3261,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2125701734}
+  - component: {fileID: 378292808}
   m_Layer: 0
   m_Name: Flower (27)
   m_TagString: Untagged
@@ -3252,6 +3269,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &378292808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 378292807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &379016553
 Prefab:
   m_ObjectHideFlags: 0
@@ -4113,6 +4147,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 679427070}
+  - component: {fileID: 461459389}
   m_Layer: 0
   m_Name: Flower (32)
   m_TagString: Untagged
@@ -4120,6 +4155,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &461459389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 461459388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &467553935
 Prefab:
   m_ObjectHideFlags: 0
@@ -4911,48 +4963,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 5c45b4db5d54b974380105ba292972c3,
     type: 3}
   m_PrefabInternal: {fileID: 507422056}
---- !u!1001 &517794921
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4378861584651920, guid: 23be8e29a2534bd47954cd0bc2368d59, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 17.177195
-      objectReference: {fileID: 0}
-    - target: {fileID: 4378861584651920, guid: 23be8e29a2534bd47954cd0bc2368d59, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 2.9873247
-      objectReference: {fileID: 0}
-    - target: {fileID: 4378861584651920, guid: 23be8e29a2534bd47954cd0bc2368d59, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4378861584651920, guid: 23be8e29a2534bd47954cd0bc2368d59, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4378861584651920, guid: 23be8e29a2534bd47954cd0bc2368d59, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4378861584651920, guid: 23be8e29a2534bd47954cd0bc2368d59, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4378861584651920, guid: 23be8e29a2534bd47954cd0bc2368d59, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4378861584651920, guid: 23be8e29a2534bd47954cd0bc2368d59, type: 2}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 23be8e29a2534bd47954cd0bc2368d59, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1001 &518330103
 Prefab:
   m_ObjectHideFlags: 0
@@ -5016,12 +5026,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 5c45b4db5d54b974380105ba292972c3,
     type: 3}
   m_PrefabInternal: {fileID: 518330103}
---- !u!114 &519179748 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114703783757107520, guid: b218f5feb1853cd40978fc56f32dce9b,
-    type: 2}
-  m_PrefabInternal: {fileID: 2009123718}
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &521665361
 Prefab:
   m_ObjectHideFlags: 0
@@ -5172,6 +5176,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1947214715}
+  - component: {fileID: 534964443}
   - component: {fileID: 534964442}
   m_Layer: 0
   m_Name: Flower (8)
@@ -5191,6 +5196,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01e75137f30c798418ee1cb437e29178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &534964443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 534964441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &535939210
 Prefab:
   m_ObjectHideFlags: 0
@@ -5326,6 +5348,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1204013307}
+  - component: {fileID: 540470549}
   m_Layer: 0
   m_Name: Flower (26)
   m_TagString: Untagged
@@ -5333,6 +5356,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &540470549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 540470548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &557966450
 Prefab:
   m_ObjectHideFlags: 0
@@ -6051,6 +6091,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 125369690}
+  - component: {fileID: 622769754}
   m_Layer: 0
   m_Name: Flower (30)
   m_TagString: Untagged
@@ -6058,6 +6099,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &622769754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 622769753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &624312060
 Prefab:
   m_ObjectHideFlags: 0
@@ -6237,6 +6295,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1875414931}
+  - component: {fileID: 650830072}
   m_Layer: 0
   m_Name: Flower (4)
   m_TagString: Untagged
@@ -6244,6 +6303,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &650830072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 650830071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &660611922
 GameObject:
   m_ObjectHideFlags: 0
@@ -6639,6 +6715,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1379156137}
+  - component: {fileID: 694716464}
   m_Layer: 0
   m_Name: Flower (19)
   m_TagString: Untagged
@@ -6646,6 +6723,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &694716464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 694716463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &705620569
 Prefab:
   m_ObjectHideFlags: 0
@@ -7165,6 +7259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 870831709}
+  - component: {fileID: 748180114}
   m_Layer: 0
   m_Name: Flower (12)
   m_TagString: Untagged
@@ -7172,6 +7267,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &748180114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 748180113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &766919191 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100016, guid: bae2a3dc512fa6d49afc82d1d6ed49c1,
@@ -7737,6 +7849,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1223018086}
+  - component: {fileID: 812166406}
   m_Layer: 0
   m_Name: Flower (22)
   m_TagString: Untagged
@@ -7744,6 +7857,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &812166406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 812166405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &815981488
 Prefab:
   m_ObjectHideFlags: 0
@@ -7864,6 +7994,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 785800793}
+  - component: {fileID: 832897282}
   m_Layer: 0
   m_Name: Flower (28)
   m_TagString: Untagged
@@ -7871,6 +8002,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &832897282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 832897281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &839391344
 Prefab:
   m_ObjectHideFlags: 0
@@ -8645,6 +8793,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1413624629}
+  - component: {fileID: 916970934}
   m_Layer: 0
   m_Name: Flower (6)
   m_TagString: Untagged
@@ -8652,6 +8801,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &916970934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 916970933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &919163584
 Prefab:
   m_ObjectHideFlags: 0
@@ -9098,7 +9264,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_FlowerPrefabs: []
   m_FlowerSpawnSpots: []
-  m_GardenZone: {fileID: 0}
 --- !u!4 &949649206
 Transform:
   m_ObjectHideFlags: 0
@@ -10528,34 +10693,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4552562315541458, guid: e014539b109d2c5478b90b131d6f9009,
     type: 2}
   m_PrefabInternal: {fileID: 1066362273}
---- !u!1 &1067463480
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1067463481}
-  m_Layer: 0
-  m_Name: HiveEntrance
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1067463481
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1067463480}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.61, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 241359758}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1108239126
 Prefab:
   m_ObjectHideFlags: 0
@@ -11155,6 +11292,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1667626467}
+  - component: {fileID: 1154158280}
   m_Layer: 0
   m_Name: Flower (10)
   m_TagString: Untagged
@@ -11162,6 +11300,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1154158280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1154158279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &1154356315
 Prefab:
   m_ObjectHideFlags: 0
@@ -11470,6 +11625,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1710910160}
+  - component: {fileID: 1189682944}
   m_Layer: 0
   m_Name: Flower
   m_TagString: Untagged
@@ -11477,6 +11633,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1189682944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1189682943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &1195053929
 Prefab:
   m_ObjectHideFlags: 0
@@ -11708,6 +11881,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 131240586}
+  - component: {fileID: 1251960922}
   m_Layer: 0
   m_Name: Flower (29)
   m_TagString: Untagged
@@ -11715,6 +11889,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1251960922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1251960921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1272178778
 GameObject:
   m_ObjectHideFlags: 0
@@ -11724,6 +11915,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 998601010}
+  - component: {fileID: 1272178779}
   m_Layer: 0
   m_Name: Flower (17)
   m_TagString: Untagged
@@ -11731,6 +11923,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1272178779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1272178778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &1278376130
 Transform:
   m_ObjectHideFlags: 0
@@ -11755,6 +11964,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 205307007}
+  - component: {fileID: 1286038824}
   m_Layer: 0
   m_Name: Flower (16)
   m_TagString: Untagged
@@ -11762,6 +11972,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1286038824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1286038823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &1287368582
 Prefab:
   m_ObjectHideFlags: 0
@@ -12138,6 +12365,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1929083921}
+  - component: {fileID: 1322342204}
   m_Layer: 0
   m_Name: Flower (24)
   m_TagString: Untagged
@@ -12145,6 +12373,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1322342204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1322342203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &1323990869
 Prefab:
   m_ObjectHideFlags: 0
@@ -12395,6 +12640,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1799233847}
+  - component: {fileID: 1356089758}
   m_Layer: 0
   m_Name: Flower (13)
   m_TagString: Untagged
@@ -12402,6 +12648,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1356089758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1356089757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &1372371117
 Prefab:
   m_ObjectHideFlags: 0
@@ -13273,6 +13536,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1533910140}
+  - component: {fileID: 1443256798}
   m_Layer: 0
   m_Name: Flower (20)
   m_TagString: Untagged
@@ -13280,6 +13544,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1443256798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1443256797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &1450517646
 Prefab:
   m_ObjectHideFlags: 0
@@ -13758,34 +14039,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4211104373125910, guid: 8bfd2885f69146b4c8c1eae8b38a59ed,
     type: 2}
   m_PrefabInternal: {fileID: 1468248623}
---- !u!1 &1471836265
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1471836266}
-  m_Layer: 0
-  m_Name: GardenZone
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1471836266
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1471836265}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 65, y: 6, z: 5}
-  m_Children: []
-  m_Father: {fileID: 148884810}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1473508066
 Prefab:
   m_ObjectHideFlags: 0
@@ -13954,6 +14207,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 506348234}
+  - component: {fileID: 1502645373}
   m_Layer: 0
   m_Name: Flower (11)
   m_TagString: Untagged
@@ -13961,6 +14215,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1502645373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1502645372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &1510140055
 Prefab:
   m_ObjectHideFlags: 0
@@ -14420,6 +14691,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 453224453}
+  - component: {fileID: 1572592006}
   m_Layer: 0
   m_Name: Flower (31)
   m_TagString: Untagged
@@ -14427,6 +14699,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1572592006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1572592005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &1574822816
 Prefab:
   m_ObjectHideFlags: 0
@@ -15236,6 +15525,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 573805401}
+  - component: {fileID: 1630009442}
   m_Layer: 0
   m_Name: Flower (3)
   m_TagString: Untagged
@@ -15243,6 +15533,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1630009442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1630009441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1633279757
 GameObject:
   m_ObjectHideFlags: 0
@@ -16380,12 +16687,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 3e23aaf507353b04e8d71ca5a86f9d89,
     type: 3}
   m_PrefabInternal: {fileID: 1737559322}
---- !u!114 &1738424846 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114537321273389910, guid: b218f5feb1853cd40978fc56f32dce9b,
-    type: 2}
-  m_PrefabInternal: {fileID: 2009123718}
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!4 &1739444154
 Transform:
   m_ObjectHideFlags: 0
@@ -16450,6 +16751,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2043170602}
+  - component: {fileID: 1742781809}
   m_Layer: 0
   m_Name: Flower (9)
   m_TagString: Untagged
@@ -16457,6 +16759,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1742781809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1742781808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1743386742
 GameObject:
   m_ObjectHideFlags: 0
@@ -16621,11 +16940,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4552562315541458, guid: e014539b109d2c5478b90b131d6f9009,
     type: 2}
   m_PrefabInternal: {fileID: 1760920225}
---- !u!1 &1762516480 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1972943646021532, guid: b218f5feb1853cd40978fc56f32dce9b,
-    type: 2}
-  m_PrefabInternal: {fileID: 2009123718}
 --- !u!1 &1768483349
 GameObject:
   m_ObjectHideFlags: 0
@@ -16635,6 +16949,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 528432260}
+  - component: {fileID: 1768483350}
   m_Layer: 0
   m_Name: Flower (13)
   m_TagString: Untagged
@@ -16642,6 +16957,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1768483350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1768483349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &1769843205
 Prefab:
   m_ObjectHideFlags: 0
@@ -17363,6 +17695,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1278376130}
+  - component: {fileID: 1838396749}
   m_Layer: 0
   m_Name: Flower (1)
   m_TagString: Untagged
@@ -17370,6 +17703,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1838396749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1838396748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &1849713311
 Prefab:
   m_ObjectHideFlags: 0
@@ -17616,6 +17966,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 288901281}
+  - component: {fileID: 1874689225}
   m_Layer: 0
   m_Name: Flower (23)
   m_TagString: Untagged
@@ -17623,6 +17974,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1874689225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1874689224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &1875414931
 Transform:
   m_ObjectHideFlags: 0
@@ -17801,6 +18169,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 228580960}
+  - component: {fileID: 1884001282}
   m_Layer: 0
   m_Name: Flower (18)
   m_TagString: Untagged
@@ -17808,6 +18177,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1884001282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1884001281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &1885815463
 Prefab:
   m_ObjectHideFlags: 0
@@ -18038,6 +18424,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1409655962}
+  - component: {fileID: 1925225500}
   m_Layer: 0
   m_Name: Flower (25)
   m_TagString: Untagged
@@ -18045,6 +18432,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1925225500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1925225499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1925353078 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100012, guid: bae2a3dc512fa6d49afc82d1d6ed49c1,
@@ -18495,6 +18899,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 910896315}
+  - component: {fileID: 1975566143}
   m_Layer: 0
   m_Name: Flower (21)
   m_TagString: Untagged
@@ -18502,6 +18907,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1975566143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1975566142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1978821671
 GameObject:
   m_ObjectHideFlags: 0
@@ -18797,12 +19219,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4697508351910186, guid: dee8298e81feba54e9dd8389599e336f,
     type: 2}
   m_PrefabInternal: {fileID: 1992449482}
---- !u!114 &1999728670 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114907870757922744, guid: b218f5feb1853cd40978fc56f32dce9b,
-    type: 2}
-  m_PrefabInternal: {fileID: 2009123718}
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &2006668577
 Prefab:
   m_ObjectHideFlags: 0
@@ -18882,111 +19298,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4697508351910186, guid: dee8298e81feba54e9dd8389599e336f,
     type: 2}
   m_PrefabInternal: {fileID: 2006668577}
---- !u!1001 &2009123718
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 224133873762808502, guid: b218f5feb1853cd40978fc56f32dce9b,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 224133873762808502, guid: b218f5feb1853cd40978fc56f32dce9b,
-        type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224133873762808502, guid: b218f5feb1853cd40978fc56f32dce9b,
-        type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224133873762808502, guid: b218f5feb1853cd40978fc56f32dce9b,
-        type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224133873762808502, guid: b218f5feb1853cd40978fc56f32dce9b,
-        type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224133873762808502, guid: b218f5feb1853cd40978fc56f32dce9b,
-        type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224133873762808502, guid: b218f5feb1853cd40978fc56f32dce9b,
-        type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224133873762808502, guid: b218f5feb1853cd40978fc56f32dce9b,
-        type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224133873762808502, guid: b218f5feb1853cd40978fc56f32dce9b,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 224133873762808502, guid: b218f5feb1853cd40978fc56f32dce9b,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224133873762808502, guid: b218f5feb1853cd40978fc56f32dce9b,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224133873762808502, guid: b218f5feb1853cd40978fc56f32dce9b,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224133873762808502, guid: b218f5feb1853cd40978fc56f32dce9b,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224133873762808502, guid: b218f5feb1853cd40978fc56f32dce9b,
-        type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224133873762808502, guid: b218f5feb1853cd40978fc56f32dce9b,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224133873762808502, guid: b218f5feb1853cd40978fc56f32dce9b,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224133873762808502, guid: b218f5feb1853cd40978fc56f32dce9b,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224133873762808502, guid: b218f5feb1853cd40978fc56f32dce9b,
-        type: 2}
-      propertyPath: m_Pivot.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224133873762808502, guid: b218f5feb1853cd40978fc56f32dce9b,
-        type: 2}
-      propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b218f5feb1853cd40978fc56f32dce9b, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &2013780578
 GameObject:
   m_ObjectHideFlags: 0
@@ -18996,6 +19307,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1739444154}
+  - component: {fileID: 2013780579}
   m_Layer: 0
   m_Name: Flower (2)
   m_TagString: Untagged
@@ -19003,6 +19315,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2013780579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2013780578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &2021491976 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100026, guid: bae2a3dc512fa6d49afc82d1d6ed49c1,

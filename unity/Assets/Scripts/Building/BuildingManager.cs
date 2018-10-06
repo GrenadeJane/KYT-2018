@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class BuildingManager : MonoBehaviour
 {
     [SerializeField] GameObject copZonePrefab;
+    [SerializeField] GameObject copHive;
 
 
     List<GameObject> copZoneList = new List<GameObject>();
@@ -15,7 +16,7 @@ public class BuildingManager : MonoBehaviour
 
     private void Awake()
     {
-        CopsZone.OnBuildingClick += OnBuildClick;
+        BuildingBase.OnBuildingClick += OnBuildClick;
     }
 
     public void CreateCopZone()
@@ -23,7 +24,15 @@ public class BuildingManager : MonoBehaviour
         GameObject obj = Instantiate(copZonePrefab);
         copZoneList.Add(obj);
         currentObject = obj;
-        currentObject.GetComponent<IBuilding>().ChangePosition();
+        currentObject.GetComponent<BuildingBase>().ChangePosition.Invoke();
+    }
+
+    public void CreateCopHive()
+    {
+        GameObject obj = Instantiate(copHive);
+        copZoneList.Add(obj);
+        currentObject = obj;
+        currentObject.GetComponent<BuildingBase>().ChangePosition.Invoke();
     }
 
     public void OnBuildClick(GameObject obj)
@@ -31,11 +40,11 @@ public class BuildingManager : MonoBehaviour
         if ( currentObject == null )
         {
             currentObject = obj;
-            currentObject.GetComponent<IBuilding>().ChangePosition();
+            currentObject.GetComponent<BuildingBase>().ChangePosition.Invoke();
         }
         else
         {
-            currentObject.GetComponent<IBuilding>().FixPosition();
+            currentObject.GetComponent<BuildingBase>().FixPosition.Invoke();
             currentObject = null;
         }
     }

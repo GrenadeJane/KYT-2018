@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using System;
 
 [Serializable]
-public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
+public class CopsZone : MonoBehaviour, IPointerClickHandler
 {
 
     #region Types
@@ -250,7 +250,7 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         if ( currentSwarm.ReachedTarget )
-             OnBuildingClick.Invoke(gameObject);
+            BuildingBase.OnBuildingClick.Invoke(gameObject);
     }
 
     #endregion
