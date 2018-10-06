@@ -30,6 +30,7 @@ public class CopsSwarmManager : MonoBehaviour {
     private void Awake()
     {
         swarm = Instantiate(m_SwarmBasePrefab, transform.position, Quaternion.identity, transform);
+        swarm.IsMovedByUser = true;
     }
 
     private void Start()

@@ -4,14 +4,15 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-public class CopsZone : MonoBehaviour
+public class CopsZone : MonoBehaviour, IBuilding
 {
 
     #region Types
     enum CopState
     {
         Idle = 0,
-        GoToHive
+        GoToHive,
+        Placement
     }
 
     #endregion
@@ -46,7 +47,7 @@ public class CopsZone : MonoBehaviour
 
     int _countPoliTest;
 
-    CopState state = CopState.Idle;
+    CopState state = CopState.Placement;
         
     #endregion
 
@@ -181,6 +182,21 @@ public class CopsZone : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    public void FixPosition()
+    {
+        state = CopState.Idle;
+    }
+
+    public void ChangePosition()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void Remove()
+    {
+        throw new System.NotImplementedException();
     }
 
     #endregion
