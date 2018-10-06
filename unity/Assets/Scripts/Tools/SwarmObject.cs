@@ -12,6 +12,9 @@ public class SwarmObject : MonoBehaviour
 
 	#region Fields
 	private bool m_ReachedTargetPosition = false;
+
+	private Vector3 m_RelativeTargetPosition;
+
 	private Vector3 m_Velocity = Vector3.zero;
 	#endregion
 
@@ -28,6 +31,11 @@ public class SwarmObject : MonoBehaviour
 		get { return RelativeTargetPosition + swarmBaseData.transform.position; }
 		set
 		{
+			if(WorldTargetPosition != transform.position)
+			{
+				ReachedTargetPosition = false;
+			}
+
 			RelativeTargetPosition = value - swarmBaseData.transform.position;
 		}
 	}
@@ -35,7 +43,19 @@ public class SwarmObject : MonoBehaviour
 	/// <summary>
 	/// Target position relative to the swarm it comes from
 	/// </summary>
-	public Vector3 RelativeTargetPosition { get; set; }
+	public Vector3 RelativeTargetPosition
+	{
+		get { return m_RelativeTargetPosition; }
+		set
+		{
+			if(m_RelativeTargetPosition != transform.position - swarmBaseData.transform.position)
+			{
+				ReachedTargetPosition = false;
+			}
+			m_RelativeTargetPosition = value;
+			
+		}
+	}
 
   public UnityAction<SwarmObject> OnTargetReached;
 
@@ -44,8 +64,8 @@ public class SwarmObject : MonoBehaviour
 	#region Methods
 	public void UpdatePosition()
 	{
-        if (!this.swarmBaseData.Equals(default(SwarmBaseData)))
-        {
+    if (!this.swarmBaseData.Equals(default(SwarmBaseData)))
+    {
 			if(DrivenBySwarmMovement)
 			{
 				SwarmMovement();
@@ -67,24 +87,25 @@ public class SwarmObject : MonoBehaviour
 
 	public void MoveToPosition()
 	{
-		if (Vector3.Distance(transform.position, WorldTargetPosition) < MOVEMENT_SPEED * Time.deltaTime)
-		{
-			transform.position = WorldTargetPosition;
-			ReachedTargetPosition = true;
 
-			if (OnTargetReached != null)
-			{
-				OnTargetReached.Invoke(this);
-				OnTargetReached = null;
-			}
-		}
-		else
+		if(!ReachedTargetPosition)
 		{
-			ReachedTargetPosition = false;
 			float movementAcceleration = ACCELERATION * Time.deltaTime;
 			Vector3 movementVector = Vector3.Normalize(WorldTargetPosition - transform.position);
 			m_Velocity += (movementVector * movementAcceleration);
 			m_Velocity = Vector3.ClampMagnitude(m_Velocity, MOVEMENT_SPEED * Time.deltaTime);
+
+			if(m_Velocity.magnitude >= Vector3.Distance(transform.position, WorldTargetPosition))
+			{
+				transform.position = WorldTargetPosition;
+				ReachedTargetPosition = true;
+
+				if (OnTargetReached != null)
+				{
+					OnTargetReached.Invoke(this);
+					OnTargetReached = null;
+				}
+			}
 			transform.position += m_Velocity;
 		}
 

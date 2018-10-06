@@ -33,8 +33,15 @@ public class BeeBase : SwarmObject {
 			if(m_CurrentTargetedSpot != value)
 			{
 				m_CurrentTargetedSpot = value;
-				WorldTargetPosition = m_CurrentTargetedSpot.transform.position;
-				CurrentState = BeeState.GoToPollenSpot;
+				if(m_CurrentTargetedSpot != null)
+				{
+					WorldTargetPosition = m_CurrentTargetedSpot.transform.position;
+					CurrentState = BeeState.GoToPollenSpot;
+				}
+				else
+				{
+					CurrentState = BeeState.Idle;
+				}
 			}
 		}
 	}
@@ -73,7 +80,6 @@ public class BeeBase : SwarmObject {
 		if(CurrentTargetedSpot != null)
 		{
 			var pollenAmountAvailable = CurrentTargetedSpot.HarvestPollen(HARVEST_PER_SECOND * Time.deltaTime);
-			Debug.Log("Pollen Amount : " + pollenAmountAvailable);
 			if(pollenAmountAvailable > 0.0f)
 			{
 				CurrentPollenAmount += pollenAmountAvailable;
@@ -82,6 +88,7 @@ public class BeeBase : SwarmObject {
 			{
 				CurrentState = BeeState.Idle;
 				CurrentTargetedSpot.IsTargeted = false;
+				DrivenBySwarmMovement = true;
 			}
 		}
 	}

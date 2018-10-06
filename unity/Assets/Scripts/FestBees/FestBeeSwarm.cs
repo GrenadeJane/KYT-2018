@@ -28,6 +28,7 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 	{
 		base.Awake();
 
+		State = FestBeesSwarmState.Idle;
 		m_FlowerField = FindObjectOfType<FlowersField>();
 
 		SearchTarget();
@@ -41,6 +42,10 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 		{
 			case FestBeesSwarmState.Idle:
 				{
+					if (m_FlowerField != null && m_TargetFlower == null)
+					{
+						SearchTarget();
+					}
 					break;
 				}
 			case FestBeesSwarmState.GoToFlower:
@@ -57,6 +62,17 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 				}
 			case FestBeesSwarmState.Harvesting:
 				{
+					// Checking if the flower has still pollen, if not 
+					if(!m_TargetFlower.HasPollen)
+					{
+						foreach (BeeBase bee in SwarmObjects)
+						{
+							bee.DrivenBySwarmMovement = true;
+							bee.CurrentTargetedSpot.IsTargeted = false;
+							bee.CurrentTargetedSpot = null;
+						}
+						SearchTarget();
+					}
 					break;
 				}
 		}
@@ -73,6 +89,7 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 				}
 			case FestBeesSwarmState.GoToFlower:
 				{
+					m_TargetFlower.IsTargeted = true;
 					HarvestCurrentTargetedFlower();
 					State = FestBeesSwarmState.Harvesting;
 					break;
@@ -91,19 +108,15 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 
 	protected void SearchTarget()
 	{
-		//m_TargetFlower = m_FlowerField.GetUntargetedFlower();
-		if(m_TargetFlower != null)
+
+		m_TargetFlower = m_FlowerField.GetUntargetedFlower();
+		if (m_TargetFlower != null)
 		{
 			TargetPosition = m_TargetFlower.transform.position;
 			State = FestBeesSwarmState.GoToFlower;
 			SetBeeState(BeeState.Moving);
 		}
-		else
-		{
-			TargetPosition = transform.position;
-			State = FestBeesSwarmState.Idle;
-			SetBeeState(BeeState.Idle);
-		}
+
 
 	}
 
