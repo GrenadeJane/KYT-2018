@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43724fcf8a2f05b42a7a9ef52c59b7df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heightCollider: 4.56
   ChangePosition:
     m_PersistentCalls:
       m_Calls:
@@ -188,6 +189,22 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  CheckPosition:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114828169286293010}
+        m_MethodName: CheckPosition
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: BuildingBase+UnityEvent_Vector3, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114828169286293010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -204,7 +221,7 @@ MonoBehaviour:
   timeToReload: 2
   baseCountCops: 1
   basePoliTest: 2
-  legalAlcoholAmount: 10
+  legalAlcoholAmount: 5.18
   collider: {fileID: 135327988137114654}
   copSwarmPrefab: {fileID: 114181899645400242, guid: 687511e3da3bbdb4783fa11547025327,
     type: 2}

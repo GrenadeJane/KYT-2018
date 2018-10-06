@@ -13,6 +13,7 @@ public class BuildingManager : MonoBehaviour
 
 
     GameObject currentObject;
+    BuildingBase currentBuilding;
 
     private void Awake()
     {
@@ -24,7 +25,8 @@ public class BuildingManager : MonoBehaviour
         GameObject obj = Instantiate(copZonePrefab);
         copZoneList.Add(obj);
         currentObject = obj;
-        currentObject.GetComponent<BuildingBase>().ChangePosition.Invoke();
+        currentBuilding = currentObject.GetComponent<BuildingBase>();
+        currentBuilding.ChangePosition.Invoke();
     }
 
     public void CreateCopHive()
@@ -32,7 +34,8 @@ public class BuildingManager : MonoBehaviour
         GameObject obj = Instantiate(copHive);
         copZoneList.Add(obj);
         currentObject = obj;
-        currentObject.GetComponent<BuildingBase>().ChangePosition.Invoke();
+        currentBuilding = currentObject.GetComponent<BuildingBase>();
+        currentBuilding.ChangePosition.Invoke();
     }
 
     public void OnBuildClick(GameObject obj)
@@ -40,12 +43,14 @@ public class BuildingManager : MonoBehaviour
         if ( currentObject == null )
         {
             currentObject = obj;
-            currentObject.GetComponent<BuildingBase>().ChangePosition.Invoke();
+            currentBuilding = currentObject.GetComponent<BuildingBase>();
+            currentBuilding.ChangePosition.Invoke();
         }
         else
         {
-            currentObject.GetComponent<BuildingBase>().FixPosition.Invoke();
+            currentBuilding.FixPosition.Invoke();
             currentObject = null;
+            currentBuilding = null;
         }
     }
 
@@ -56,8 +61,7 @@ public class BuildingManager : MonoBehaviour
         {
             Vector3 cursorPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z);
             Vector3 pos = Camera.main.ScreenToWorldPoint(cursorPos);
-
-            currentObject.transform.position = pos;
+            currentBuilding.CheckPosition.Invoke(pos);
         }
     }
 
