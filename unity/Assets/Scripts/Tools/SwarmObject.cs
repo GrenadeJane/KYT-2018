@@ -19,6 +19,8 @@ public class SwarmObject : MonoBehaviour
 	public Transform Swarm { get; set; }
 	public bool ReachedTargetPosition { get; private set; }
 
+	public bool DrivenBySwarmMovement { get; set; }
+
 	public Vector3 WorldTargetPosition
 	{
 		get { return RelativeTargetPosition + Swarm.transform.position; }
@@ -33,9 +35,7 @@ public class SwarmObject : MonoBehaviour
 	/// </summary>
 	public Vector3 RelativeTargetPosition { get; set; }
 
-	public bool DrivenBySwarmMovement { get; set; }
-
-    public UnityAction<SwarmObject> OnTargetReached;
+  public UnityAction<SwarmObject> OnTargetReached;
 
 	#endregion
 
@@ -48,16 +48,22 @@ public class SwarmObject : MonoBehaviour
 			{
 				SwarmMovement();
 			}
-			else
-			{
-				MoveToPosition();
-			}
-			
+
+			MoveToPosition();
 		}
 
 	}
 
 	public void SwarmMovement()
+	{
+		if(ReachedTargetPosition)
+		{
+			RelativeTargetPosition = UnityEngine.Random.insideUnitSphere * SwarmBase<SwarmObject>.SWARM_RADIUS;
+			ReachedTargetPosition = false;
+		}
+	}
+
+	public void MoveToPosition()
 	{
 		if (Vector3.Distance(transform.position, WorldTargetPosition) < MOVEMENT_SPEED * Time.deltaTime)
 		{
@@ -72,18 +78,15 @@ public class SwarmObject : MonoBehaviour
 		}
 		else
 		{
-			MoveToPosition();
+			ReachedTargetPosition = false;
+			float movementAcceleration = ACCELERATION * Time.deltaTime;
+			Vector3 movementVector = Vector3.Normalize(WorldTargetPosition - transform.position);
+			m_Velocity += (movementVector * movementAcceleration);
+			m_Velocity = Vector3.ClampMagnitude(m_Velocity, MOVEMENT_SPEED * Time.deltaTime);
+			transform.position += m_Velocity;
 		}
-	}
 
-	public void MoveToPosition()
-	{
-		ReachedTargetPosition = false;
-		float movementAcceleration = ACCELERATION * Time.deltaTime;
-		Vector3 movementVector = Vector3.Normalize(WorldTargetPosition - transform.position);
-		m_Velocity += (movementVector * movementAcceleration);
-		m_Velocity = Vector3.ClampMagnitude(m_Velocity, MOVEMENT_SPEED * Time.deltaTime);
-		transform.position += m_Velocity;
+
 	}
 
 	public void StopMoving()

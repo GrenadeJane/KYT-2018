@@ -69,10 +69,12 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 		{
 			TargetPosition = m_TargetFlower.transform.position;
 			State = FestBeesSwarmState.GoToFlower;
+			SetBeeState(BeeState.Moving);
 		}
 		else
 		{
 			State = FestBeesSwarmState.Idle;
+			SetBeeState(BeeState.Idle);
 		}
 
 	}
@@ -81,11 +83,19 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 	{
 		if(m_TargetFlower != null)
 		{
-			foreach(SwarmObject bee in SwarmObjects)
+			foreach(BeeBase bee in SwarmObjects)
 			{
 				bee.DrivenBySwarmMovement = false;
-				bee.WorldTargetPosition = m_TargetFlower.GetUntargetedPollenHaverstingSpot();
+				bee.CurrentTargetedSpot = m_TargetFlower.GetUntargetedPollenHaverstingSpot();
 			}
+		}
+	}
+
+	protected void SetBeeState(BeeState state)
+	{
+		foreach(BeeBase bee in SwarmObjects)
+		{
+			bee.CurrentState = state;
 		}
 	}
 

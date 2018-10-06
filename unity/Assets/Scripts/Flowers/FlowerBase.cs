@@ -24,6 +24,10 @@ public class FlowerBase : MonoBehaviour {
 	public FestBeeSwarm HaversterBees { get; set; }
 
 	public bool IsTargeted { get; set; }
+	public bool HasPollen
+	{
+		get { return PollenQuantity > 0.0f; }
+	}
 
 	public float PollenQuantity
 	{

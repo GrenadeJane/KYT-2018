@@ -9,7 +9,7 @@ public class SwarmBase<T> : MonoBehaviour where T : SwarmObject
 	#region Constant 
 
 	protected const float MOVEMENT_SPEED = 3.0f;
-
+	public static float SWARM_RADIUS = 2.0f;
 	#endregion
 
 	#region Fields
