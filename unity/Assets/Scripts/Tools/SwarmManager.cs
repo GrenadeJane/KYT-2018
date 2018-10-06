@@ -17,6 +17,8 @@ public class SwarmManager : MonoBehaviour {
     SwarmBase swarm;
     public SwarmBase Swarm
     { get { return swarm; } }
+
+    public bool IsBusy = false;
     #endregion
 
 
@@ -24,6 +26,7 @@ public class SwarmManager : MonoBehaviour {
     {
         swarm.TargetPosition = position;
     }
+  
 
     private void Start()
 	{

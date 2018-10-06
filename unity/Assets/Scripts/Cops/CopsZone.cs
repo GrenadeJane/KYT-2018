@@ -50,29 +50,34 @@ public class CopsZone : MonoBehaviour
     /// </summary>
     void CheckEnterZone()
     {
-        float rangeSqr = startRange * startRange; 
-        //foreach ( GameObject bee in beeList)
-        //{
-        //    Vector3 beePos = bee.transform.position;
-        //    float dis = (beePos - transform.position).sqrMagnitude;
-        //    if (dis < rangeSqr && _countPoliTest > 0)
-        //    {
-        //        // bee is in the range
+        float rangeSqr = startRange * startRange;
+        foreach (SwarmManager swarmManager in beeList)
+        {
+            if (swarmManager.IsBusy)
+                continue;
 
-        //        _countPoliTest--;
+            float rangeSqrSwarm = swarmManager.Swarm.m_SwarmRadius * swarmManager.Swarm.m_SwarmRadius;
+            Vector3 beePos = swarmManager.transform.position;
+            Vector3 dir = (beePos - transform.position);
+            float dis = dir.sqrMagnitude;
+            if (dis < ( rangeSqr + rangeSqrSwarm ) && _countPoliTest > 0)
+            {
+                // bee is in the range
+                swarmManager.IsBusy = true;
+                _countPoliTest--;
 
-        //        SendCopToPlace();
-        //        break;
-        //    }
-        //}
+                SendCopToPlace(transform.position + dir.normalized * (Mathf.Sqrt(dis) - Mathf.Sqrt(rangeSqrSwarm)));
+                break;
+            }
+        }
     }
 
-    void SendCopToPlace()
+    void SendCopToPlace(Vector3 targetPos)
     {
         SwarmObjectCop cop = ((swarmManager.Swarm) as SwarmBaseCop).GetRandomnlyObject();
         if ( cop != null )
         {
-            cop.AssignNewTarget(Vector3.zero);
+            cop.AssignNewTarget(targetPos);
 
             cop.OnTargetReached = null;
             cop.OnTargetReached += ProceedToCheck;
@@ -133,11 +138,7 @@ public class CopsZone : MonoBehaviour
     {
         swarmManager.Swarm.m_SwarmRadius = startRange;
 
-     //   beeList = GameObject.FindWithTag("Bee").GetComponentsInChildren<SwarmManager>();
-        //foreach (Transform child in beeContainer.transform)
-        //{
-        //    beeList.Add(child.gameObject);
-        //}
+        beeList = new List<SwarmManager>(GameObject.FindWithTag("Bee").GetComponentsInChildren<SwarmManager>());
 	}
     
 

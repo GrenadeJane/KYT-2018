@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 145197709}
   m_Layer: 0
   m_Name: momBee
-  m_TagString: Untagged
+  m_TagString: Bee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,7 +136,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 145197707}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.01, y: 0, z: 0}
+  m_LocalPosition: {x: 4.1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -158,6 +158,7 @@ MonoBehaviour:
   m_SwarmObjectPrefab: {fileID: 114663148383191576, guid: e58875a911e37ef469441323f7c1fd68,
     type: 2}
   _amountObject: 5
+  IsBusy: 0
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
