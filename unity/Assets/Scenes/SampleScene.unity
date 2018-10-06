@@ -907,6 +907,53 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1297934627}
   m_CullTransparentMesh: 0
+--- !u!1001 &1354286958
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4258028316987242, guid: 0dad7f35aad455942b1537038912558b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4258028316987242, guid: 0dad7f35aad455942b1537038912558b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4258028316987242, guid: 0dad7f35aad455942b1537038912558b, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4258028316987242, guid: 0dad7f35aad455942b1537038912558b, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4258028316987242, guid: 0dad7f35aad455942b1537038912558b, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4258028316987242, guid: 0dad7f35aad455942b1537038912558b, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4258028316987242, guid: 0dad7f35aad455942b1537038912558b, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4258028316987242, guid: 0dad7f35aad455942b1537038912558b, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114828169286293010, guid: 0dad7f35aad455942b1537038912558b,
+        type: 2}
+      propertyPath: mainHive
+      value: 
+      objectReference: {fileID: 731508450}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0dad7f35aad455942b1537038912558b, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1378312325
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,6 +1512,17 @@ MonoBehaviour:
       - m_Target: {fileID: 1406230198}
         m_MethodName: CreateCopZone
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1874274740}
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
