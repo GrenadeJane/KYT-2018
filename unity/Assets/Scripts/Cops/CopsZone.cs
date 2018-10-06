@@ -74,10 +74,11 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
 
             float rangeSqrSwarm = swarm.m_SwarmRadius ;
             Vector3 beePos = swarm.transform.position;
-            Vector3 dir = ( currentSwarm.transform.position - beePos );
+            Vector3 dir = (beePos -currentSwarm.transform.position);
 
             float dis = dir.magnitude;
             bool ischecked = beeListChecking.Contains(swarm);
+
             if (dis < ( rangeSqr + rangeSqrSwarm ))
             {
                 if ( !ischecked && _countPoliTest > 0)
@@ -86,7 +87,7 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
                     // bee is in the range
                     swarm.IsChecked();
                     _countPoliTest--;
-                    Debug.DrawLine(currentSwarm.transform.position, dir.normalized * (dis - rangeSqrSwarm), Color.red, 1000);
+                    Debug.DrawLine(currentSwarm.transform.position, currentSwarm.transform.position + dir.normalized * (dis - rangeSqrSwarm), Color.red, 1000);
                     SendCopToPlace(swarm, currentSwarm.transform.position + dir.normalized *(dis - rangeSqrSwarm));
                 }
                

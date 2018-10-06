@@ -161,7 +161,7 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 
 	protected void SearchPlaceToVisit()
 	{
-		TargetPosition = m_FlowerField.GetPositionInGarden();
+	//	TargetPosition = m_FlowerField.GetPositionInGarden();
 		State = FestBeesSwarmState.MoveToAPosition;
 	}
 
