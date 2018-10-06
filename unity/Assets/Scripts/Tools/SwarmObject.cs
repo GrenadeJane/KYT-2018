@@ -16,7 +16,7 @@ public class SwarmObject : MonoBehaviour
 	#endregion
 
 	#region Properties
-	public SwarmBase Swarm { get; set; }
+	public SwarmBase<SwarmObject> Swarm { get; set; }
 	public bool ReachedTargetPosition { get; private set; }
 
 	public Vector3 WorldTargetPosition
