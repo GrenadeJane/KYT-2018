@@ -77,7 +77,7 @@ public class SwarmBase<T> : MonoBehaviour where T : SwarmObject
 			{
 				swarmObject.StopMoving();
 			}
-			OnReachedTarget();
+			IsOnTarget();
 		}
 		else
 		{
@@ -91,10 +91,6 @@ public class SwarmBase<T> : MonoBehaviour where T : SwarmObject
 		// Updating the swarm objects
 		foreach (SwarmObject swarmObject in SwarmObjects)
 		{
-			if (swarmObject.ReachedTargetPosition)
-			{
-				swarmObject.RelativeTargetPosition = UnityEngine.Random.insideUnitSphere * m_SwarmRadius;
-			}
 			swarmObject.UpdatePosition();
 		}
 	}
@@ -129,7 +125,7 @@ public class SwarmBase<T> : MonoBehaviour where T : SwarmObject
 
 	#endregion
 
-	protected virtual void OnReachedTarget()
+	protected virtual void IsOnTarget()
 	{
 
 	}
