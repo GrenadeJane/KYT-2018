@@ -8,10 +8,15 @@ public class FlowersField : MonoBehaviour {
 
 	#region Fields
 
+	[SerializeField]
+	private List<FlowerBase> m_FlowerPrefabs = new List<FlowerBase>();
+
+	[SerializeField]
+	private List<FlowerSpawnSpot> m_FlowerSpawnSpots = new List<FlowerSpawnSpot>();
 	#endregion
 
 	#region Properties
-	public List<FlowerBase> Flowers { get; private set; }
+	public List<FlowerBase> SpawnedFlowers { get; private set; }
 	#endregion
 
 	#region Methods
@@ -19,7 +24,50 @@ public class FlowersField : MonoBehaviour {
 
 	private void Start()
 	{
-		Flowers = FindObjectsOfType<FlowerBase>().ToList();
+		m_FlowerSpawnSpots = FindObjectsOfType<FlowerSpawnSpot>().ToList();
+
+		SpawnedFlowers = new List<FlowerBase>();
+
+		for(int i = 0; i < 3; i++)
+		{
+			SpawnAFlower();
+		}
+	}
+
+	private void Update()
+	{
+		foreach(FlowerBase flower in SpawnedFlowers)
+		{
+			if(!flower.HasPollen)
+			{
+				m_FlowerSpawnSpots.Find(fss => fss.Flower == flower).Flower = null;
+				Destroy(flower);
+			}
+		}
+	}
+
+	private void SpawnAFlower()
+	{
+		var freeFlowerSpawnSpots = m_FlowerSpawnSpots.Where(fss => fss.OccupiedByFlower == false);
+
+		if(freeFlowerSpawnSpots.Count() > 0)
+		{
+			 var selectedFlowerSpawnSpot = freeFlowerSpawnSpots.ToList()[Random.Range(0, freeFlowerSpawnSpots.Count())];
+			selectedFlowerSpawnSpot.OccupiedByFlower = true;
+
+			selectedFlowerSpawnSpot.Flower = GetRandomFlowerInstance();
+			SpawnedFlowers.Add(selectedFlowerSpawnSpot.Flower);
+		}
+	}
+
+	private FlowerBase GetRandomFlowerInstance()
+	{
+		if (m_FlowerPrefabs.Count() > 0)
+		{
+			Debug.Log("Okeu");
+			return Instantiate(m_FlowerPrefabs[Random.Range(0, m_FlowerPrefabs.Count())]);
+		}
+		else return null;
 	}
 
 	/// <summary>
@@ -30,7 +78,7 @@ public class FlowersField : MonoBehaviour {
 	{
 		FlowerBase flower = null;
 
-		var untargetdFlowerList = Flowers.FindAll(f => f.IsTargeted == false);
+		var untargetdFlowerList = SpawnedFlowers.FindAll(fss => fss.IsTargeted == false);
 
 		if(untargetdFlowerList.Count > 0)
 		{

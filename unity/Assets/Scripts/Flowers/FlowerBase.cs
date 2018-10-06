@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class FlowerBase : MonoBehaviour {
 
 	#region Constants
 
-	protected float POLLEN_QUANTITY = 100.0f;
+	protected float POLLEN_QUANTITY = 3.0f;
 
 	#endregion
 
@@ -79,10 +80,19 @@ public class FlowerBase : MonoBehaviour {
 		else
 		{
 			possiblePollenQuantity = wantedQuantity;
+			m_PollenQuantity -= possiblePollenQuantity;
 		}
+
 
 		return possiblePollenQuantity;
 	}
 
+	#endregion
+
+	#region Debug
+	private void OnDrawGizmos()
+	{
+		Handles.Label(transform.position, "Pollen	:	" + PollenQuantity);
+	}
 	#endregion
 }
