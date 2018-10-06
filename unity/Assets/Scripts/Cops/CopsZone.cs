@@ -60,7 +60,7 @@ public class CopsZone : MonoBehaviour
     void CheckEnterZone()
     {
         float rangeSqr = startRange * startRange;
-        foreach (FestBeeSwarm swarm in beeList)
+        foreach (FestBeeSwarm swarm in HiveMain.m_Instance.m_festbeeSwarmList)
         {
             if (swarm.State == FestBeesSwarmState.BeenChecked)
                 continue;
@@ -108,7 +108,8 @@ public class CopsZone : MonoBehaviour
             float alcoholAmount = Random.Range(legalAlcoholAmount, legalAlcoholAmount + 3);
             if (alcoholAmount >= legalAlcoholAmount)
             {
-            //   cop.SwarmTarget.State = FestBeesSwarmState.GoBackToHive;
+                cop.SwarmTarget.GoToHive();
+
                 // send back to home
                 if (_countPoliTest <= 0 && state != CopState.GoToHive)
                     GoToHive();

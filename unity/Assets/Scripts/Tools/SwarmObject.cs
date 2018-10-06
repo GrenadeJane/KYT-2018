@@ -44,7 +44,7 @@ public class SwarmObject : MonoBehaviour
 	#region Methods
 	public void UpdatePosition()
 	{
-		if (!SwarmBaseData.Equals(swarmBaseData, null))
+        if (!this.swarmBaseData.Equals(default(SwarmBaseData)))
         {
 			if(DrivenBySwarmMovement)
 			{
