@@ -84,7 +84,11 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
                 {
                     beeListChecking.Add(swarm);
                     swarm.IsChecked();
-                    _countPoliTest--;
+
+                    // :: lost time when go checked to a maya even if we don't loose a polinotest
+                    if (!swarm.ComposedOfAMaya)
+                        _countPoliTest--;
+
                     SendCopToPlace(swarm, currentSwarm.transform.position + dir.normalized *(dis - rangeSqrSwarm));
                 }
                
@@ -124,25 +128,30 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
     /// </summary>
     void ProceedToCheck(SwarmObject swarmObject) // param current swarm
     {
+
         SwarmObjectCop cop = swarmObject as SwarmObjectCop;
 
-        CoroutineUtils.ExecuteWhenFinished(this, new WaitForSeconds(timeCheck), () =>
+        if (cop.SwarmTarget.ComposedOfAMaya)
         {
             cop.GoesToUniqueTarget = false;
-            // :: Remove 
-            float alcoholAmount = UnityEngine.Random.Range(legalAlcoholAmount, legalAlcoholAmount + 3);
-            if (alcoholAmount >= legalAlcoholAmount)
+            cop.SwarmTarget.EndChecked(); 
+        }
+        else 
+            CoroutineUtils.ExecuteWhenFinished(this, new WaitForSeconds(timeCheck), () =>
             {
-                cop.SwarmTarget.GoToHive();
+                cop.GoesToUniqueTarget = false;
 
-                // send back to home
-                Debug.Log("count politest" + _countPoliTest);
+                float alcoholAmount = cop.SwarmTarget.TotalSwarmPollenAmount;
+
+                if (alcoholAmount >= legalAlcoholAmount)
+                    cop.SwarmTarget.GoToHive();
+                else
+                    cop.SwarmTarget.EndChecked();
+
+                // send back to home if needed
                 if (_countPoliTest <= 0 && state != CopState.GoToHive)
                     GoToHive();
-            }
-            else
-                cop.SwarmTarget.EndChecked();
-        });
+            });
     }
 
 

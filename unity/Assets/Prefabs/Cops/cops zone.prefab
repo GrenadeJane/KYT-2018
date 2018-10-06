@@ -159,7 +159,7 @@ MonoBehaviour:
   timeCheck: 2
   timeToReload: 2
   baseCountCops: 1
-  basePoliTest: 10
+  basePoliTest: 2
   legalAlcoholAmount: 10
   collider: {fileID: 135327988137114654}
   copSwarmPrefab: {fileID: 114181899645400242, guid: 687511e3da3bbdb4783fa11547025327,
