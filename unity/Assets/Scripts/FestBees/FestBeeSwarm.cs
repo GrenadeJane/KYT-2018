@@ -112,7 +112,7 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 		m_TargetFlower = m_FlowerField.GetUntargetedFlower();
 		if (m_TargetFlower != null)
 		{
-			TargetPosition = m_TargetFlower.transform.position;
+			TargetPosition = m_TargetFlower.transform.position + (m_TargetFlower.transform.up.normalized * 2.2f);
 			State = FestBeesSwarmState.GoToFlower;
 			SetBeeState(BeeState.Moving);
 		}

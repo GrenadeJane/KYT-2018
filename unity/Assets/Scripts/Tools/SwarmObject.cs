@@ -31,12 +31,12 @@ public class SwarmObject : MonoBehaviour
 		get { return RelativeTargetPosition + swarmBaseData.transform.position; }
 		set
 		{
-			if(WorldTargetPosition != transform.position)
+
+			if (RelativeTargetPosition + swarmBaseData.transform.position != transform.position)
 			{
 				ReachedTargetPosition = false;
 			}
-
-			RelativeTargetPosition = value - swarmBaseData.transform.position;
+			m_RelativeTargetPosition = value - swarmBaseData.transform.position;
 		}
 	}
 
@@ -81,6 +81,9 @@ public class SwarmObject : MonoBehaviour
 		if(ReachedTargetPosition)
 		{
 			RelativeTargetPosition = UnityEngine.Random.insideUnitSphere * SwarmBase<SwarmObject>.SWARM_RADIUS;
+
+			Debug.Log(RelativeTargetPosition + " : " + WorldTargetPosition);
+
 			ReachedTargetPosition = false;
 		}
 	}
@@ -90,12 +93,13 @@ public class SwarmObject : MonoBehaviour
 
 		if(!ReachedTargetPosition)
 		{
+
 			float movementAcceleration = ACCELERATION * Time.deltaTime;
 			Vector3 movementVector = Vector3.Normalize(WorldTargetPosition - transform.position);
 			m_Velocity += (movementVector * movementAcceleration);
 			m_Velocity = Vector3.ClampMagnitude(m_Velocity, MOVEMENT_SPEED * Time.deltaTime);
 
-			if(m_Velocity.magnitude >= Vector3.Distance(transform.position, WorldTargetPosition))
+			if(m_Velocity.magnitude + 0.1f >= Vector3.Distance(transform.position, WorldTargetPosition))
 			{
 				transform.position = WorldTargetPosition;
 				ReachedTargetPosition = true;

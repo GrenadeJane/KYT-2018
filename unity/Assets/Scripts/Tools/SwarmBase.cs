@@ -34,6 +34,8 @@ public class SwarmBase<T> : MonoBehaviour where T : SwarmObject
 	public List<T> SwarmObjects { get; set; }
 
 	public Vector3 TargetPosition { get; set; }
+
+	public bool ReachedTarget { get; set; }
     #endregion
 
     #region Events
@@ -48,28 +50,27 @@ public class SwarmBase<T> : MonoBehaviour where T : SwarmObject
 
 	protected virtual void Update()
 	{
-		if(ReachedTarget())
+		if(TargetPosition != transform.position)
 		{
-			m_Moving = false;
-            if ( OnTargetReached != null )
-            {
-                OnTargetReached.Invoke();
-                OnTargetReached = null;
-            }
-        }
-		else
-		{
-			m_Moving = true;
-
+			ReachedTarget = false;
 			MovingSwarm();
 		}
-			UpdateSwarmObjects();
+		else
+		{
+			ReachedTarget = true;
+		}
+
+
+		UpdateSwarmObjects();
+
 	}
 
 	protected virtual void MovingSwarm()
 	{
 		// Moving the Swarm
 		float movementSpeed = MOVEMENT_SPEED * Time.deltaTime;
+		Debug.Log(movementSpeed + " movement speed ");
+
 		if (Vector3.Distance(transform.position, TargetPosition) < movementSpeed)
 		{
 			transform.position = TargetPosition;
@@ -77,11 +78,21 @@ public class SwarmBase<T> : MonoBehaviour where T : SwarmObject
 			{
 				swarmObject.StopMoving();
 			}
+
 			IsOnTarget();
+			if (OnTargetReached != null)
+			{
+				OnTargetReached.Invoke();
+				OnTargetReached = null;
+			}
+
+			ReachedTarget = true;
 		}
 		else
 		{
 			Vector3 movementVector = Vector3.Normalize(TargetPosition - transform.position);
+
+			Debug.Log(movementVector + "Movement vector");
 			transform.position += (movementVector * movementSpeed);
 		}
 	}
@@ -95,10 +106,6 @@ public class SwarmBase<T> : MonoBehaviour where T : SwarmObject
 		}
 	}
 
-	private bool ReachedTarget()
-	{
-		return Vector3.Distance(transform.position, TargetPosition) < 0.1f;
-	}
 
 	public  void AddSwarmObject(T swarmObject)
 	{
