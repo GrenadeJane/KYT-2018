@@ -20,8 +20,17 @@ public class FlowerSpawnSpot : MonoBehaviour {
 		set
 		{
 			m_Flower = value;
-			m_Flower.transform.position = transform.position;
-			m_Flower.transform.rotation = transform.rotation;
+			if(m_Flower != null)
+			{
+				m_Flower.transform.position = transform.position;
+				m_Flower.transform.rotation = transform.rotation;
+				OccupiedByFlower = true;
+			}
+			else
+			{
+				OccupiedByFlower = false;
+			}
+
 		}
 	}
 	public bool OccupiedByFlower { get; set; }
