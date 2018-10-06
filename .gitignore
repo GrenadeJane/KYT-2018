@@ -1,3 +1,7 @@
 unity/Assets/Textures/.mayaSwatches/petalRose_diff.jpg_hcm.swatch
 unity/Assets/Textures/.mayaSwatches/petalRose_alpha.jpg_hcm.swatch
 unity/Assets/Textures/.mayaSwatches/lanterne_diff.jpg_hcm.swatch
+unity/Temp/
+unity/Library/
+unity/obj/
+unity/.vs/
