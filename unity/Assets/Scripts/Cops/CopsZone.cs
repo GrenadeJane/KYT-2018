@@ -42,6 +42,7 @@ public class CopsZone : MonoBehaviour
 
     // :: FAKE [Header("test")]
     List<FestBeeSwarm> beeList = new List<FestBeeSwarm>();
+    List<FestBeeSwarm> beeListChecking = new List<FestBeeSwarm>();
 
     int _countPoliTest;
 
@@ -65,15 +66,25 @@ public class CopsZone : MonoBehaviour
             Vector3 beePos = swarm.transform.position;
             Vector3 dir = (beePos - transform.position);
             float dis = dir.sqrMagnitude;
-            if (dis < ( rangeSqr + rangeSqrSwarm ) && _countPoliTest > 0)
+            bool ischecked = beeListChecking.Contains(swarm);
+            if (dis < ( rangeSqr + rangeSqrSwarm ))
             {
-                // bee is in the range
-                swarm.IsChecked();
-                _countPoliTest--;
+                if ( !ischecked && _countPoliTest > 0)
+                {
+                    beeListChecking.Add(swarm);
+                    // bee is in the range
+                    swarm.IsChecked();
+                    _countPoliTest--;
 
-                SendCopToPlace(swarm, transform.position + dir.normalized * (Mathf.Sqrt(dis) - Mathf.Sqrt(rangeSqrSwarm)));
-                break;
+                    SendCopToPlace(swarm, transform.position + dir.normalized * (Mathf.Sqrt(dis) - Mathf.Sqrt(rangeSqrSwarm)));
+                }
+               
+
+            } else if (ischecked)
+            {
+                beeListChecking.Remove(swarm);
             }
+
         }
     }
 
