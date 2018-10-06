@@ -5,7 +5,7 @@ using UnityEngine;
 public class SwarmManager : MonoBehaviour {
    
     [SerializeField]
-	private SwarmBase m_SwarmBasePrefab;
+	private SwarmBase<SwarmObject> m_SwarmBasePrefab;
 	[SerializeField]
 	private SwarmObject m_SwarmObjectPrefab;
     [SerializeField]
@@ -14,8 +14,8 @@ public class SwarmManager : MonoBehaviour {
 
     #region Runtime data
 
-    SwarmBase swarm;
-    public SwarmBase Swarm
+    SwarmBase<SwarmObject> swarm;
+    public SwarmBase<SwarmObject> Swarm
     { get { return swarm; } }
 
     #endregion
