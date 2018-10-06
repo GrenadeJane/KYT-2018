@@ -38,7 +38,6 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
 
 
     [SerializeField] SphereCollider collider;
-
     [SerializeField] SwarmBaseCop copSwarmPrefab;
     [SerializeField] SwarmObjectCop copPrefab;
 
@@ -47,19 +46,19 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
     #region RuntimeData
 
     List<FestBeeSwarm> beeListChecking = new List<FestBeeSwarm>();
-
-    int _countPoliTest;
-
-    CopState state = CopState.None;
-
     SwarmBaseCop currentSwarm;
+    CopState state = CopState.None;
+    int _countPoliTest;
 
     #endregion
 
     #region Events
  
     [SerializeField] public static Action<GameObject> OnBuildingClick;
+
     #endregion
+
+
 
     /// <summary>
     ///  Check If a bee // swarmBase enter into the range of the cops
@@ -84,10 +83,8 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
                 if ( !ischecked && _countPoliTest > 0)
                 {
                     beeListChecking.Add(swarm);
-                    // bee is in the range
                     swarm.IsChecked();
                     _countPoliTest--;
-                    Debug.DrawLine(currentSwarm.transform.position, currentSwarm.transform.position + dir.normalized * (dis - rangeSqrSwarm), Color.red, 1000);
                     SendCopToPlace(swarm, currentSwarm.transform.position + dir.normalized *(dis - rangeSqrSwarm));
                 }
                
@@ -96,10 +93,16 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
             {
                 beeListChecking.Remove(swarm);
             }
-
         }
     }
 
+
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="swarm"></param>
+    /// <param name="targetPos"></param>
     void SendCopToPlace(FestBeeSwarm swarm, Vector3 targetPos)
     {
         SwarmObjectCop cop = currentSwarm.GetRandomnlyObject();
@@ -112,6 +115,9 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
             cop.OnTargetReached += ProceedToCheck;
         }
     }
+
+
+
 
     /// <summary>
     /// Get the amount of alcool in the swarm + stop them to move
@@ -139,6 +145,9 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
         });
     }
 
+
+
+
     /// <summary>
     /// Send the swarmbase to the main hive
     /// </summary>
@@ -150,6 +159,10 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
         currentSwarm.OnTargetReached = ReturnFromHive;
     }
 
+
+    /// <summary>
+    /// 
+    /// </summary>
     void ReturnFromHive()
     {
         CoroutineUtils.ExecuteWhenFinished(this, new WaitForSeconds(timeToReload), () =>
@@ -157,14 +170,10 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
             _countPoliTest = basePoliTest;
             currentSwarm.TargetPosition = transform.position;
             currentSwarm.OnTargetReached = null;
-            currentSwarm.OnTargetReached = EndHiveAction;
+            currentSwarm.OnTargetReached = () => { state = CopState.Idle; };
         });
     }
 
-    void EndHiveAction()
-    {
-        state = CopState.Idle;
-    }
 
     #region MonoBehaviour
 
@@ -173,6 +182,7 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
         _countPoliTest = basePoliTest;
         collider.radius = startRange;
 
+        GenerateCopSwarm();
     }
     
 
@@ -208,13 +218,11 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
             currentSwarm.AddSwarmObject(cop);
         }
 
+        currentSwarm.TargetPosition = HiveMain.m_Instance.gameObject.transform.position;
     }
 
     public void FixPosition()
     {
-        if (currentSwarm == null)
-            GenerateCopSwarm();
-
         currentSwarm.TargetPosition = transform.position;
         state = CopState.JustPlaced;
         currentSwarm.OnTargetReached += () =>
@@ -232,7 +240,8 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-         OnBuildingClick.Invoke(gameObject);
+        if ( currentSwarm.ReachedTarget )
+             OnBuildingClick.Invoke(gameObject);
     }
 
     #endregion
