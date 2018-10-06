@@ -4,11 +4,21 @@ using UnityEngine;
 using System;
 using UnityEngine.Events;
 
+#region Types
+public struct SwarmBaseData
+{
+    public Transform transform;
+    public float radius;
+}
+
+#endregion
+
 public class SwarmBase<T> : MonoBehaviour where T : SwarmObject
 {
-	#region Constant 
 
-	protected const float MOVEMENT_SPEED = 3.0f;
+    #region Constant 
+
+    protected const float MOVEMENT_SPEED = 3.0f;
 	public static float SWARM_RADIUS = 2.0f;
 	#endregion
 
@@ -94,19 +104,23 @@ public class SwarmBase<T> : MonoBehaviour where T : SwarmObject
 		return Vector3.Distance(transform.position, TargetPosition) < 0.1f;
 	}
 
-	public void AddSwarmObject(T swarmObject)
+	public  void AddSwarmObject(T swarmObject)
 	{
 		SwarmObjects.Add(swarmObject);
 		swarmObject.transform.SetParent(transform);
-		swarmObject.Swarm = transform;
 		swarmObject.DrivenBySwarmMovement = true;
-	}
+        swarmObject.swarmBaseData = new SwarmBaseData
+        {
+            transform = this.transform,
+            radius = m_SwarmRadius
+        };
+    }
+
 
 	public void RemoveSwarmObject(T swarmObject)
 	{
 		if (SwarmObjects.Contains(swarmObject))
 		{
-			swarmObject.Swarm = null;
 			swarmObject.transform.SetParent(null);
 			SwarmObjects.Remove(swarmObject);
 		}

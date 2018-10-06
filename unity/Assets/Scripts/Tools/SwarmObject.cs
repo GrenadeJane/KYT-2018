@@ -16,17 +16,19 @@ public class SwarmObject : MonoBehaviour
 	#endregion
 
 	#region Properties
-	public Transform Swarm { get; set; }
-	public bool ReachedTargetPosition { get; private set; }
+
+    public SwarmBaseData swarmBaseData;
+
+    public bool ReachedTargetPosition { get; private set; }
 
 	public bool DrivenBySwarmMovement { get; set; }
 
 	public Vector3 WorldTargetPosition
 	{
-		get { return RelativeTargetPosition + Swarm.transform.position; }
+		get { return RelativeTargetPosition + swarmBaseData.transform.position; }
 		set
 		{
-			RelativeTargetPosition = value - Swarm.transform.position;
+			RelativeTargetPosition = value - swarmBaseData.transform.position;
 		}
 	}
 
@@ -42,8 +44,8 @@ public class SwarmObject : MonoBehaviour
 	#region Methods
 	public void UpdatePosition()
 	{
-		if(Swarm != null)
-		{
+		if (!SwarmBaseData.Equals(swarmBaseData, null))
+        {
 			if(DrivenBySwarmMovement)
 			{
 				SwarmMovement();
@@ -91,7 +93,7 @@ public class SwarmObject : MonoBehaviour
 
 	public void StopMoving()
 	{
-		RelativeTargetPosition = Swarm.position - transform.position;
+		RelativeTargetPosition = swarmBaseData.transform.position - transform.position;
 		ReachedTargetPosition = true;
 	}
 	#endregion
