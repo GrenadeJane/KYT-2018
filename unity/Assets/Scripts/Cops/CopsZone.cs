@@ -31,7 +31,7 @@ public class CopsZone : MonoBehaviour
     #region RuntimeData
 
     // :: FAKE [Header("test")]
-    List<SwarmManager> beeList = new List<SwarmManager>();
+    List<FestBeeSwarm> beeList = new List<FestBeeSwarm>();
 
     int _countPoliTest = 1;
     public int CountPoliTest
@@ -51,33 +51,34 @@ public class CopsZone : MonoBehaviour
     void CheckEnterZone()
     {
         float rangeSqr = startRange * startRange;
-        foreach (SwarmManager swarmManager in beeList)
+        foreach (FestBeeSwarm swarm in beeList)
         {
-            if (swarmManager.IsBusy)
+            if (swarm.State == FestBeesSwarmState.BeenChecked)
                 continue;
 
-            float rangeSqrSwarm = swarmManager.Swarm.m_SwarmRadius * swarmManager.Swarm.m_SwarmRadius;
-            Vector3 beePos = swarmManager.transform.position;
+            float rangeSqrSwarm = swarm.m_SwarmRadius * swarm.m_SwarmRadius;
+            Vector3 beePos = swarm.transform.position;
             Vector3 dir = (beePos - transform.position);
             float dis = dir.sqrMagnitude;
             if (dis < ( rangeSqr + rangeSqrSwarm ) && _countPoliTest > 0)
             {
                 // bee is in the range
-                swarmManager.IsBusy = true;
-                _countPoliTest--;
+                swarm.State = FestBeesSwarmState.BeenChecked;
+                    _countPoliTest--;
 
-                SendCopToPlace(transform.position + dir.normalized * (Mathf.Sqrt(dis) - Mathf.Sqrt(rangeSqrSwarm)));
+                SendCopToPlace(swarm, transform.position + dir.normalized * (Mathf.Sqrt(dis) - Mathf.Sqrt(rangeSqrSwarm)));
                 break;
             }
         }
     }
 
-    void SendCopToPlace(Vector3 targetPos)
+    void SendCopToPlace(FestBeeSwarm swarm, Vector3 targetPos)
     {
         SwarmObjectCop cop = ((swarmManager.Swarm) as SwarmBaseCop).GetRandomnlyObject();
         if ( cop != null )
         {
             cop.AssignNewTarget(targetPos);
+            cop.SwarmTarget = swarm;
 
             cop.OnTargetReached = null;
             cop.OnTargetReached += ProceedToCheck;
@@ -98,6 +99,7 @@ public class CopsZone : MonoBehaviour
             float alcoholAmount = Random.Range(legalAlcoholAmount, legalAlcoholAmount + 3);
             if (alcoholAmount >= legalAlcoholAmount)
             {
+               cop.SwarmTarget.State = FestBeesSwarmState.GoBackToHive;
                 // send back to home
                 if (_countPoliTest <= 0 && !isGoingBackToHive)
                     GoToHive();
@@ -138,7 +140,7 @@ public class CopsZone : MonoBehaviour
     {
         swarmManager.Swarm.m_SwarmRadius = startRange;
 
-        beeList = new List<SwarmManager>(GameObject.FindWithTag("Bee").GetComponentsInChildren<SwarmManager>());
+        beeList = new List<FestBeeSwarm>(GameObject.FindObjectsOfType<FestBeeSwarm>());
 	}
     
 

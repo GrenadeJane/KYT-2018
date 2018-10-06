@@ -18,7 +18,6 @@ public class SwarmManager : MonoBehaviour {
     public SwarmBase Swarm
     { get { return swarm; } }
 
-    public bool IsBusy = false;
     #endregion
 
 

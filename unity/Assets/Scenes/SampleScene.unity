@@ -153,12 +153,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192a40a1e3a23144f95f308b3a53dd76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SwarmBasePrefab: {fileID: 114940364229219820, guid: 0a235784660bb0a478e5d59bbf6dd08a,
+  m_SwarmBasePrefab: {fileID: 114581890105546976, guid: d9ce4f8ccdfab5545931201d26f5baed,
     type: 2}
   m_SwarmObjectPrefab: {fileID: 114663148383191576, guid: e58875a911e37ef469441323f7c1fd68,
     type: 2}
   _amountObject: 5
-  IsBusy: 0
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,6 +479,11 @@ Prefab:
     - target: {fileID: 114828169286293010, guid: 0dad7f35aad455942b1537038912558b,
         type: 2}
       propertyPath: timeCheck
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114828169286293010, guid: 0dad7f35aad455942b1537038912558b,
+        type: 2}
+      propertyPath: timeToReload
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []

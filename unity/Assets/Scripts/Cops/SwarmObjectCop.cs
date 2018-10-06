@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class SwarmObjectCop : SwarmObject
 {
+
+
     #region Properties
+
     public bool GoesToUniqueTarget;
+    public FestBeeSwarm SwarmTarget;
 
     #endregion
 
