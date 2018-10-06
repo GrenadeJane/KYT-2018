@@ -6,7 +6,7 @@ public class SwarmObject : MonoBehaviour
 	#region Constant 
 
 	protected const float MOVEMENT_SPEED = 1.0f;
-	protected const float ACCELERATION = 0.1f;
+	protected const float ACCELERATION = 0.2f;
 
 	#endregion
 
@@ -22,12 +22,18 @@ public class SwarmObject : MonoBehaviour
 	public Vector3 WorldTargetPosition
 	{
 		get { return RelativeTargetPosition + Swarm.transform.position; }
+		set
+		{
+			RelativeTargetPosition = value - Swarm.transform.position;
+		}
 	}
 
 	/// <summary>
 	/// Target position relative to the swarm it comes from
 	/// </summary>
 	public Vector3 RelativeTargetPosition { get; set; }
+
+	public bool DrivenBySwarmMovement { get; set; }
 
     public UnityAction<SwarmObject> OnTargetReached;
 
@@ -38,29 +44,46 @@ public class SwarmObject : MonoBehaviour
 	{
 		if(Swarm != null)
 		{
-
-			if (Vector3.Distance(transform.position, WorldTargetPosition) < MOVEMENT_SPEED * Time.deltaTime)
+			if(DrivenBySwarmMovement)
 			{
-				transform.position = WorldTargetPosition;
-				ReachedTargetPosition = true;
-
-                if ( OnTargetReached != null)
-                {
-                    OnTargetReached.Invoke(this);
-                    OnTargetReached = null;
-                }
-            }
+				SwarmMovement();
+			}
 			else
 			{
-				ReachedTargetPosition = false;
-				float movementAcceleration = ACCELERATION * Time.deltaTime;
-				Vector3 movementVector = Vector3.Normalize(WorldTargetPosition - transform.position);
-				m_Velocity += (movementVector * movementAcceleration);
-				m_Velocity = Vector3.ClampMagnitude(m_Velocity, MOVEMENT_SPEED * Time.deltaTime);
-				transform.position += m_Velocity;
+				MoveToPosition();
 			}
+			
 		}
 
+	}
+
+	public void SwarmMovement()
+	{
+		if (Vector3.Distance(transform.position, WorldTargetPosition) < MOVEMENT_SPEED * Time.deltaTime)
+		{
+			transform.position = WorldTargetPosition;
+			ReachedTargetPosition = true;
+
+			if (OnTargetReached != null)
+			{
+				OnTargetReached.Invoke(this);
+				OnTargetReached = null;
+			}
+		}
+		else
+		{
+			MoveToPosition();
+		}
+	}
+
+	public void MoveToPosition()
+	{
+		ReachedTargetPosition = false;
+		float movementAcceleration = ACCELERATION * Time.deltaTime;
+		Vector3 movementVector = Vector3.Normalize(WorldTargetPosition - transform.position);
+		m_Velocity += (movementVector * movementAcceleration);
+		m_Velocity = Vector3.ClampMagnitude(m_Velocity, MOVEMENT_SPEED * Time.deltaTime);
+		transform.position += m_Velocity;
 	}
 
 	public void StopMoving()
@@ -68,5 +91,15 @@ public class SwarmObject : MonoBehaviour
 		RelativeTargetPosition = Swarm.transform.position - transform.position;
 		ReachedTargetPosition = true;
 	}
+	#endregion
+
+	#region Debug
+
+	private void OnDrawGizmos()
+	{
+		Gizmos.color = Color.red;
+		Gizmos.DrawSphere(WorldTargetPosition, 0.1f);
+	}
+
 	#endregion
 }
