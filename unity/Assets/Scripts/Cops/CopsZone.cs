@@ -31,7 +31,7 @@ public class CopsZone : MonoBehaviour
     #region RuntimeData
 
     // :: FAKE [Header("test")]
-    List<GameObject> beeList = new List<GameObject>();
+    List<SwarmManager> beeList = new List<SwarmManager>();
 
     int _countPoliTest = 1;
     public int CountPoliTest
@@ -58,7 +58,6 @@ public class CopsZone : MonoBehaviour
             if (dis < rangeSqr && _countPoliTest > 0)
             {
                 // bee is in the range
-                bee.GetComponent<MeshRenderer>().material.color = Color.red; // bee control
 
                 _countPoliTest--;
 
@@ -130,12 +129,12 @@ public class CopsZone : MonoBehaviour
 
     #region MonoBehaviour
 
-    void Start () {
+    void Start ()
+    {
+        swarmManager.Swarm.m_SwarmRadius = startRange;
 
-        foreach (Transform child in beeContainer.transform)
-        {
-            beeList.Add(child.gameObject);
-        }
+     //   beeList = GameObject.FindWithTag("Bee").GetComponentsInChildren<SwarmManager>();
+       
 	}
     
 
@@ -143,16 +142,6 @@ public class CopsZone : MonoBehaviour
     {
         if ( !isGoingBackToHive )
             CheckEnterZone();
-    }
-
-    #endregion
-
-    #region Debug
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, startRange);
     }
 
     #endregion

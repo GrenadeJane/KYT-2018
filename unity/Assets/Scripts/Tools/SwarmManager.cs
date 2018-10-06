@@ -27,8 +27,9 @@ public class SwarmManager : MonoBehaviour {
 
     private void Start()
 	{
-		swarm = Instantiate(m_SwarmBasePrefab);
-
+		swarm = Instantiate(m_SwarmBasePrefab, transform.position, Quaternion.identity, transform);
+        swarm.TargetPosition = transform.position;
+        
         for (int i = 0; i < _amountObject; i++)
         {
             swarm.AddSwarmObject(Instantiate(m_SwarmObjectPrefab));

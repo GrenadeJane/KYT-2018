@@ -12,7 +12,7 @@ public class SwarmBase : MonoBehaviour
 
 	#region Fields
 	[SerializeField]
-	protected float m_SwarmRadius = 2.0f;
+	public float m_SwarmRadius = 2.0f;
 
 	protected bool m_Moving = false;
 	#endregion
