@@ -37,7 +37,7 @@ public class CopsZone : MonoBehaviour
     public int CountPoliTest
     {
         get { return _countPoliTest;  }
-        set { _countPoliTest = value; if (_countPoliTest <= 0 && !isGoingBackToHive) GoToHive(); }
+        set { _countPoliTest = value;  }
     }
 
     bool isGoingBackToHive = false;
@@ -55,10 +55,13 @@ public class CopsZone : MonoBehaviour
         {
             Vector3 beePos = bee.transform.position;
             float dis = (beePos - transform.position).sqrMagnitude;
-            if (dis < rangeSqr)
+            if (dis < rangeSqr && _countPoliTest > 0)
             {
                 // bee is in the range
                 bee.GetComponent<MeshRenderer>().material.color = Color.red; // bee control
+
+                _countPoliTest--;
+
                 SendCopToPlace();
                 break;
             }
@@ -92,7 +95,8 @@ public class CopsZone : MonoBehaviour
             if (alcoholAmount >= legalAlcoholAmount)
             {
                 // send back to home
-                CountPoliTest--;
+                if (_countPoliTest <= 0 && !isGoingBackToHive)
+                    GoToHive();
             }
         });
     }
@@ -112,7 +116,7 @@ public class CopsZone : MonoBehaviour
     {
         CoroutineUtils.ExecuteWhenFinished(this, new WaitForSeconds(timeToReload), () =>
         {
-           // CountPoliTest = 1;
+            CountPoliTest = 1;
             swarmManager.SetTargetPosition(transform.position);
             swarmManager.Swarm.OnTargetReached = null;
             swarmManager.Swarm.OnTargetReached = EndHiveAction;
