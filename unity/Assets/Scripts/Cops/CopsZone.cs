@@ -2,17 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
+using System;
 
-
-public class CopsZone : MonoBehaviour, IBuilding
+[Serializable]
+public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
 {
 
     #region Types
     enum CopState
     {
+        None = -1,
         Idle = 0,
         GoToHive,
-        Placement
+        Placement,
+        JustPlaced
     }
 
     #endregion
@@ -32,25 +36,30 @@ public class CopsZone : MonoBehaviour, IBuilding
     [SerializeField] int basePoliTest = 10;
     [SerializeField] float legalAlcoholAmount;
 
-    [SerializeField] GameObject mainHive;
-    [SerializeField] CopsSwarmManager swarmManager;
 
-    // :: FAKE [Header("test")]
-    [SerializeField] GameObject beeContainer;
+    [SerializeField] SphereCollider collider;
+
+    [SerializeField] SwarmBaseCop copSwarmPrefab;
+    [SerializeField] SwarmObjectCop copPrefab;
+
     #endregion
 
     #region RuntimeData
 
-    // :: FAKE [Header("test")]
-    List<FestBeeSwarm> beeList = new List<FestBeeSwarm>();
     List<FestBeeSwarm> beeListChecking = new List<FestBeeSwarm>();
 
     int _countPoliTest;
 
-    CopState state = CopState.Placement;
-        
+    CopState state = CopState.None;
+
+    SwarmBaseCop currentSwarm;
+
     #endregion
 
+    #region Events
+ 
+    [SerializeField] public static Action<GameObject> OnBuildingClick;
+    #endregion
 
     /// <summary>
     ///  Check If a bee // swarmBase enter into the range of the cops
@@ -92,7 +101,7 @@ public class CopsZone : MonoBehaviour, IBuilding
 
     void SendCopToPlace(FestBeeSwarm swarm, Vector3 targetPos)
     {
-        SwarmObjectCop cop = ((swarmManager.Swarm) as SwarmBaseCop).GetRandomnlyObject();
+        SwarmObjectCop cop = currentSwarm.GetRandomnlyObject();
         if ( cop != null )
         {
             cop.AssignNewTarget(targetPos);
@@ -114,7 +123,7 @@ public class CopsZone : MonoBehaviour, IBuilding
         {
             cop.GoesToUniqueTarget = false;
             // :: Remove 
-            float alcoholAmount = Random.Range(legalAlcoholAmount, legalAlcoholAmount + 3);
+            float alcoholAmount = UnityEngine.Random.Range(legalAlcoholAmount, legalAlcoholAmount + 3);
             if (alcoholAmount >= legalAlcoholAmount)
             {
                 cop.SwarmTarget.GoToHive();
@@ -135,9 +144,9 @@ public class CopsZone : MonoBehaviour, IBuilding
     void GoToHive()
     {
         state = CopState.GoToHive;
-        swarmManager.SetTargetPosition( mainHive.transform.position);
-        swarmManager.Swarm.OnTargetReached = null;
-        swarmManager.Swarm.OnTargetReached = ReturnFromHive;
+        currentSwarm.TargetPosition =  HiveMain.m_Instance.gameObject.transform.position;
+        currentSwarm.OnTargetReached = null;
+        currentSwarm.OnTargetReached = ReturnFromHive;
     }
 
     void ReturnFromHive()
@@ -145,9 +154,9 @@ public class CopsZone : MonoBehaviour, IBuilding
         CoroutineUtils.ExecuteWhenFinished(this, new WaitForSeconds(timeToReload), () =>
         {
             _countPoliTest = basePoliTest;
-            swarmManager.SetTargetPosition(transform.position);
-            swarmManager.Swarm.OnTargetReached = null;
-            swarmManager.Swarm.OnTargetReached = EndHiveAction;
+            currentSwarm.TargetPosition = transform.position;
+            currentSwarm.OnTargetReached = null;
+            currentSwarm.OnTargetReached = EndHiveAction;
         });
     }
 
@@ -161,9 +170,6 @@ public class CopsZone : MonoBehaviour, IBuilding
     void Start ()
     {
         _countPoliTest = basePoliTest;
-        swarmManager.Swarm.m_SwarmRadius = startRange;
-
-        beeList = new List<FestBeeSwarm>(GameObject.FindObjectsOfType<FestBeeSwarm>());
 	}
     
 
@@ -181,22 +187,47 @@ public class CopsZone : MonoBehaviour, IBuilding
 
                 }
                 break;
+            case CopState.JustPlaced:
+                {
+                    state = CopState.Idle;
+                    collider.enabled = true;
+                }
+                break;
         }
+    }
+
+    void GenerateCopSwarm()
+    {
+        Transform swarmExit = HiveMain.m_Instance.gameObject.transform;
+
+        currentSwarm = Instantiate(copSwarmPrefab, swarmExit.position, Quaternion.identity);
+
+        for (int i = 0; i < baseCountCops; i++)
+        {
+            SwarmObjectCop cop = Instantiate(copPrefab, currentSwarm.transform.position, Quaternion.identity);
+            currentSwarm.AddSwarmObject(cop);
+        }
+
     }
 
     public void FixPosition()
     {
-        state = CopState.Idle;
+        if (currentSwarm == null)
+            GenerateCopSwarm();
+
+        currentSwarm.TargetPosition = transform.position;
+        state = CopState.JustPlaced;
     }
 
     public void ChangePosition()
     {
-        throw new System.NotImplementedException();
+        state = CopState.Placement;
+        collider.enabled = false;
     }
 
-    public void Remove()
+    public void OnPointerClick(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+         OnBuildingClick.Invoke(gameObject);
     }
 
     #endregion
