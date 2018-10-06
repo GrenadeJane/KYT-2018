@@ -4,14 +4,15 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-public class CopsZone : MonoBehaviour
+public class CopsZone : MonoBehaviour, IBuilding
 {
 
     #region Types
     enum CopState
     {
         Idle = 0,
-        GoToHive
+        GoToHive,
+        Placement
     }
 
     #endregion
@@ -46,7 +47,7 @@ public class CopsZone : MonoBehaviour
 
     int _countPoliTest;
 
-    CopState state = CopState.Idle;
+    CopState state = CopState.Placement;
         
     #endregion
 
@@ -56,16 +57,17 @@ public class CopsZone : MonoBehaviour
     /// </summary>
     void CheckEnterZone()
     {
-        float rangeSqr = startRange * startRange;
+        float rangeSqr = startRange;
         foreach (FestBeeSwarm swarm in HiveMain.m_Instance.m_festbeeSwarmList)
         {
             if (swarm.State == FestBeesSwarmState.BeenChecked)
                 continue;
 
-            float rangeSqrSwarm = swarm.m_SwarmRadius * swarm.m_SwarmRadius;
+            float rangeSqrSwarm = swarm.m_SwarmRadius ;
             Vector3 beePos = swarm.transform.position;
             Vector3 dir = (beePos - transform.position);
-            float dis = dir.sqrMagnitude;
+
+            float dis = dir.magnitude;
             bool ischecked = beeListChecking.Contains(swarm);
             if (dis < ( rangeSqr + rangeSqrSwarm ))
             {
@@ -76,7 +78,7 @@ public class CopsZone : MonoBehaviour
                     swarm.IsChecked();
                     _countPoliTest--;
 
-                    SendCopToPlace(swarm, transform.position + dir.normalized * (Mathf.Sqrt(dis) - Mathf.Sqrt(rangeSqrSwarm)));
+                    SendCopToPlace(swarm, transform.position + dir.normalized *(dis - rangeSqrSwarm));
                 }
                
 
@@ -180,6 +182,21 @@ public class CopsZone : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    public void FixPosition()
+    {
+        state = CopState.Idle;
+    }
+
+    public void ChangePosition()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void Remove()
+    {
+        throw new System.NotImplementedException();
     }
 
     #endregion

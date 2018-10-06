@@ -110,7 +110,7 @@ public class SwarmBase<T> : MonoBehaviour where T : SwarmObject
 	public  void AddSwarmObject(T swarmObject)
 	{
 		SwarmObjects.Add(swarmObject);
-		swarmObject.transform.SetParent(transform);
+		swarmObject.transform.SetParent(transform, false);
 		swarmObject.DrivenBySwarmMovement = true;
         swarmObject.swarmBaseData = new SwarmBaseData
         {

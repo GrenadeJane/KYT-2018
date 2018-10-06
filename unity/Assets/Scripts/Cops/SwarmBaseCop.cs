@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SwarmBaseCop : SwarmBase<SwarmObjectCop>
 {
+    public bool IsMovedByUser = false;
+
     public SwarmObjectCop GetRandomnlyObject()
     {
         List<SwarmObjectCop> objects = new List<SwarmObjectCop>(SwarmObjects);
@@ -32,5 +34,13 @@ public class SwarmBaseCop : SwarmBase<SwarmObjectCop>
 
             swarmObject.UpdatePosition();
         }
+    }
+
+    protected override void Update()
+    {
+        if (IsMovedByUser)
+            UpdateSwarmObjects();
+        else
+            base.Update();
     }
 }
