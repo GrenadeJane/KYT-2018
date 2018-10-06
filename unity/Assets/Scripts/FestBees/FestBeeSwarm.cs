@@ -50,8 +50,8 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 
 	protected override void Update()
 	{
-
-		base.Update();
+        if ( State != FestBeesSwarmState.BeenChecked)
+		    base.Update();
 		switch (State)
 		{
 			case FestBeesSwarmState.MoveToAPosition:
