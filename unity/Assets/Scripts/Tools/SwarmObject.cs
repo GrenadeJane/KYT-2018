@@ -16,7 +16,7 @@ public class SwarmObject : MonoBehaviour
 	#endregion
 
 	#region Properties
-	public SwarmBase<SwarmObject> Swarm { get; set; }
+	public Transform Swarm { get; set; }
 	public bool ReachedTargetPosition { get; private set; }
 
 	public Vector3 WorldTargetPosition
@@ -88,7 +88,7 @@ public class SwarmObject : MonoBehaviour
 
 	public void StopMoving()
 	{
-		RelativeTargetPosition = Swarm.transform.position - transform.position;
+		RelativeTargetPosition = Swarm.position - transform.position;
 		ReachedTargetPosition = true;
 	}
 	#endregion

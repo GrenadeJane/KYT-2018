@@ -98,7 +98,7 @@ public class SwarmBase<T> : MonoBehaviour where T : SwarmObject
 	{
 		SwarmObjects.Add(swarmObject);
 		swarmObject.transform.SetParent(transform);
-		swarmObject.Swarm = this as SwarmBase<SwarmObject>;
+		swarmObject.Swarm = transform;
 		swarmObject.DrivenBySwarmMovement = true;
 	}
 
