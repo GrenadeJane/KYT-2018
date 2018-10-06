@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
+using System;
 
 public class SwarmBase : MonoBehaviour
 {
@@ -15,50 +16,37 @@ public class SwarmBase : MonoBehaviour
 	public float m_SwarmRadius = 2.0f;
 
 	protected bool m_Moving = false;
+
 	#endregion
 
 	#region Properties
 	public List<SwarmObject> SwarmObjects { get; set; }
 
 	public Vector3 TargetPosition { get; set; }
-    #endregion
+	#endregion
 
-    #region Events 
-
-    public UnityAction OnTargetReached;
-
-    #endregion
-    
-    
-    #region Methods
-    protected void Awake()
+	#region Methods
+	protected virtual void Awake()
 	{
 		SwarmObjects = new List<SwarmObject>();
 	}
 
-	protected void Update()
+	protected virtual void Update()
 	{
 		if(ReachedTarget())
 		{
 			m_Moving = false;
-            if (OnTargetReached != null)
-            {
-                OnTargetReached.Invoke();
-                OnTargetReached = null;
-            }
-        }
+		}
 		else
 		{
 			m_Moving = true;
 
 			MovingSwarm();
+			UpdateSwarmObjects();
 		}
+	}
 
-        UpdateSwarmObjects();
-
-    }
-
-    protected virtual void MovingSwarm()
+	protected virtual void MovingSwarm()
 	{
 		// Moving the Swarm
 		float movementSpeed = MOVEMENT_SPEED * Time.deltaTime;
@@ -68,7 +56,8 @@ public class SwarmBase : MonoBehaviour
 			foreach (SwarmObject swarmObject in SwarmObjects)
 			{
 				swarmObject.StopMoving();
-            }
+			}
+			OnReachedTarget();
 		}
 		else
 		{
@@ -84,7 +73,7 @@ public class SwarmBase : MonoBehaviour
 		{
 			if (swarmObject.ReachedTargetPosition)
 			{
-				swarmObject.RelativeTargetPosition = Random.insideUnitSphere * m_SwarmRadius;
+				swarmObject.RelativeTargetPosition = UnityEngine.Random.insideUnitSphere * m_SwarmRadius;
 			}
 			swarmObject.UpdatePosition();
 		}
@@ -114,6 +103,11 @@ public class SwarmBase : MonoBehaviour
 	}
 
 	#endregion
+
+	protected virtual void OnReachedTarget()
+	{
+
+	}
 
 	#region Debug
 

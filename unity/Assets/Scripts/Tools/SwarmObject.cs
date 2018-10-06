@@ -6,11 +6,13 @@ public class SwarmObject : MonoBehaviour
 	#region Constant 
 
 	protected const float MOVEMENT_SPEED = 1.0f;
+	protected const float ACCELERATION = 0.1f;
 
 	#endregion
 
 	#region Fields
 	private bool m_ReachedTargetPosition = false;
+	private Vector3 m_Velocity = Vector3.zero;
 	#endregion
 
 	#region Properties
@@ -36,8 +38,8 @@ public class SwarmObject : MonoBehaviour
 	{
 		if(Swarm != null)
 		{
-			float movementSpeed = MOVEMENT_SPEED * Time.deltaTime;
-			if (Vector3.Distance(transform.position, WorldTargetPosition) < movementSpeed)
+
+			if (Vector3.Distance(transform.position, WorldTargetPosition) < MOVEMENT_SPEED * Time.deltaTime)
 			{
 				transform.position = WorldTargetPosition;
 				ReachedTargetPosition = true;
@@ -51,8 +53,11 @@ public class SwarmObject : MonoBehaviour
 			else
 			{
 				ReachedTargetPosition = false;
+				float movementAcceleration = ACCELERATION * Time.deltaTime;
 				Vector3 movementVector = Vector3.Normalize(WorldTargetPosition - transform.position);
-				transform.position += (movementVector * movementSpeed);
+				m_Velocity += (movementVector * movementAcceleration);
+				m_Velocity = Vector3.ClampMagnitude(m_Velocity, MOVEMENT_SPEED * Time.deltaTime);
+				transform.position += m_Velocity;
 			}
 		}
 
