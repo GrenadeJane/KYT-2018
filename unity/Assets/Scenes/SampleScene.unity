@@ -806,7 +806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d85e5b85d3f9664db01e186485ef614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SPAWN_RATE: 15
+  SPAWN_RATE: 11.75
   m_BeeSwarmPrefab: {fileID: 114911737839579952, guid: a3f22d62f1d009d48b5ec2e16c9e013b,
     type: 2}
   m_BeePrefab: {fileID: 114813845975133488, guid: 89c2d13c38c29ac428893574dc2261c7,
@@ -829,7 +829,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 6.1542826, y: 6.032516, z: 1}
-  m_Center: {x: -0.022806644, y: 2.97239, z: 0}
+  m_Center: {x: -0.022806644, y: 0.09, z: 0}
 --- !u!1 &1297934627
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,6 +1465,17 @@ MonoBehaviour:
       - m_Target: {fileID: 1406230198}
         m_MethodName: CreateCopZone
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1874274740}
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
