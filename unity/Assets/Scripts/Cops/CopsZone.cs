@@ -74,7 +74,7 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
 
             float rangeSqrSwarm = swarm.m_SwarmRadius ;
             Vector3 beePos = swarm.transform.position;
-            Vector3 dir = (beePos - transform.position);
+            Vector3 dir = ( currentSwarm.transform.position - beePos );
 
             float dis = dir.magnitude;
             bool ischecked = beeListChecking.Contains(swarm);
@@ -86,8 +86,8 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
                     // bee is in the range
                     swarm.IsChecked();
                     _countPoliTest--;
-
-                    SendCopToPlace(swarm, transform.position + dir.normalized *(dis - rangeSqrSwarm));
+                    Debug.DrawLine(currentSwarm.transform.position, dir.normalized * (dis - rangeSqrSwarm), Color.red, 1000);
+                    SendCopToPlace(swarm, currentSwarm.transform.position + dir.normalized *(dis - rangeSqrSwarm));
                 }
                
 
@@ -170,7 +170,9 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
     void Start ()
     {
         _countPoliTest = basePoliTest;
-	}
+        collider.radius = startRange;
+
+    }
     
 
     void Update ()
@@ -187,12 +189,6 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
 
                 }
                 break;
-            case CopState.JustPlaced:
-                {
-                    state = CopState.Idle;
-                    collider.enabled = true;
-                }
-                break;
         }
     }
 
@@ -201,10 +197,13 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
         Transform swarmExit = HiveMain.m_Instance.gameObject.transform;
 
         currentSwarm = Instantiate(copSwarmPrefab, swarmExit.position, Quaternion.identity);
+        currentSwarm.m_SwarmRadius = startRange;
 
         for (int i = 0; i < baseCountCops; i++)
         {
-            SwarmObjectCop cop = Instantiate(copPrefab, currentSwarm.transform.position, Quaternion.identity);
+            SwarmObjectCop cop = Instantiate(copPrefab, currentSwarm.transform, false);
+            cop.transform.position = swarmExit.position;
+
             currentSwarm.AddSwarmObject(cop);
         }
 
@@ -217,6 +216,11 @@ public class CopsZone : MonoBehaviour, IBuilding, IPointerClickHandler
 
         currentSwarm.TargetPosition = transform.position;
         state = CopState.JustPlaced;
+        currentSwarm.OnTargetReached += () =>
+        {
+            state = CopState.Idle;
+            collider.enabled = true;
+        };
     }
 
     public void ChangePosition()
