@@ -3,21 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SwarmManager : MonoBehaviour {
-
-	[SerializeField]
+   
+    [SerializeField]
 	private SwarmBase m_SwarmBasePrefab;
 	[SerializeField]
 	private SwarmObject m_SwarmObjectPrefab;
+    [SerializeField]
+    int _amountObject = 2;
 
-	private void Start()
+
+    #region Runtime data
+
+    SwarmBase swarm;
+
+    #endregion
+
+    public void SetTargetPosition(Vector3 position)
+    {
+        swarm.TargetPosition = position;
+    }
+
+    private void Start()
 	{
-		SwarmBase swarm = Instantiate(m_SwarmBasePrefab);
+		swarm = Instantiate(m_SwarmBasePrefab);
 
-		for(int i = 0; i < 15; i++)
-		{
-			swarm.AddSwarmObject(Instantiate(m_SwarmObjectPrefab));
-		}
-
-		swarm.TargetPosition = Vector3.left * 100;
+        for (int i = 0; i < _amountObject; i++)
+        {
+            swarm.AddSwarmObject(Instantiate(m_SwarmObjectPrefab));
+        }
 	}
 }

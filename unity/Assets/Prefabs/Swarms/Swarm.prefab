@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4317006665912302}
   - component: {fileID: 114940364229219820}
   m_Layer: 0
-  m_Name: SwarmGesture
+  m_Name: Swarm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
