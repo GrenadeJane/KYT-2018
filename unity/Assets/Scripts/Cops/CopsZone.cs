@@ -56,16 +56,17 @@ public class CopsZone : MonoBehaviour
     /// </summary>
     void CheckEnterZone()
     {
-        float rangeSqr = startRange * startRange;
+        float rangeSqr = startRange;
         foreach (FestBeeSwarm swarm in HiveMain.m_Instance.m_festbeeSwarmList)
         {
             if (swarm.State == FestBeesSwarmState.BeenChecked)
                 continue;
 
-            float rangeSqrSwarm = swarm.m_SwarmRadius * swarm.m_SwarmRadius;
+            float rangeSqrSwarm = swarm.m_SwarmRadius ;
             Vector3 beePos = swarm.transform.position;
             Vector3 dir = (beePos - transform.position);
-            float dis = dir.sqrMagnitude;
+
+            float dis = dir.magnitude;
             bool ischecked = beeListChecking.Contains(swarm);
             if (dis < ( rangeSqr + rangeSqrSwarm ))
             {
@@ -76,7 +77,7 @@ public class CopsZone : MonoBehaviour
                     swarm.IsChecked();
                     _countPoliTest--;
 
-                    SendCopToPlace(swarm, transform.position + dir.normalized * (Mathf.Sqrt(dis) - Mathf.Sqrt(rangeSqrSwarm)));
+                    SendCopToPlace(swarm, transform.position + dir.normalized *(dis - rangeSqrSwarm));
                 }
                
 
