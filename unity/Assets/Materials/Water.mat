@@ -84,7 +84,7 @@ Material:
     - _DepthIntensity: 0.01
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _FlowIntensity: 0.2
+    - _FlowIntensity: 0.272
     - _FoamIntensity: 0.4
     - _GlossMapScale: 1
     - _Glossiness: 0.85
