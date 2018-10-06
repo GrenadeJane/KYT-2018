@@ -35,8 +35,17 @@ public class FlowersField : MonoBehaviour {
 		{
 			SpawnAFlower();
 		}
-
+		StartCoroutine("SpawnFlowerCoroutine");
 		
+	}
+
+	private IEnumerator SpawnFlowerCoroutine()
+	{
+		while(true)
+		{
+			yield return new WaitForSeconds(12.0f);
+			SpawnAFlower();
+		}
 	}
 
 	private void Update()

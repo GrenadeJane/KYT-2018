@@ -80,11 +80,19 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 		{
 			case FestBeesSwarmState.MoveToAPosition:
 				{
-					m_TimeBeforeReturn -= Time.deltaTime;
-					if(m_TimeBeforeReturn <= 0.0f)
+					if(ComposedOfAMaya)
 					{
-						GoToHive();
+						m_TimeBeforeReturn -= Time.deltaTime;
+						if (m_TimeBeforeReturn <= 0.0f)
+						{
+							GoToHive();
+						}
 					}
+					else
+					{
+						SearchTarget();
+					}
+
 					break;
 				}
 			case FestBeesSwarmState.Idle:
@@ -105,7 +113,7 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 				}
 			case FestBeesSwarmState.GoToFlower:
 				{
-					if(m_FlowerField != null && m_TargetFlower.IsTargeted)
+					if(m_FlowerField != null && (m_TargetFlower == null || m_TargetFlower.IsTargeted))
 					{
 						SearchTarget();
 					}
@@ -118,12 +126,15 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 			case FestBeesSwarmState.Harvesting:
 				{
 					// Checking if the flower has still pollen, if not 
-					if(!m_TargetFlower.HasPollen)
+					if(m_TargetFlower == null || !m_TargetFlower.HasPollen)
 					{
 						foreach (BeeBase bee in SwarmObjects)
 						{
 							bee.DrivenBySwarmMovement = true;
-							bee.CurrentTargetedSpot.IsTargeted = false;
+							if(bee.CurrentTargetedSpot != null)
+							{
+								bee.CurrentTargetedSpot.IsTargeted = false;
+							}
 							bee.CurrentTargetedSpot = null;
 						}
 						SearchTarget();
@@ -172,20 +183,24 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 	protected void SearchTarget()
 	{
 
-	//	m_TargetFlower = m_FlowerField.GetUntargetedFlower();
+m_TargetFlower = m_FlowerField.GetUntargetedFlower();
 		if (m_TargetFlower != null)
 		{
 			TargetPosition = m_TargetFlower.transform.position + (m_TargetFlower.transform.up.normalized * 2.2f);
 			State = FestBeesSwarmState.GoToFlower;
 			SetBeeState(BeeState.Moving);
 		}
-
+		else
+		{
+			State = FestBeesSwarmState.Idle;
+			SetBeeState(BeeState.Idle);
+		}
 
 	}
 
 	protected void SearchPlaceToVisit()
 	{
-	//	TargetPosition = m_FlowerField.GetPositionInGarden();
+	TargetPosition = m_FlowerField.GetPositionInGarden();
 		State = FestBeesSwarmState.MoveToAPosition;
 	}
 

@@ -109,6 +109,7 @@ public class SwarmBase<T> : MonoBehaviour where T : SwarmObject
 	{
 		SwarmObjects.Add(swarmObject);
 		swarmObject.transform.SetParent(transform, false);
+		swarmObject.transform.localPosition = Vector3.zero;
 		swarmObject.DrivenBySwarmMovement = true;
         swarmObject.swarmBaseData = new SwarmBaseData
         {
