@@ -28,7 +28,7 @@ RenderSettings:
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: a28e23e5d209a0246a79a135634d5a05, type: 2}
   m_HaloStrength: 0.5
-  m_FlareStrength: 0.567
+  m_FlareStrength: 0.25
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
@@ -38,11 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 619920470}
-<<<<<<< 31947dac7f41b306ac14c5e989d1f5b60673941e
   m_IndirectSpecularColor: {r: 0.087015115, g: 0.11635154, b: 0.14038187, a: 1}
-=======
-  m_IndirectSpecularColor: {r: 0.08835593, g: 0.1181301, b: 0.1425743, a: 1}
->>>>>>> pollen burst test
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3067,7 +3063,7 @@ Light:
     m_NearPlane: 0.2
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
-  m_Flare: {fileID: 12100000, guid: 551e0bd9fa67e06408085db12ad1abd4, type: 2}
+  m_Flare: {fileID: 0}
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
@@ -3086,22 +3082,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 619920469}
-  m_LocalRotation: {x: -0.9046808, y: -0.000034496792, z: -0.42412254, w: -0.04089876}
+  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
   m_RootOrder: 3
-=======
-<<<<<<< 31947dac7f41b306ac14c5e989d1f5b60673941e
-  m_RootOrder: 2
->>>>>>> c3181ec801902bffdd6cacc167dba64aca463900
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
-=======
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -184.242, y: -50.30899, z: -1.9970093}
->>>>>>> pollen burst test
 --- !u!1001 &624312060
 Prefab:
   m_ObjectHideFlags: 0
@@ -4076,7 +4063,6 @@ GameObject:
   - component: {fileID: 925899748}
   - component: {fileID: 925899747}
   - component: {fileID: 925899746}
-  - component: {fileID: 925899749}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4144,13 +4130,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!124 &925899749
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 925899745}
-  m_Enabled: 1
 --- !u!1001 &928145380
 Prefab:
   m_ObjectHideFlags: 0
