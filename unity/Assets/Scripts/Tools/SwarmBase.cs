@@ -69,7 +69,6 @@ public class SwarmBase<T> : MonoBehaviour where T : SwarmObject
 	{
 		// Moving the Swarm
 		float movementSpeed = MOVEMENT_SPEED * Time.deltaTime;
-		Debug.Log(movementSpeed + " movement speed ");
 
 		if (Vector3.Distance(transform.position, TargetPosition) < movementSpeed)
 		{
@@ -92,7 +91,6 @@ public class SwarmBase<T> : MonoBehaviour where T : SwarmObject
 		{
 			Vector3 movementVector = Vector3.Normalize(TargetPosition - transform.position);
 
-			Debug.Log(movementVector + "Movement vector");
 			transform.position += (movementVector * movementSpeed);
 		}
 	}
