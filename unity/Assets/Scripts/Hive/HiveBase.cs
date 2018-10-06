@@ -37,7 +37,7 @@ public class HiveBase : MonoBehaviour {
 		m_SpawnRate = SPAWN_RATE;
 	}
 
-	private void Update()
+	protected virtual void  Update()
 	{
 		if (m_NextSpawnTime <= 0.0f)
 		{
