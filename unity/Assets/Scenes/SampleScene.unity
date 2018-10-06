@@ -125,7 +125,7 @@ GameObject:
   m_Layer: 0
   m_Name: momBee
   m_TagString: Bee
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -136,7 +136,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 145197707}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.1, y: 0, z: 0}
+  m_LocalPosition: {x: 9.14, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -512,6 +512,11 @@ Prefab:
       propertyPath: swarmManager
       value: 
       objectReference: {fileID: 307715675}
+    - target: {fileID: 1087009897606494, guid: 0dad7f35aad455942b1537038912558b, type: 2}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000,
+        type: 0}
     m_RemovedComponents:
     - {fileID: 114039680049052040, guid: 0dad7f35aad455942b1537038912558b, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 0dad7f35aad455942b1537038912558b, type: 2}

@@ -25,11 +25,14 @@ public class SwarmManager : MonoBehaviour {
     {
         swarm.TargetPosition = position;
     }
-  
+
+    private void Awake()
+    {
+		swarm = Instantiate(m_SwarmBasePrefab, transform.position, Quaternion.identity, transform);
+    }
 
     private void Start()
 	{
-		swarm = Instantiate(m_SwarmBasePrefab, transform.position, Quaternion.identity, transform);
         swarm.TargetPosition = transform.position;
         
         for (int i = 0; i < _amountObject; i++)

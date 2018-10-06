@@ -7,6 +7,15 @@ using UnityEngine.Events;
 public class CopsZone : MonoBehaviour
 {
 
+    #region Types
+    enum CopState
+    {
+        Idle = 0,
+        GoToHive
+    }
+
+    #endregion
+    
     #region Events
 
 
@@ -40,8 +49,8 @@ public class CopsZone : MonoBehaviour
         set { _countPoliTest = value;  }
     }
 
-    bool isGoingBackToHive = false;
-
+    CopState state = CopState.Idle;
+        
     #endregion
 
 
@@ -101,7 +110,7 @@ public class CopsZone : MonoBehaviour
             {
             //   cop.SwarmTarget.State = FestBeesSwarmState.GoBackToHive;
                 // send back to home
-                if (_countPoliTest <= 0 && !isGoingBackToHive)
+                if (_countPoliTest <= 0 && state != CopState.GoToHive)
                     GoToHive();
             }
         });
@@ -112,8 +121,8 @@ public class CopsZone : MonoBehaviour
     /// </summary>
     void GoToHive()
     {
-        isGoingBackToHive = true;
-        swarmManager.SetTargetPosition(mainHive.transform.position);
+        state = CopState.GoToHive;
+        swarmManager.SetTargetPosition( mainHive.transform.position);
         swarmManager.Swarm.OnTargetReached = null;
         swarmManager.Swarm.OnTargetReached = ReturnFromHive;
     }
@@ -131,7 +140,7 @@ public class CopsZone : MonoBehaviour
 
     void EndHiveAction()
     {
-        isGoingBackToHive = false;
+        state = CopState.Idle;
     }
 
     #region MonoBehaviour
@@ -146,8 +155,19 @@ public class CopsZone : MonoBehaviour
 
     void Update ()
     {
-        if ( !isGoingBackToHive )
-            CheckEnterZone();
+        switch( state )
+        {
+            case CopState.Idle :
+                {
+                    CheckEnterZone();
+                }
+                break;
+            case CopState.GoToHive:
+                {
+
+                }
+                break;
+        }
     }
 
     #endregion
