@@ -5,6 +5,11 @@ using UnityEngine.Events;
 
 public class FestBeeSwarm : SwarmBase<BeeBase>
 {
+	#region Constants
+
+	private const float TIME_BEFORE_RETURN = 5.0f;
+
+	#endregion
 
 	#region Fields
 
@@ -12,40 +17,66 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 
 	private FlowerBase m_TargetFlower;
 
+	private float m_TimeBeforeReturn;
+
 	#endregion
 
 	#region Properties
 
 	public FestBeesSwarmState State { get; private set; }
-	public bool ComposedOfABob { get; set; }
+	public bool ComposedOfAMaya { get; set; }
 
     #endregion
 
 
     #region Methods
 
-    protected override void Awake()
+    protected void Start()
 	{
-		base.Awake();
 
 		State = FestBeesSwarmState.Idle;
 		m_FlowerField = FindObjectOfType<FlowersField>();
 
-		SearchTarget();
+		if(ComposedOfAMaya)
+		{
+			m_TimeBeforeReturn = TIME_BEFORE_RETURN;
+		}
+		else
+		{
+			SearchTarget();
+		}
+
 	}
 
 	protected override void Update()
 	{
-
-		base.Update();
+        if ( State != FestBeesSwarmState.BeenChecked)
+		    base.Update();
 		switch (State)
 		{
+			case FestBeesSwarmState.MoveToAPosition:
+				{
+					m_TimeBeforeReturn -= Time.deltaTime;
+					if(m_TimeBeforeReturn <= 0.0f)
+					{
+						GoToHive();
+					}
+					break;
+				}
 			case FestBeesSwarmState.Idle:
 				{
-					if (m_FlowerField != null && m_TargetFlower == null)
+					if(ComposedOfAMaya)
 					{
-						SearchTarget();
+						SearchPlaceToVisit();
 					}
+					else
+					{
+						if (m_FlowerField != null && m_TargetFlower == null)
+						{
+							SearchTarget();
+						}
+					}
+
 					break;
 				}
 			case FestBeesSwarmState.GoToFlower:
@@ -96,11 +127,19 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 				}
 			case FestBeesSwarmState.GoBackToHive:
 				{
-                  //  HiveBase.OnSwarmComeBack(this);
-                    break;
+					HiveMain.m_Instance.BackToHive(this);    
+					break;
 				}
 			case FestBeesSwarmState.Harvesting:
 				{
+					break;
+				}
+
+			case FestBeesSwarmState.MoveToAPosition:
+				{
+
+					SearchPlaceToVisit();
+
 					break;
 				}
 		}
@@ -118,6 +157,12 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 		}
 
 
+	}
+
+	protected void SearchPlaceToVisit()
+	{
+		TargetPosition = m_FlowerField.GetPositionInGarden();
+		State = FestBeesSwarmState.MoveToAPosition;
 	}
 
 	protected void HarvestCurrentTargetedFlower()

@@ -13,6 +13,9 @@ public class FlowersField : MonoBehaviour {
 
 	[SerializeField]
 	private List<FlowerSpawnSpot> m_FlowerSpawnSpots = new List<FlowerSpawnSpot>();
+
+	[SerializeField]
+	private Transform m_GardenZone;
 	#endregion
 
 	#region Properties
@@ -32,6 +35,8 @@ public class FlowersField : MonoBehaviour {
 		{
 			SpawnAFlower();
 		}
+
+		
 	}
 
 	private void Update()
@@ -92,6 +97,30 @@ public class FlowersField : MonoBehaviour {
 
 		return flower;
 		
+	}
+
+	public Vector3 GetPositionInGarden()
+	{
+		var halfX = m_GardenZone.localScale.x * 0.5f * 0.9f;
+		var halfY = m_GardenZone.localScale.y * 0.5f * 0.9f;
+		var halfZ = m_GardenZone.localScale.z * 0.5f * 0.9f;
+
+		Vector3 pointInZone = new Vector3(Random.Range(-halfX, halfX), Random.Range(-halfY, halfY), Random.Range(-halfZ, halfZ));
+		return m_GardenZone.position + pointInZone;
+	}
+
+	#endregion
+
+	#region Debug
+
+	private void OnDrawGizmos()
+	{
+		if(m_GardenZone != null)
+		{
+			Gizmos.color = Color.blue;
+			Gizmos.DrawWireCube(m_GardenZone.position, m_GardenZone.localScale);
+		}
+
 	}
 
 	#endregion

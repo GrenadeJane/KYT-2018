@@ -18,6 +18,8 @@ public class HiveBase : MonoBehaviour {
 
 	[SerializeField]
 	private BeeBase m_BeePrefab;
+	[SerializeField]
+	private MayaBee m_MayaBeePrefab;
 
 	[SerializeField]
 	private List<Transform> m_SwarmExits = new List<Transform>();
@@ -55,18 +57,54 @@ public class HiveBase : MonoBehaviour {
 	/// </summary>
 	public void GenerateBeeSwarm(int beeNumber)
 	{
-		Transform swarmExit = m_SwarmExits[Random.Range(0, m_SwarmExits.Count)];
+		GenerateMayaBeeSwarm(beeNumber);
 
+		//if (Random.Range(0,4) == 1)
+		//{
+		//	GenerateMayaBeeSwarm(beeNumber);
+		//}
+		//else
+		//{
+		//	GenerateFestBeeSwarm(beeNumber);
+		//}
+	}
+
+	public void GenerateFestBeeSwarm(int beeNumber)
+	{
+		Transform swarmExit = m_SwarmExits[Random.Range(0, m_SwarmExits.Count)];
 		FestBeeSwarm swarm = Instantiate(m_BeeSwarmPrefab, swarmExit.position, Quaternion.identity);
 
-        m_festbeeSwarmList.Add(swarm);
+		m_festbeeSwarmList.Add(swarm);
 
-        for (int i = 0; i < beeNumber; i++)
+		for (int i = 0; i < beeNumber; i++)
 		{
 			BeeBase bee = Instantiate(m_BeePrefab, swarm.transform.position, Quaternion.identity);
 			swarm.AddSwarmObject(bee);
 		}
 	}
 
+	public void GenerateMayaBeeSwarm(int beeNumber)
+	{
+		Transform swarmExit = m_SwarmExits[Random.Range(0, m_SwarmExits.Count)];
+		FestBeeSwarm swarm = Instantiate(m_BeeSwarmPrefab, swarmExit.position, Quaternion.identity);
+		swarm.ComposedOfAMaya = true;
+
+		m_festbeeSwarmList.Add(swarm);
+
+		MayaBee mayaBee = Instantiate(m_MayaBeePrefab, swarm.transform.position, Quaternion.identity);
+		swarm.AddSwarmObject(mayaBee);
+
+		for (int i = 0; i < beeNumber - 1; i++)
+		{
+			BeeBase bee = Instantiate(m_BeePrefab, swarm.transform.position, Quaternion.identity);
+			swarm.AddSwarmObject(bee);
+		}
+	}
+
+	public void BackToHive(FestBeeSwarm swarm)
+	{
+		m_festbeeSwarmList.Remove(swarm);
+		Destroy(swarm.gameObject);
+	}
 	#endregion
 }
