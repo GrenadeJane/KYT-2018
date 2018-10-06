@@ -8,7 +8,18 @@ public class SwarmObjectCop : SwarmObject
 
     #region Properties
 
-    public bool GoesToUniqueTarget;
+    bool _goesToUniqueTarget;
+    public bool GoesToUniqueTarget
+    {
+       get { return _goesToUniqueTarget;  }     
+       set
+        {
+            bool previousState = _goesToUniqueTarget;
+            _goesToUniqueTarget = value;
+            if (previousState != value)
+                DrivenBySwarmMovement = !value;
+            }
+    }
     public FestBeeSwarm SwarmTarget;
 
     #endregion

@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwarmBaseCop : SwarmBase
+public class SwarmBaseCop : SwarmBase<SwarmObjectCop>
 {
     public SwarmObjectCop GetRandomnlyObject()
     {
-        List<SwarmObject> objects = new List<SwarmObject>(SwarmObjects);
+        List<SwarmObjectCop> objects = new List<SwarmObjectCop>(SwarmObjects);
         while(objects.Count > 0)
         {
-            SwarmObjectCop obj = objects[Random.Range(0, objects.Count - 1)] as SwarmObjectCop;
+            SwarmObjectCop obj = objects[Random.Range(0, objects.Count - 1)];
             // :: if the cop is already busy
             if (obj.GoesToUniqueTarget)
                 objects.Remove(obj);
@@ -23,9 +23,9 @@ public class SwarmBaseCop : SwarmBase
     protected override void UpdateSwarmObjects()
     {
         // Updating the swarm objects
-        foreach (SwarmObject swarmObject in SwarmObjects)
+        foreach ( SwarmObjectCop swarmObject in SwarmObjects)
         {
-            if (swarmObject.ReachedTargetPosition && !((SwarmObjectCop) swarmObject).GoesToUniqueTarget)
+            if (swarmObject.ReachedTargetPosition && !(swarmObject.GoesToUniqueTarget))
             {
                 swarmObject.RelativeTargetPosition = Random.insideUnitSphere * m_SwarmRadius;
             }

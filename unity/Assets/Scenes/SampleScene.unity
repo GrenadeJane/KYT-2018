@@ -153,9 +153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192a40a1e3a23144f95f308b3a53dd76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SwarmBasePrefab: {fileID: 114581890105546976, guid: d9ce4f8ccdfab5545931201d26f5baed,
+  m_SwarmBasePrefab: {fileID: 114911737839579952, guid: a3f22d62f1d009d48b5ec2e16c9e013b,
     type: 2}
-  m_SwarmObjectPrefab: {fileID: 114663148383191576, guid: e58875a911e37ef469441323f7c1fd68,
+  m_SwarmObjectPrefab: {fileID: 114813845975133488, guid: 89c2d13c38c29ac428893574dc2261c7,
     type: 2}
   _amountObject: 5
 --- !u!1 &170076733
@@ -224,6 +224,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &307715674 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1181122724239070, guid: 0dad7f35aad455942b1537038912558b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1458887121}
+--- !u!114 &307715675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 307715674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1727f70fdefa1904784a975ba2bdd1d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SwarmBasePrefab: {fileID: 114181899645400242, guid: 687511e3da3bbdb4783fa11547025327,
+    type: 2}
+  m_SwarmObjectPrefab: {fileID: 114078871781335728, guid: ec9da55b5917dff4fbbaecae83b04866,
+    type: 2}
+  _amountObject: 2
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,6 +507,12 @@ Prefab:
       propertyPath: timeToReload
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114828169286293010, guid: 0dad7f35aad455942b1537038912558b,
+        type: 2}
+      propertyPath: swarmManager
+      value: 
+      objectReference: {fileID: 307715675}
+    m_RemovedComponents:
+    - {fileID: 114039680049052040, guid: 0dad7f35aad455942b1537038912558b, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 0dad7f35aad455942b1537038912558b, type: 2}
   m_IsPrefabAsset: 0

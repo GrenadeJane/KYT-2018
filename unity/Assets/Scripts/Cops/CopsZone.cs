@@ -22,7 +22,7 @@ public class CopsZone : MonoBehaviour
     [SerializeField] float legalAlcoholAmount;
 
     [SerializeField] GameObject mainHive;
-    [SerializeField] SwarmManager swarmManager;
+    [SerializeField] CopsSwarmManager swarmManager;
 
     // :: FAKE [Header("test")]
     [SerializeField] GameObject beeContainer;
@@ -63,7 +63,7 @@ public class CopsZone : MonoBehaviour
             if (dis < ( rangeSqr + rangeSqrSwarm ) && _countPoliTest > 0)
             {
                 // bee is in the range
-                swarm.State = FestBeesSwarmState.BeenChecked;
+             //   swarm.State = FestBeesSwarmState.BeenChecked;
                     _countPoliTest--;
 
                 SendCopToPlace(swarm, transform.position + dir.normalized * (Mathf.Sqrt(dis) - Mathf.Sqrt(rangeSqrSwarm)));
@@ -99,7 +99,7 @@ public class CopsZone : MonoBehaviour
             float alcoholAmount = Random.Range(legalAlcoholAmount, legalAlcoholAmount + 3);
             if (alcoholAmount >= legalAlcoholAmount)
             {
-               cop.SwarmTarget.State = FestBeesSwarmState.GoBackToHive;
+            //   cop.SwarmTarget.State = FestBeesSwarmState.GoBackToHive;
                 // send back to home
                 if (_countPoliTest <= 0 && !isGoingBackToHive)
                     GoToHive();
