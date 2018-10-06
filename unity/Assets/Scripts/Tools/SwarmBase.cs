@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.Events;
 
 public class SwarmBase : MonoBehaviour
 {
@@ -23,10 +24,14 @@ public class SwarmBase : MonoBehaviour
 	public List<SwarmObject> SwarmObjects { get; set; }
 
 	public Vector3 TargetPosition { get; set; }
-	#endregion
+    #endregion
 
-	#region Methods
-	protected virtual void Awake()
+    #region Events
+    public UnityAction OnTargetReached;
+
+    #endregion
+    #region Methods
+    protected virtual void Awake()
 	{
 		SwarmObjects = new List<SwarmObject>();
 	}
@@ -36,14 +41,19 @@ public class SwarmBase : MonoBehaviour
 		if(ReachedTarget())
 		{
 			m_Moving = false;
-		}
+            if ( OnTargetReached != null )
+            {
+                OnTargetReached.Invoke();
+                OnTargetReached = null;
+            }
+        }
 		else
 		{
 			m_Moving = true;
 
 			MovingSwarm();
-			UpdateSwarmObjects();
 		}
+			UpdateSwarmObjects();
 	}
 
 	protected virtual void MovingSwarm()

@@ -51,20 +51,20 @@ public class CopsZone : MonoBehaviour
     void CheckEnterZone()
     {
         float rangeSqr = startRange * startRange; 
-        foreach ( GameObject bee in beeList)
-        {
-            Vector3 beePos = bee.transform.position;
-            float dis = (beePos - transform.position).sqrMagnitude;
-            if (dis < rangeSqr && _countPoliTest > 0)
-            {
-                // bee is in the range
+        //foreach ( GameObject bee in beeList)
+        //{
+        //    Vector3 beePos = bee.transform.position;
+        //    float dis = (beePos - transform.position).sqrMagnitude;
+        //    if (dis < rangeSqr && _countPoliTest > 0)
+        //    {
+        //        // bee is in the range
 
-                _countPoliTest--;
+        //        _countPoliTest--;
 
-                SendCopToPlace();
-                break;
-            }
-        }
+        //        SendCopToPlace();
+        //        break;
+        //    }
+        //}
     }
 
     void SendCopToPlace()
@@ -134,7 +134,10 @@ public class CopsZone : MonoBehaviour
         swarmManager.Swarm.m_SwarmRadius = startRange;
 
      //   beeList = GameObject.FindWithTag("Bee").GetComponentsInChildren<SwarmManager>();
-       
+        //foreach (Transform child in beeContainer.transform)
+        //{
+        //    beeList.Add(child.gameObject);
+        //}
 	}
     
 
