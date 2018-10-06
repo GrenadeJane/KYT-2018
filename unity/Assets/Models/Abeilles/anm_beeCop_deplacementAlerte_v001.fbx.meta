@@ -1,0 +1,189 @@
+fileFormatVersion: 2
+guid: 55cf6dbf578422541b1251760f0600f1
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: beeAlarme
+    100004: beeAntenLeft01
+    100006: beeAntenLeft02
+    100008: beeAntenRight01
+    100010: beeAntenRight02
+    100012: beeEyeLeft
+    100014: beeEyeRight
+    100016: beeHead
+    100018: beeWingLeft
+    100020: beeWingRight
+    100022: grpAntenLeft
+    100024: grpAntenRight
+    100026: grpEyes
+    100028: grpHead
+    100030: grpLunettes
+    100032: modLunettes1
+    100034: modLunettes2
+    100036: modLunettes3
+    100038: modLunettes4
+    100040: modLunettes5
+    100042: modLunettes6
+    400000: //RootNode
+    400002: beeAlarme
+    400004: beeAntenLeft01
+    400006: beeAntenLeft02
+    400008: beeAntenRight01
+    400010: beeAntenRight02
+    400012: beeEyeLeft
+    400014: beeEyeRight
+    400016: beeHead
+    400018: beeWingLeft
+    400020: beeWingRight
+    400022: grpAntenLeft
+    400024: grpAntenRight
+    400026: grpEyes
+    400028: grpHead
+    400030: grpLunettes
+    400032: modLunettes1
+    400034: modLunettes2
+    400036: modLunettes3
+    400038: modLunettes4
+    400040: modLunettes5
+    400042: modLunettes6
+    2100000: lambert4
+    2100002: lambert6
+    2100004: lambert5
+    2100006: lambert1
+    2300000: //RootNode
+    2300002: beeAlarme
+    2300004: beeAntenLeft01
+    2300006: beeAntenLeft02
+    2300008: beeAntenRight01
+    2300010: beeAntenRight02
+    2300012: beeEyeLeft
+    2300014: beeEyeRight
+    2300016: beeHead
+    2300018: beeWingLeft
+    2300020: beeWingRight
+    2300022: modLunettes1
+    2300024: modLunettes2
+    2300026: modLunettes3
+    2300028: modLunettes4
+    2300030: modLunettes5
+    2300032: modLunettes6
+    3300000: //RootNode
+    3300002: beeAlarme
+    3300004: beeAntenLeft01
+    3300006: beeAntenLeft02
+    3300008: beeAntenRight01
+    3300010: beeAntenRight02
+    3300012: beeEyeLeft
+    3300014: beeEyeRight
+    3300016: beeHead
+    3300018: beeWingLeft
+    3300020: beeWingRight
+    3300022: modLunettes1
+    3300024: modLunettes2
+    3300026: modLunettes3
+    3300028: modLunettes4
+    3300030: modLunettes5
+    3300032: modLunettes6
+    4300000: beeBody
+    4300002: beeHead
+    4300004: beeEyeLeft
+    4300006: beeEyeRight
+    4300008: beeAntenLeft01
+    4300010: beeAntenLeft02
+    4300012: beeAntenRight01
+    4300014: beeAntenRight02
+    4300016: modLunettes1
+    4300018: modLunettes2
+    4300020: modLunettes3
+    4300022: modLunettes4
+    4300024: modLunettes5
+    4300026: modLunettes6
+    4300028: beeAlarme
+    4300030: beeWingRight
+    4300032: beeWingLeft
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
