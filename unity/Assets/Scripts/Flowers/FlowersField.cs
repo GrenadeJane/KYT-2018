@@ -17,7 +17,7 @@ public class FlowersField : MonoBehaviour {
 	#region Methods
 
 
-	private void Awake()
+	private void Start()
 	{
 		Flowers = FindObjectsOfType<FlowerBase>().ToList();
 	}

@@ -6,7 +6,7 @@ public class SwarmObject : MonoBehaviour
 	#region Constant 
 
 	protected const float MOVEMENT_SPEED = 1.0f;
-	protected const float ACCELERATION = 0.2f;
+	protected const float ACCELERATION = 0.3f;
 
 	#endregion
 
