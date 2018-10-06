@@ -253,5 +253,27 @@ public class CopsZone : MonoBehaviour, IPointerClickHandler
             BuildingBase.OnBuildingClick.Invoke(gameObject);
     }
 
+
+    public void CheckPosition(Vector3 pos)
+    {
+        if (pos.y < startRange)
+            pos.y = startRange;
+        else
+        {
+            RaycastHit hit;
+            Ray ray = new Ray(pos, Vector3.down);
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                Debug.Log("hit" + hit.distance);
+                if (hit.distance < startRange)
+                    pos.y = (hit.point + Vector3.up * startRange).y;
+            }
+        }
+
+        transform.position = pos;
+    }
+
     #endregion
+
 }

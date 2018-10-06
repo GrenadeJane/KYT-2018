@@ -250,7 +250,7 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 	protected void SearchTarget()
 	{
 
-m_TargetFlower = m_FlowerField.GetUntargetedFlower();
+//m_TargetFlower = m_FlowerField.GetUntargetedFlower();
 		if (m_TargetFlower != null)
 		{
 			TargetPosition = m_TargetFlower.transform.position + (m_TargetFlower.transform.up.normalized * 2.2f);
@@ -267,7 +267,7 @@ m_TargetFlower = m_FlowerField.GetUntargetedFlower();
 
 	protected void SearchPlaceToVisit()
 	{
-	TargetPosition = m_FlowerField.GetPositionInGarden();
+	//TargetPosition = m_FlowerField.GetPositionInGarden();
 		State = FestBeesSwarmState.MoveToAPosition;
 	}
 

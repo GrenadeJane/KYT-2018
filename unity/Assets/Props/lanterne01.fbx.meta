@@ -1,14 +1,14 @@
 fileFormatVersion: 2
-guid: 621baad360e7f3b41bf8884ac121f93c
+guid: 1070cca6d4060ae4d8d7dc65e7623999
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: lambert7
+    2100000: lambert2
     2300000: //RootNode
     3300000: //RootNode
-    4300000: pPlane24
+    4300000: lanterne
   externalObjects: {}
   materials:
     importMaterials: 1
