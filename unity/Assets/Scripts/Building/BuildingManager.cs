@@ -27,6 +27,14 @@ public class BuildingManager : MonoBehaviour
         currentObject.GetComponent<BuildingBase>().ChangePosition.Invoke();
     }
 
+    public void CreateCopHive()
+    {
+        GameObject obj = Instantiate(copHive);
+        copZoneList.Add(obj);
+        currentObject = obj;
+        currentObject.GetComponent<BuildingBase>().ChangePosition.Invoke();
+    }
+
     public void OnBuildClick(GameObject obj)
     {
         if ( currentObject == null )

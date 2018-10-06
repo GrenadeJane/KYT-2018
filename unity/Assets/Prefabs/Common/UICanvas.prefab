@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 223300294265721914}
   - component: {fileID: 114575115173868194}
   - component: {fileID: 114657803634804796}
+  - component: {fileID: 114898847911241956}
   m_Layer: 0
   m_Name: UICanvas
   m_TagString: Untagged
@@ -144,12 +145,12 @@ GameObject:
   - component: {fileID: 114803322585063454}
   - component: {fileID: 114703783757107520}
   m_Layer: 0
-  m_Name: copButton
+  m_Name: hiveButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1915528701877204
 GameObject:
   m_ObjectHideFlags: 1
@@ -365,7 +366,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'COP
+  m_Text: 'HIVE
 
 '
 --- !u!114 &114467226498065610
@@ -609,6 +610,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114898847911241956
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1714276389576074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ca301e087120fb4aab593b8e1fecbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonContainer: {fileID: 1972943646021532}
+  zoneButton: {fileID: 114537321273389910}
+  hiveButton: {fileID: 114703783757107520}
+  politestButton: {fileID: 114907870757922744}
 --- !u!114 &114907870757922744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -935,7 +951,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: -8}
+  m_AnchoredPosition: {x: 1, y: -13}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224731512228416438
@@ -973,6 +989,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 110, y: -12}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
