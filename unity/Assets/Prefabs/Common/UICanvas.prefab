@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 114575115173868194}
   - component: {fileID: 114657803634804796}
   - component: {fileID: 114898847911241956}
+  - component: {fileID: 114769444216069506}
   m_Layer: 0
   m_Name: UICanvas
   m_TagString: Untagged
@@ -454,7 +455,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114769444216069506}
         m_MethodName: CreateCopZone
         m_Mode: 1
         m_Arguments:
@@ -553,9 +554,45 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114803322585063454}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114769444216069506}
+        m_MethodName: CreateCopHive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1972943646021532}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114769444216069506
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1714276389576074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce4f39a570135ee45a81b89329f61d02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  copZonePrefab: {fileID: 1087009897606494, guid: 0dad7f35aad455942b1537038912558b,
+    type: 2}
+  copHive: {fileID: 1982119224949064, guid: c8cff556815d76e47abd8705d7baabc1, type: 2}
 --- !u!114 &114803322585063454
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -123,6 +123,8 @@ public class SwarmBase<T> : MonoBehaviour where T : SwarmObject
 	{
 		if (SwarmObjects.Contains(swarmObject))
 		{
+			swarmObject.DrivenBySwarmMovement = false;
+			swarmObject.swarmBaseData.transform = null;
 			swarmObject.transform.SetParent(null);
 			SwarmObjects.Remove(swarmObject);
 		}

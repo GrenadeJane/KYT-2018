@@ -50,6 +50,22 @@ public class HiveBase : MonoBehaviour {
 		{
 			m_NextSpawnTime -= Time.deltaTime;
 		}
+
+		CheckSwarmList();
+	}
+
+	private void CheckSwarmList()
+	{
+		for(int i = 0; i < m_festbeeSwarmList.Count; i++)
+		{
+			FestBeeSwarm swarm = m_festbeeSwarmList[i];
+			if(swarm.IsLost)
+			{
+				m_festbeeSwarmList.Remove(swarm);
+				i--;
+				Destroy(swarm.gameObject);
+			}
+		}
 	}
 
 	/// <summary>
@@ -57,16 +73,15 @@ public class HiveBase : MonoBehaviour {
 	/// </summary>
 	public void GenerateBeeSwarm(int beeNumber)
 	{
-		GenerateMayaBeeSwarm(beeNumber);
 
-		//if (Random.Range(0,4) == 1)
-		//{
-		//	GenerateMayaBeeSwarm(beeNumber);
-		//}
-		//else
-		//{
-		//	GenerateFestBeeSwarm(beeNumber);
-		//}
+		if (Random.Range(0, 4) == 1)
+		{
+			GenerateMayaBeeSwarm(beeNumber);
+		}
+		else
+		{
+			GenerateFestBeeSwarm(beeNumber);
+		}
 	}
 
 	public void GenerateFestBeeSwarm(int beeNumber)

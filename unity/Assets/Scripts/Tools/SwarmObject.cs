@@ -82,7 +82,6 @@ public class SwarmObject : MonoBehaviour
 		{
 			RelativeTargetPosition = UnityEngine.Random.insideUnitSphere * SwarmBase<SwarmObject>.SWARM_RADIUS;
 
-			Debug.Log(RelativeTargetPosition + " : " + WorldTargetPosition);
 
 			ReachedTargetPosition = false;
 		}
