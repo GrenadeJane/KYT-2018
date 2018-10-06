@@ -1,0 +1,46 @@
+﻿using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+using UnityEngine.Playables;
+using UnityEngine.Timeline;
+
+namespace ActiveMe
+{
+    namespace Tweens
+    {
+        public class UITweenAlphaGroupPlayable : UITweenerPlayable
+        {
+            public ExposedReference<CanvasGroup> subject;
+            public float src = 0;
+            public float dst = 1;
+
+            private CanvasGroup _subject;
+
+            public override void OnGraphStart(Playable playable)
+            {
+                _subject = subject.Resolve(playable.GetGraph().GetResolver());
+            }
+
+            public override void ProcessFrame(Playable playable, FrameData info, object playerData)
+            {
+                if (_subject == null || playable.GetTime() <= 0)
+                    return;
+
+                float f = (float)(playable.GetTime() / playable.GetDuration()) * info.weight;
+                _subject.alpha = Mathf.Lerp(src, dst, curve.Evaluate(f));
+            }
+
+            public override void OnBehaviourPlay(Playable playable, FrameData info)
+            {
+                if (_subject == null)
+                    return;
+            }
+            public override void OnBehaviourPause(Playable playable, FrameData info)
+            {
+                if (_subject == null)
+                    return;
+            }
+
+        }
+    }
+}

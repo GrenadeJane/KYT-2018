@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FestBeeSwarm : SwarmBase<BeeBase>
 {
@@ -18,11 +19,12 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 	public FestBeesSwarmState State { get; private set; }
 	public bool ComposedOfABob { get; set; }
 
-	#endregion
+    #endregion
 
-	#region Methods
 
-	protected override void Awake()
+    #region Methods
+
+    protected override void Awake()
 	{
 		base.Awake();
 
@@ -77,7 +79,8 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 				}
 			case FestBeesSwarmState.GoBackToHive:
 				{
-					break;
+                  //  HiveBase.OnSwarmComeBack(this);
+                    break;
 				}
 			case FestBeesSwarmState.Harvesting:
 				{
@@ -88,7 +91,7 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 
 	protected void SearchTarget()
 	{
-		m_TargetFlower = m_FlowerField.GetUntargetedFlower();
+		//m_TargetFlower = m_FlowerField.GetUntargetedFlower();
 		if(m_TargetFlower != null)
 		{
 			TargetPosition = m_TargetFlower.transform.position;
@@ -125,6 +128,23 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 			bee.CurrentState = state;
 		}
 	}
+
+    public void GoToHive()
+    {
+        State = FestBeesSwarmState.GoBackToHive;
+        TargetPosition = HiveMain.m_Instance.transform.position;
+        OnTargetReached = null;
+    }
+
+    public void IsChecked()
+    {
+        State = FestBeesSwarmState.BeenChecked;
+    }
+
+    public void EndChecked()
+    {
+        State = FestBeesSwarmState.Idle;
+    }
 
     #endregion
 }

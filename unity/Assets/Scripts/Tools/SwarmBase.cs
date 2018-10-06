@@ -25,29 +25,15 @@ public class SwarmBase<T> : MonoBehaviour where T : SwarmObject
 	#region Fields
 	[SerializeField]
 	public float m_SwarmRadius = 2.0f;
-	private Vector3 m_TargetPosition;
+
+	protected bool m_Moving = false;
+
 	#endregion
 
 	#region Properties
 	public List<T> SwarmObjects { get; set; }
 
-	public Vector3 TargetPosition
-	{
-		get { return m_TargetPosition; }
-		set
-		{
-			m_TargetPosition = value;
-			if(m_TargetPosition != transform.position)
-			{
-				HasReachedTarget = false;
-			}
-			else
-			{
-				HasReachedTarget = true;
-			}
-		}
-	}
-	public bool HasReachedTarget { get; set; }
+	public Vector3 TargetPosition { get; set; }
     #endregion
 
     #region Events
@@ -62,19 +48,28 @@ public class SwarmBase<T> : MonoBehaviour where T : SwarmObject
 
 	protected virtual void Update()
 	{
-		if(!HasReachedTarget)
+		if(ReachedTarget())
 		{
+			m_Moving = false;
+            if ( OnTargetReached != null )
+            {
+                OnTargetReached.Invoke();
+                OnTargetReached = null;
+            }
+        }
+		else
+		{
+			m_Moving = true;
+
 			MovingSwarm();
 		}
-
-		UpdateSwarmObjects();
+			UpdateSwarmObjects();
 	}
 
 	protected virtual void MovingSwarm()
 	{
 		// Moving the Swarm
 		float movementSpeed = MOVEMENT_SPEED * Time.deltaTime;
-
 		if (Vector3.Distance(transform.position, TargetPosition) < movementSpeed)
 		{
 			transform.position = TargetPosition;
@@ -82,15 +77,7 @@ public class SwarmBase<T> : MonoBehaviour where T : SwarmObject
 			{
 				swarmObject.StopMoving();
 			}
-			HasReachedTarget = true;
-			// Raise Event to tell we reached target
-			if (OnTargetReached != null)
-			{
-				OnTargetReached.Invoke();
-				OnTargetReached = null;
-			}
 			IsOnTarget();
-	
 		}
 		else
 		{
