@@ -7,7 +7,7 @@ public class BeeBase : SwarmObject {
 
 	#region Constant
 
-	protected float HARVEST_PER_SECOND = 0.2f;
+	protected float HARVEST_PER_SECOND = 0.05f;
 
 	protected float CRITICAL_THRESHOLD = 4.0f;
 
@@ -62,6 +62,7 @@ public class BeeBase : SwarmObject {
 				}
 			case BeeState.Harvesting:
 				{
+					HarvestSpot();
 					break;
 				}
 		}
@@ -72,6 +73,7 @@ public class BeeBase : SwarmObject {
 		if(CurrentTargetedSpot != null)
 		{
 			var pollenAmountAvailable = CurrentTargetedSpot.HarvestPollen(HARVEST_PER_SECOND * Time.deltaTime);
+			Debug.Log("Pollen Amount : " + pollenAmountAvailable);
 			if(pollenAmountAvailable > 0.0f)
 			{
 				CurrentPollenAmount += pollenAmountAvailable;

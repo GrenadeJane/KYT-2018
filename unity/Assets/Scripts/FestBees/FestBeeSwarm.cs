@@ -111,7 +111,6 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 	{
 		if(m_TargetFlower != null)
 		{
-			Debug.Log("HARVESTING FLOWER");
 			foreach(BeeBase bee in SwarmObjects)
 			{
 				bee.DrivenBySwarmMovement = false;
