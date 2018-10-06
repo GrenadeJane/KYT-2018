@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FestBeeSwarm : SwarmBase
+public class FestBeeSwarm : SwarmBase<BeeBase>
 {
 
 	#region Fields

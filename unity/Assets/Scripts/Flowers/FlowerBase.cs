@@ -21,7 +21,7 @@ public class FlowerBase : MonoBehaviour {
 
 	#region Properties
 
-	public SwarmBase HaversterBees { get; set; }
+	public FestBeeSwarm HaversterBees { get; set; }
 
 	public bool IsTargeted { get; set; }
 
