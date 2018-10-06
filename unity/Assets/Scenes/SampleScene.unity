@@ -537,6 +537,11 @@ Prefab:
       value: 
       objectReference: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000,
         type: 0}
+    - target: {fileID: 114828169286293010, guid: 0dad7f35aad455942b1537038912558b,
+        type: 2}
+      propertyPath: basePoliTest
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114039680049052040, guid: 0dad7f35aad455942b1537038912558b, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 0dad7f35aad455942b1537038912558b, type: 2}

@@ -28,6 +28,7 @@ public class CopsZone : MonoBehaviour
     [SerializeField] float timeCheck;
     [SerializeField] float timeToReload;
     [SerializeField] int baseCountCops;
+    [SerializeField] int basePoliTest = 10;
     [SerializeField] float legalAlcoholAmount;
 
     [SerializeField] GameObject mainHive;
@@ -42,12 +43,7 @@ public class CopsZone : MonoBehaviour
     // :: FAKE [Header("test")]
     List<FestBeeSwarm> beeList = new List<FestBeeSwarm>();
 
-    int _countPoliTest = 1;
-    public int CountPoliTest
-    {
-        get { return _countPoliTest;  }
-        set { _countPoliTest = value;  }
-    }
+    int _countPoliTest;
 
     CopState state = CopState.Idle;
         
@@ -72,8 +68,8 @@ public class CopsZone : MonoBehaviour
             if (dis < ( rangeSqr + rangeSqrSwarm ) && _countPoliTest > 0)
             {
                 // bee is in the range
-             //   swarm.State = FestBeesSwarmState.BeenChecked;
-                    _countPoliTest--;
+                swarm.IsChecked();
+                _countPoliTest--;
 
                 SendCopToPlace(swarm, transform.position + dir.normalized * (Mathf.Sqrt(dis) - Mathf.Sqrt(rangeSqrSwarm)));
                 break;
@@ -111,9 +107,12 @@ public class CopsZone : MonoBehaviour
                 cop.SwarmTarget.GoToHive();
 
                 // send back to home
+                Debug.Log("count politest" + _countPoliTest);
                 if (_countPoliTest <= 0 && state != CopState.GoToHive)
                     GoToHive();
             }
+            else
+                cop.SwarmTarget.EndChecked();
         });
     }
 
@@ -132,7 +131,7 @@ public class CopsZone : MonoBehaviour
     {
         CoroutineUtils.ExecuteWhenFinished(this, new WaitForSeconds(timeToReload), () =>
         {
-            CountPoliTest = 1;
+            _countPoliTest = basePoliTest;
             swarmManager.SetTargetPosition(transform.position);
             swarmManager.Swarm.OnTargetReached = null;
             swarmManager.Swarm.OnTargetReached = EndHiveAction;
@@ -148,6 +147,7 @@ public class CopsZone : MonoBehaviour
 
     void Start ()
     {
+        _countPoliTest = basePoliTest;
         swarmManager.Swarm.m_SwarmRadius = startRange;
 
         beeList = new List<FestBeeSwarm>(GameObject.FindObjectsOfType<FestBeeSwarm>());

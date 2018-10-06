@@ -137,6 +137,15 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
         OnTargetReached = null;
     }
 
+    public void IsChecked()
+    {
+        State = FestBeesSwarmState.BeenChecked;
+    }
+
+    public void EndChecked()
+    {
+        State = FestBeesSwarmState.Idle;
+    }
 
     #endregion
 }
