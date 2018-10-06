@@ -26,12 +26,36 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 	public FestBeesSwarmState State { get; private set; }
 	public bool ComposedOfAMaya { get; set; }
 
-    #endregion
+	public float TotalSwarmPollenAmount
+	{
+		get
+		{
+			float totalPollenAmount = 0.0f;
+			foreach(BeeBase bee in SwarmObjects)
+			{
+				totalPollenAmount += bee.CurrentPollenAmount;
+			}
+			return totalPollenAmount;
+		}
+	}
+	public float AverageSwarmPollenAmount
+	{
+		get
+		{
+			float totalPollenAmount = 0.0f;
+			foreach (BeeBase bee in SwarmObjects)
+			{
+				totalPollenAmount += bee.CurrentPollenAmount;
+			}
+			return totalPollenAmount / (SwarmObjects.Count);
+		}
+	}
+	#endregion
 
 
-    #region Methods
+	#region Methods
 
-    protected void Start()
+	protected void Start()
 	{
 
 		State = FestBeesSwarmState.Idle;
