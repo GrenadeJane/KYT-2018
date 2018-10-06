@@ -36,12 +36,18 @@ public class FlowersField : MonoBehaviour {
 
 	private void Update()
 	{
-		foreach(FlowerBase flower in SpawnedFlowers)
+		for(int i = 0; i < SpawnedFlowers.Count; i++)
 		{
-			if(!flower.HasPollen)
+			var flower = SpawnedFlowers[i];
+			if (!flower.HasPollen)
 			{
-				m_FlowerSpawnSpots.Find(fss => fss.Flower == flower).Flower = null;
-				Destroy(flower);
+				var flowerSpawnSpots = m_FlowerSpawnSpots.Find(fss => fss.Flower == flower);
+				flowerSpawnSpots.Flower = null;
+				SpawnedFlowers.Remove(flower);
+
+				Destroy(flower.gameObject);
+
+				i--;
 			}
 		}
 	}
@@ -64,7 +70,6 @@ public class FlowersField : MonoBehaviour {
 	{
 		if (m_FlowerPrefabs.Count() > 0)
 		{
-			Debug.Log("Okeu");
 			return Instantiate(m_FlowerPrefabs[Random.Range(0, m_FlowerPrefabs.Count())]);
 		}
 		else return null;
