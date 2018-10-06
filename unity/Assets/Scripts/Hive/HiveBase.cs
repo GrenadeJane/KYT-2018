@@ -10,14 +10,13 @@ public class HiveBase : MonoBehaviour {
 
 	#region Fields
 
-	[SerializeField]
 	private float m_SpawnRate;
 
 	[SerializeField]
-	private SwarmBase m_BeeSwarmPrefab;
+	private FestBeeSwarm m_BeeSwarmPrefab;
 
 	[SerializeField]
-	private SwarmObject m_BeePrefab;
+	private BeeBase m_BeePrefab;
 
 	[SerializeField]
 	private List<Transform> m_SwarmExits = new List<Transform>();
@@ -49,16 +48,20 @@ public class HiveBase : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Generate a bee swarm composed of a certain amount of bee
+	/// </summary>
 	public void GenerateBeeSwarm(int beeNumber)
 	{
 		
 		Transform swarmExit = m_SwarmExits[Random.Range(0, m_SwarmExits.Count)];
 
-		SwarmBase swarm = Instantiate(m_BeeSwarmPrefab, swarmExit.position, Quaternion.identity);
+		FestBeeSwarm swarm = Instantiate(m_BeeSwarmPrefab, swarmExit.position, Quaternion.identity);
 
 		for (int i = 0; i < beeNumber; i++)
 		{
-			SwarmObject bee = Instantiate(m_BeePrefab, swarm.transform.position, Quaternion.identity);
+			BeeBase bee = Instantiate(m_BeePrefab, swarm.transform.position, Quaternion.identity);
+			swarm.AddSwarmObject(bee);
 		}
 	}
 	#endregion

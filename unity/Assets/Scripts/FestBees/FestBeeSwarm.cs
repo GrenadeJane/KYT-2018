@@ -27,6 +27,8 @@ public class FestBeeSwarm : SwarmBase
 		base.Awake();
 
 		m_FlowerField = FindObjectOfType<FlowersField>();
+
+		SearchTarget();
 	}
 
 	protected override void Update()
@@ -63,7 +65,16 @@ public class FestBeeSwarm : SwarmBase
 	protected void SearchTarget()
 	{
 		m_TargetFlower = m_FlowerField.GetUntargetedFlower();
-		TargetPosition = m_TargetFlower.transform.position;
+		if(m_TargetFlower != null)
+		{
+			TargetPosition = m_TargetFlower.transform.position;
+			State = FestBeesSwarmState.GoToFlower;
+		}
+		else
+		{
+			State = FestBeesSwarmState.Idle;
+		}
+
 	}
 
 	protected void HarvestCurrentTargetedFlower()
@@ -72,7 +83,8 @@ public class FestBeeSwarm : SwarmBase
 		{
 			foreach(SwarmObject bee in SwarmObjects)
 			{
-				m_TargetFlower.GetUntargetedPollenHaverstingSpot();
+				bee.DrivenBySwarmMovement = false;
+				bee.WorldTargetPosition = m_TargetFlower.GetUntargetedPollenHaverstingSpot();
 			}
 		}
 	}

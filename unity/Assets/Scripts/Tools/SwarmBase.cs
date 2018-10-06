@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.Events;
 
-public class SwarmBase : MonoBehaviour
+public class SwarmBase<T> : MonoBehaviour where T : SwarmObject
 {
 	#region Constant 
 
@@ -21,7 +21,7 @@ public class SwarmBase : MonoBehaviour
 	#endregion
 
 	#region Properties
-	public List<SwarmObject> SwarmObjects { get; set; }
+	public List<T> SwarmObjects { get; set; }
 
 	public Vector3 TargetPosition { get; set; }
     #endregion
@@ -33,7 +33,7 @@ public class SwarmBase : MonoBehaviour
     #region Methods
     protected virtual void Awake()
 	{
-		SwarmObjects = new List<SwarmObject>();
+		SwarmObjects = new List<T>();
 	}
 
 	protected virtual void Update()
@@ -94,14 +94,15 @@ public class SwarmBase : MonoBehaviour
 		return Vector3.Distance(transform.position, TargetPosition) < 0.1f;
 	}
 
-	public void AddSwarmObject(SwarmObject swarmObject)
+	public void AddSwarmObject(T swarmObject)
 	{
 		SwarmObjects.Add(swarmObject);
 		swarmObject.transform.SetParent(transform);
 		swarmObject.Swarm = this;
+		swarmObject.DrivenBySwarmMovement = true;
 	}
 
-	public void RemoveSwarmObject(SwarmObject swarmObject)
+	public void RemoveSwarmObject(T swarmObject)
 	{
 		if (SwarmObjects.Contains(swarmObject))
 		{
