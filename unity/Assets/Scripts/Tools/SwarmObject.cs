@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class SwarmObject : MonoBehaviour
 {
@@ -29,6 +28,9 @@ public class SwarmObject : MonoBehaviour
 	/// Target position relative to the swarm it comes from
 	/// </summary>
 	public Vector3 RelativeTargetPosition { get; set; }
+
+    public UnityAction<SwarmObject> OnTargetReached;
+
 	#endregion
 
 	#region Methods
@@ -41,7 +43,13 @@ public class SwarmObject : MonoBehaviour
 			{
 				transform.position = WorldTargetPosition;
 				ReachedTargetPosition = true;
-			}
+
+                if ( OnTargetReached != null)
+                {
+                    OnTargetReached.Invoke(this);
+                    OnTargetReached = null;
+                }
+            }
 			else
 			{
 				ReachedTargetPosition = false;

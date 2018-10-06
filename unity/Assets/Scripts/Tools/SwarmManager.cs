@@ -15,8 +15,10 @@ public class SwarmManager : MonoBehaviour {
     #region Runtime data
 
     SwarmBase swarm;
-
+    public SwarmBase Swarm
+    { get { return swarm; } }
     #endregion
+
 
     public void SetTargetPosition(Vector3 position)
     {

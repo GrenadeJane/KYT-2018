@@ -16,6 +16,8 @@ public class CopsZone : MonoBehaviour
     #region Parameters
 
     [SerializeField] float startRange;
+    [SerializeField] float timeCheck;
+    [SerializeField] float timeToReload;
     [SerializeField] int baseCountCops;
     [SerializeField] float legalAlcoholAmount;
 
@@ -35,7 +37,7 @@ public class CopsZone : MonoBehaviour
     public int CountPoliTest
     {
         get { return _countPoliTest;  }
-        set { _countPoliTest = value; if (_countPoliTest <= 0) GoToHive(); }
+        set { _countPoliTest = value;  }
     }
 
     bool isGoingBackToHive = false;
@@ -53,27 +55,50 @@ public class CopsZone : MonoBehaviour
         {
             Vector3 beePos = bee.transform.position;
             float dis = (beePos - transform.position).sqrMagnitude;
-            if (dis < rangeSqr)
+            if (dis < rangeSqr && _countPoliTest > 0)
             {
                 // bee is in the range
                 bee.GetComponent<MeshRenderer>().material.color = Color.red; // bee control
-                ProceedToCheck();
+
+                _countPoliTest--;
+
+                SendCopToPlace();
+                break;
             }
+        }
+    }
+
+    void SendCopToPlace()
+    {
+        SwarmObjectCop cop = ((swarmManager.Swarm) as SwarmBaseCop).GetRandomnlyObject();
+        if ( cop != null )
+        {
+            cop.AssignNewTarget(Vector3.zero);
+
+            cop.OnTargetReached = null;
+            cop.OnTargetReached += ProceedToCheck;
         }
     }
 
     /// <summary>
     /// Get the amount of alcool in the swarm + stop them to move
     /// </summary>
-    void ProceedToCheck() // param current swarm
+    void ProceedToCheck(SwarmObject swarmObject) // param current swarm
     {
-        // :: Remove 
-        float alcoholAmount = Random.Range(legalAlcoholAmount, legalAlcoholAmount + 3);
-        if (alcoholAmount >= legalAlcoholAmount)
+        SwarmObjectCop cop = swarmObject as SwarmObjectCop;
+
+        CoroutineUtils.ExecuteWhenFinished(this, new WaitForSeconds(timeCheck), () =>
         {
-            // send back to home
-            CountPoliTest--;
-        }
+            cop.GoesToUniqueTarget = false;
+            // :: Remove 
+            float alcoholAmount = Random.Range(legalAlcoholAmount, legalAlcoholAmount + 3);
+            if (alcoholAmount >= legalAlcoholAmount)
+            {
+                // send back to home
+                if (_countPoliTest <= 0 && !isGoingBackToHive)
+                    GoToHive();
+            }
+        });
     }
 
     /// <summary>
@@ -83,11 +108,24 @@ public class CopsZone : MonoBehaviour
     {
         isGoingBackToHive = true;
         swarmManager.SetTargetPosition(mainHive.transform.position);
+        swarmManager.Swarm.OnTargetReached = null;
+        swarmManager.Swarm.OnTargetReached = ReturnFromHive;
     }
 
     void ReturnFromHive()
     {
+        CoroutineUtils.ExecuteWhenFinished(this, new WaitForSeconds(timeToReload), () =>
+        {
+            CountPoliTest = 1;
+            swarmManager.SetTargetPosition(transform.position);
+            swarmManager.Swarm.OnTargetReached = null;
+            swarmManager.Swarm.OnTargetReached = EndHiveAction;
+        });
+    }
 
+    void EndHiveAction()
+    {
+        isGoingBackToHive = false;
     }
 
     #region MonoBehaviour
