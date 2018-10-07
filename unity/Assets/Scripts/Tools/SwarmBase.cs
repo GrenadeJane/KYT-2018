@@ -9,6 +9,7 @@ public struct SwarmBaseData
 {
     public Transform transform;
     public float radius;
+	public Vector3 swarmDirection;
 }
 
 #endregion
@@ -27,6 +28,8 @@ public class SwarmBase<T> : MonoBehaviour where T : SwarmObject
 	public float m_SwarmRadius = 2.0f;
 
 	protected bool m_Moving = false;
+
+	protected Vector3 m_MovementVector;
 
 	#endregion
 
@@ -89,9 +92,9 @@ public class SwarmBase<T> : MonoBehaviour where T : SwarmObject
 		}
 		else
 		{
-			Vector3 movementVector = Vector3.Normalize(TargetPosition - transform.position);
+			m_MovementVector = Vector3.Normalize(TargetPosition - transform.position);
 
-			transform.position += (movementVector * movementSpeed);
+			transform.position += (m_MovementVector * movementSpeed);
 		}
 	}
 
@@ -101,6 +104,7 @@ public class SwarmBase<T> : MonoBehaviour where T : SwarmObject
 		foreach (SwarmObject swarmObject in SwarmObjects)
 		{
 			swarmObject.UpdatePosition();
+			swarmObject.swarmBaseData.swarmDirection = m_MovementVector.normalized;
 		}
 	}
 

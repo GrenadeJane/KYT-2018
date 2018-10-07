@@ -58,14 +58,22 @@ public class BeeBase : SwarmObject {
 		{
 			case BeeState.Idle:
 				{
+					RotationDrivenBySwarm = true;
 					break;
 				}
 			case BeeState.Moving:
 				{
+					RotationDrivenBySwarm = true;
 					break;
 				}
 			case BeeState.GoToPollenSpot:
 				{
+
+					RotationDrivenBySwarm = false;
+
+
+					transform.forward = m_Velocity.normalized;
+
 					CurrentState = BeeState.Harvesting;
                     beeAnimator.Harvesting();
 
@@ -73,6 +81,9 @@ public class BeeBase : SwarmObject {
 				}
 			case BeeState.Harvesting:
 				{
+					RotationDrivenBySwarm = false;
+					transform.forward = m_Velocity.normalized;
+
 					HarvestSpot();
 					break;
 				}
