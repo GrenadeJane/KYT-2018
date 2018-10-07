@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Text zoneLabel;
     [SerializeField] Text hiveLabel;
 
+
     Transform mainHiveTransform;
 
     private void Awake()

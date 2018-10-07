@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4383993114224602}
   - component: {fileID: 33790158975190284}
   - component: {fileID: 23968538145487702}
+  - component: {fileID: 114132864396316822}
   m_Layer: 0
   m_Name: Nenuphar_fleur01
   m_TagString: Untagged
@@ -83,3 +84,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1356649609300638}
   m_Mesh: {fileID: 4300000, guid: 618bbadcbf9e1cd41ab6c8ca3b12fee0, type: 3}
+--- !u!114 &114132864396316822
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1356649609300638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot: []

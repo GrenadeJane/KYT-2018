@@ -17,7 +17,10 @@ public class SwarmObjectCop : SwarmObject
             bool previousState = _goesToUniqueTarget;
             _goesToUniqueTarget = value;
             if (previousState != value)
+            {
+                RotationDrivenBySwarm = !value;
                 DrivenBySwarmMovement = !value;
+            }
             if (!value)
                 animator.SetTrigger("Idle");
         }
@@ -27,11 +30,13 @@ public class SwarmObjectCop : SwarmObject
     public Animator animator;
     #endregion
 
-    public void AssignNewTarget(Vector3 position )
+    public void AssignNewTarget(Vector3 position, Vector3 dir )
     {
         animator.SetTrigger("Alert");
 
         WorldTargetPosition = position;
         GoesToUniqueTarget = true;
+
+        transform.forward = dir;
     }
 }
