@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4020957092523898}
   - component: {fileID: 33454983982905714}
   - component: {fileID: 23244267513489556}
+  - component: {fileID: 114163506514877764}
   m_Layer: 0
   m_Name: Flower_3
   m_TagString: Untagged
@@ -83,3 +84,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1056407109792064}
   m_Mesh: {fileID: 4300000, guid: bb27627e570797842a5cb1003fc64ee9, type: 3}
+--- !u!114 &114163506514877764
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1056407109792064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PollenHarvestingSpot: []
