@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
-#if UNITY_EDITOR
 using UnityEditor;
-#endif
 
 public class FestBeeSwarm : SwarmBase<BeeBase>
 {
 	#region Constants
 
-	private const float TIME_BEFORE_RETURN = 20.0f;
-	private const float CRITICAL_POLLEN_AMOUNT = 8.0f;
+	private const float TIME_BEFORE_RETURN = 5.0f;
+	public static float CRITICAL_POLLEN_AMOUNT = 8.0f;
 
 	#endregion
 
@@ -351,9 +348,8 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 	#region Debug
 	private void OnDrawGizmos()
 	{
-#if UNITY_EDITOR
 		Handles.Label(transform.position, "Average Pollen	:" + TotalSwarmPollenAmount);
-#endif
+
 	}
 	#endregion
 }

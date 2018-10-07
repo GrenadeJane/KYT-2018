@@ -8,18 +8,31 @@ public class CopsHive : MonoBehaviour, IPointerClickHandler
     [SerializeField] BoxCollider collider;
 
     float heightCollider;
-    public void CheckPosition(Vector3 pos)
+    public void CheckPosition(Ray ray)
     {
         // force positive position
-        pos.y = heightCollider;
 
-        Ray ray = new Ray(pos, Vector3.down);
+        Vector3 pos = transform.position;
         RaycastHit hit;
 
-        int layerground = LayerMask.GetMask("Ground");
+        int layerground = LayerMask.GetMask("Floor");
         if (Physics.Raycast(ray, out hit, layerground))
         {
+            pos = hit.point;
             pos.y = (hit.point + Vector3.up * heightCollider).y;
+        }
+
+        int layerMaskBounds = LayerMask.GetMask("Bounds");
+        if (Physics.Raycast(ray, out hit, layerMaskBounds))
+        {
+            RaycastHit hitBound;
+            Ray bound = new Ray(hit.point + hit.normal * 2.0f, Vector3.down);
+            if (Physics.Raycast(bound, out hitBound, layerground))
+            {
+                pos = hitBound.point;
+                Debug.Log("place building");
+                pos.y = (hitBound.point + Vector3.up * heightCollider).y;
+            }
         }
 
         transform.position = Vector3.Lerp(transform.position, pos, 0.2F);
