@@ -172,12 +172,14 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 		if(m_DyingStyle == BeeDyingStyle.Misplace)
 		{
 			TargetPosition = m_FlowerField.GetPositionInGarden() + Vector3.up * 8.0f;
-		}
+        }
 		else if(m_DyingStyle == BeeDyingStyle.Overdose)
 		{
 			TargetPosition = m_FlowerField.GetPositionInGarden();
-		}
-	}
+        }
+
+        SetBeeAnimatorDrunk();
+    }
 
 	protected virtual void UpdateDeath()
 	{
@@ -235,7 +237,9 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 							rigidbody.isKinematic = false;
 							rigidbody.useGravity = true;
 
-							RemoveSwarmObject(SwarmObjects[0]);
+                            SetBeeAnimatorDeath();
+
+                            RemoveSwarmObject(SwarmObjects[0]);
 
 							Destroy(beeBase);
 						}
@@ -292,6 +296,24 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 			bee.CurrentState = state;
 		}
 	}
+
+    void SetBeeAnimatorDeath()
+    {
+        foreach (BeeBase bee in SwarmObjects)
+        {
+            bee.beeAnimator.Death();
+        }
+
+    }
+
+    void SetBeeAnimatorDrunk()
+    {
+        foreach (BeeBase bee in SwarmObjects)
+        {
+            bee.beeAnimator.Drunk();
+        }
+    }
+
 
     public void GoToHive()
     {

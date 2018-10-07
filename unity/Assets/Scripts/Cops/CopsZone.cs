@@ -163,7 +163,7 @@ public class CopsZone : MonoBehaviour, IPointerClickHandler
     void GoToHive()
     {
         state = CopState.GoToHive;
-        currentSwarm.TargetPosition =  HiveMain.m_Instance.gameObject.transform.position;
+        currentSwarm.TargetPosition = GetClosestHiveCop(); 
         currentSwarm.OnTargetReached = null;
         currentSwarm.OnTargetReached = ReturnFromHive;
     }
@@ -230,6 +230,25 @@ public class CopsZone : MonoBehaviour, IPointerClickHandler
         currentSwarm.TargetPosition = HiveMain.m_Instance.gameObject.transform.position;
     }
 
+    Vector3 GetClosestHiveCop()
+    {
+        Vector3 closest = HiveMain.m_Instance.gameObject.transform.position;
+        float minDistance = ( HiveMain.m_Instance.gameObject.transform.position - currentSwarm.transform.position ).magnitude;
+
+        foreach ( GameObject obj in BuildingManager.m_instance.copHiveList)
+        {
+            float distance = (obj.transform.position - currentSwarm.transform.position).magnitude;
+
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                closest = obj.transform.position;
+            }
+        }
+
+        return closest;
+    }
+
     public void FixPosition()
     {
         currentSwarm.TargetPosition = transform.position;
@@ -256,21 +275,16 @@ public class CopsZone : MonoBehaviour, IPointerClickHandler
 
     public void CheckPosition(Vector3 pos)
     {
-        if (pos.y < startRange)
-            pos.y = startRange;
-        else
+        pos.y = startRange;
+
+        RaycastHit hit;
+        Ray ray = new Ray(pos, Vector3.down);
+
+        if (Physics.Raycast(ray, out hit))
         {
-            RaycastHit hit;
-            Ray ray = new Ray(pos, Vector3.down);
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                Debug.Log("hit" + hit.distance);
-                if (hit.distance < startRange)
-                    pos.y = (hit.point + Vector3.up * startRange).y;
-            }
+            pos.y = (hit.point + Vector3.up * startRange).y;
         }
-
+        
         transform.position = pos;
     }
 

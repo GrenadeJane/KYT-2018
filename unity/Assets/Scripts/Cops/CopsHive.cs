@@ -5,27 +5,22 @@ using UnityEngine.EventSystems;
 
 public class CopsHive : MonoBehaviour, IPointerClickHandler
 {
-
     [SerializeField] BoxCollider collider;
 
     float heightCollider;
     public void CheckPosition(Vector3 pos)
     {
-        if (pos.y < heightCollider * 2)
-            pos.y = heightCollider * 2;
-        else
+        // force positive position
+        pos.y = heightCollider;
+
+        Ray ray = new Ray(pos, Vector3.down);
+        RaycastHit hit;
+
+        int layerground = LayerMask.GetMask("Ground");
+        if (Physics.Raycast(ray, out hit, layerground))
         {
-            RaycastHit hit;
-               Ray ray = new Ray(pos, Vector3.down);
-               Debug.Log("pos" + (pos));
-            int layerground = LayerMask.GetMask("Ground");
-            if (Physics.Raycast(ray, out hit, layerground))
-               {
-                Debug.DrawLine(pos, hit.point, Color.red, 3);
-                pos.y = (hit.point + Vector3.up * heightCollider).y;
-                   Debug.Log("y" + (hit.point));
-               }
-           }
+            pos.y = (hit.point + Vector3.up * heightCollider).y;
+        }
 
         transform.position = Vector3.Lerp(transform.position, pos, 0.2F);
     }
