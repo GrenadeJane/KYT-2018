@@ -145,9 +145,9 @@ public class CopsZone : MonoBehaviour, IPointerClickHandler
                 float alcoholAmount = cop.SwarmTarget.TotalSwarmPollenAmount;
 
                 if (alcoholAmount >= (FestBeeSwarm.CRITICAL_POLLEN_AMOUNT / 100 * purcentageLegal ))
-                    cop.SwarmTarget.GoToHive();
+                    cop.SwarmTarget.FailedPolitest();
                 else
-                    cop.SwarmTarget.EndChecked();
+                    cop.SwarmTarget.SuccessPolitest();
 
                 // send back to home if needed
                 if (_countPoliTest <= 0 && state != CopState.GoToHive)
