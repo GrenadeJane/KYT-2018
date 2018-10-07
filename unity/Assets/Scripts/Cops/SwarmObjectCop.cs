@@ -30,6 +30,10 @@ public class SwarmObjectCop : SwarmObject
     public Animator animator;
     #endregion
 
+    public void Start()
+    {
+        GoesToUniqueTarget = false;
+    }
     public void AssignNewTarget(Vector3 position, Vector3 dir )
     {
         animator.SetTrigger("Alert");
