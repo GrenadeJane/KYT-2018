@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class HiveBase : MonoBehaviour {
 
-    #region Constants
+	#region Constants
+	private const int STARTING_POPULATION_NUMBER = 100;
     [SerializeField] float SPAWN_RATE = 15.0f;
 	#endregion
 
@@ -31,11 +33,14 @@ public class HiveBase : MonoBehaviour {
 
 	#region Properties
 
+	public int TotalNumberOfBeeStillAlive { get; set; }
+
 	#endregion
 
 	#region Methods
-	void Awake()
+	protected virtual void Awake()
 	{
+		TotalNumberOfBeeStillAlive = STARTING_POPULATION_NUMBER;
 		m_SpawnRate = SPAWN_RATE;
 	}
 
@@ -120,6 +125,14 @@ public class HiveBase : MonoBehaviour {
 	{
 		m_festbeeSwarmList.Remove(swarm);
 		Destroy(swarm.gameObject);
+	}
+	#endregion
+
+	#region Debug
+	private void OnDrawGizmos()
+	{
+		Handles.Label(transform.position, "Number of bee left :" + TotalNumberOfBeeStillAlive);
+
 	}
 	#endregion
 }

@@ -13,12 +13,12 @@ public class HiveMain : HiveBase, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-		Debug.Log("Click event");
         uiManager.ShowButtonsHive();
     }
 
-    private void Awake()
+    protected override void Awake()
     {
+		base.Awake();
         if (m_Instance == null)
             m_Instance = this;
 

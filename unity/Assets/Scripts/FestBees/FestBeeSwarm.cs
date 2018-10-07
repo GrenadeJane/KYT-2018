@@ -220,14 +220,14 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 
 			case FestBeesSwarmState.GoingToDie:
 				{
-					if(m_DyingStyle == BeeDyingStyle.Misplace)
+					HiveMain.m_Instance.TotalNumberOfBeeStillAlive -= SwarmObjects.Count;
+					if (m_DyingStyle == BeeDyingStyle.Misplace)
 					{
 						IsLost = true;
 					}
 					else if(m_DyingStyle == BeeDyingStyle.Overdose)
 					{
-
-						while(SwarmObjects.Count > 0)
+						while (SwarmObjects.Count > 0)
 						{
 							BeeBase beeBase = SwarmObjects[0];
 							Rigidbody rigidbody = SwarmObjects[0].GetComponent<Rigidbody>();
@@ -250,7 +250,7 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 	protected void SearchTarget()
 	{
 
-//m_TargetFlower = m_FlowerField.GetUntargetedFlower();
+		m_TargetFlower = m_FlowerField.GetUntargetedFlower();
 		if (m_TargetFlower != null)
 		{
 			TargetPosition = m_TargetFlower.transform.position + (m_TargetFlower.transform.up.normalized * 2.2f);
@@ -267,7 +267,7 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 
 	protected void SearchPlaceToVisit()
 	{
-	//TargetPosition = m_FlowerField.GetPositionInGarden();
+	TargetPosition = m_FlowerField.GetPositionInGarden();
 		State = FestBeesSwarmState.MoveToAPosition;
 	}
 
