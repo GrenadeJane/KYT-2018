@@ -282,7 +282,6 @@ public class CopsZone : MonoBehaviour, IPointerClickHandler
         if (Physics.Raycast(ray, out hit, layerMaskFloor))
         {
             pos = hit.point;
-            Debug.Log("palce building");
             pos.y = (hit.point + Vector3.up * startRange).y;
         }
 
@@ -294,11 +293,10 @@ public class CopsZone : MonoBehaviour, IPointerClickHandler
             if (Physics.Raycast(bound, out hitBound, layerMaskFloor))
             {
                 pos = hitBound.point;
-                Debug.Log("place building");
                 pos.y = (hitBound.point + Vector3.up * startRange).y;
             }
         }
-        transform.position = pos;
+        transform.position = Vector3.Lerp(transform.position, pos, 0.2F);
     }
 
     #endregion

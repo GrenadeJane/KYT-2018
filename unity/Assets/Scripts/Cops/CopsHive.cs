@@ -30,7 +30,6 @@ public class CopsHive : MonoBehaviour, IPointerClickHandler
             if (Physics.Raycast(bound, out hitBound, layerground))
             {
                 pos = hitBound.point;
-                Debug.Log("place building");
                 pos.y = (hitBound.point + Vector3.up * heightCollider).y;
             }
         }
@@ -40,7 +39,7 @@ public class CopsHive : MonoBehaviour, IPointerClickHandler
     // Use this for initialization
     void Start()
     {
-        heightCollider = collider.center.y + collider.size.y / 2;
+        heightCollider = collider.center.y + collider.size.y / 2 - 0.2f;
     }
 
     public void OnPointerClick(PointerEventData eventData)
