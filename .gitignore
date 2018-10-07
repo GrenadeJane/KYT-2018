@@ -59,8 +59,4 @@ unity/Assets/AmplifyShaderEditor/Examples/Assets/ShaderFunctions.meta
 unity/Assets/AmplifyShaderEditor/Examples/Assets.meta
 unity/Assets/AmplifyShaderEditor/Examples.meta
 unity/Assets/AmplifyShaderEditor.meta
-unity/Assets/Textures/Bush_alpha.tga
-unity/Assets/Textures/.mayaSwatches/Bush_AlbedoTransparency.tga_hcm.swatch
-unity/Assets/Textures/.mayaSwatches/Bush_alpha.tga_hcm.swatch
-unity/Assets/Textures/.mayaSwatches/Tree01_AlbedoTransparency.tga_hcm.swatch
-unity/Assets/Textures/background01_diff.jpg
+_src/
