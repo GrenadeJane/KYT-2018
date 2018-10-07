@@ -1894,7 +1894,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_FlowerPrefabs:
-  - {fileID: 114530537243137986, guid: 1d6ca54156346af4984fdc2f48d7226f, type: 2}
+  - {fileID: 114310259374793864, guid: fe338683e08c2d146ba2147a6de0007c, type: 2}
+  - {fileID: 114915412274737888, guid: f57e732309eb8cb419cd5b651f463d28, type: 2}
+  - {fileID: 114847119516472820, guid: 1e0be7c78cfc5ea409e8d243a14a3e60, type: 2}
   m_FlowerSpawnSpots: []
   m_GardenZone: {fileID: 1142711634}
 --- !u!1 &150757670 stripped
