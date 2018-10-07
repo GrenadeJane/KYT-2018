@@ -44,7 +44,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1571859814154386
 GameObject:
   m_ObjectHideFlags: 1
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 114575115173868194}
   - component: {fileID: 114657803634804796}
   - component: {fileID: 114898847911241956}
-  - component: {fileID: 114140393103199080}
+  - component: {fileID: 114769444216069506}
   m_Layer: 0
   m_Name: UICanvas
   m_TagString: Untagged
@@ -169,20 +169,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114140393103199080
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1714276389576074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce4f39a570135ee45a81b89329f61d02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  copZonePrefab: {fileID: 1087009897606494, guid: 0dad7f35aad455942b1537038912558b,
-    type: 2}
-  copHive: {fileID: 1982119224949064, guid: c8cff556815d76e47abd8705d7baabc1, type: 2}
 --- !u!114 &114143261893547368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -400,7 +386,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114140393103199080}
+      - m_Target: {fileID: 114769444216069506}
         m_MethodName: CreateCopZone
         m_Mode: 1
         m_Arguments:
@@ -500,7 +486,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114140393103199080}
+      - m_Target: {fileID: 114769444216069506}
         m_MethodName: CreateCopHive
         m_Mode: 1
         m_Arguments:
@@ -524,6 +510,20 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114769444216069506
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1714276389576074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce4f39a570135ee45a81b89329f61d02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  copZonePrefab: {fileID: 1087009897606494, guid: 0dad7f35aad455942b1537038912558b,
+    type: 2}
+  copHive: {fileID: 1982119224949064, guid: c8cff556815d76e47abd8705d7baabc1, type: 2}
 --- !u!114 &114803322585063454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -593,8 +593,8 @@ MonoBehaviour:
   zoneButton: {fileID: 114537321273389910}
   hiveButton: {fileID: 114703783757107520}
   politestButton: {fileID: 114907870757922744}
-  zoneLabel: {fileID: 0}
-  hiveLabel: {fileID: 0}
+  zoneLabel: {fileID: 114330083430280842}
+  hiveLabel: {fileID: 114180559097297490}
 --- !u!114 &114907870757922744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -720,8 +720,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 74, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224133873762808502
 RectTransform:
@@ -814,9 +814,9 @@ RectTransform:
   m_Father: {fileID: 224241040591112356}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -31.9, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -70.2, y: 0}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224373002686486054
@@ -852,8 +852,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 67.59999, y: -8}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224731512228416438
 RectTransform:

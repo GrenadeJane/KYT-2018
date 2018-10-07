@@ -13,6 +13,7 @@ public class HiveMain : HiveBase, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+		Debug.Log("Click event");
         uiManager.ShowButtonsHive();
     }
 

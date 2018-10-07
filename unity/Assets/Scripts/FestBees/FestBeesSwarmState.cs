@@ -9,5 +9,6 @@ public enum FestBeesSwarmState
 	GoBackToHive,
 	Harvesting,
 	MoveToAPosition,
-    BeenChecked
+    BeenChecked,
+		GoingToDie,
 }
