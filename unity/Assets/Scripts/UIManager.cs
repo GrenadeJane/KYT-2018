@@ -11,6 +11,9 @@ public class UIManager : MonoBehaviour {
     [SerializeField] Button hiveButton;
     [SerializeField] Button politestButton;
 
+    [SerializeField] Text zoneLabel;
+    [SerializeField] Text hiveLabel;
+
     Transform mainHiveTransform;
 
     private void Awake()
@@ -20,12 +23,31 @@ public class UIManager : MonoBehaviour {
 
     public void ShowButtonsHive()
     {
-        buttonContainer.SetActive(true);
+        if ( buttonContainer.activeInHierarchy )
+            buttonContainer.SetActive(false);
+        else 
+            buttonContainer.SetActive(true);
     }
     // Use this for initialization
     void Start ()
     {
         mainHiveTransform = HiveMain.m_Instance.gameObject.transform;
+    }
+
+    public void SetCountHive(int count)
+    {
+        hiveLabel.text = count.ToString();
+
+        if (count == 0)
+            hiveButton.enabled = false;
+    }
+
+    public void SetCountZone(int count)
+    {
+        zoneLabel.text = count.ToString();
+
+        if (count == 0)
+            zoneButton.enabled = false;
     }
 
     // Update is called once per frame
