@@ -131,6 +131,7 @@ public class HiveBase : MonoBehaviour {
 
 	public void BackToHive(FestBeeSwarm swarm)
 	{
+		swarm.PrepareToDestroy();
 		m_festbeeSwarmList.Remove(swarm);
 		Destroy(swarm.gameObject);
 	}

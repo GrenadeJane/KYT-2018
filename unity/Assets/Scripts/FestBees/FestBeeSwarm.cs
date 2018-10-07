@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEditor;
+using UnityEngine.UI;
 
 public class FestBeeSwarm : SwarmBase<BeeBase>
 {
@@ -24,6 +25,24 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 	private BeeDyingStyle m_DyingStyle;
 
 	protected AudioSource m_AudioSource;
+
+	[SerializeField]
+	private Sprite m_SuckImage;
+
+	[SerializeField]
+	private Sprite m_BreathOutImage;
+
+	[SerializeField]
+	private Sprite m_SuccessImage;
+
+	[SerializeField]
+	private Sprite m_FailedImage;
+
+	private GameObject m_UiCanvas;
+
+	[SerializeField]
+	private Image m_ActionImagePrefab;
+	private Image m_ActionImage;
 	#endregion
 
 	#region Properties
@@ -66,6 +85,15 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 	{
 		IsLost = false;
 
+		m_UiCanvas = GameObject.Find("UICanvas");
+
+		if(m_UiCanvas != null)
+		{
+			m_ActionImage = Instantiate(m_ActionImagePrefab);
+			m_ActionImage.transform.SetParent(m_UiCanvas.transform);
+			m_ActionImage.enabled = false;
+		}
+
 		m_AudioSource = GetComponent<AudioSource>();
 
 		State = FestBeesSwarmState.Idle;
@@ -84,6 +112,9 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 
 	protected override void Update()
 	{
+
+		m_ActionImage.transform.position = Camera.main.WorldToScreenPoint(transform.position + Vector3.up);
+
 		base.Update();
         switch (State)
 		{
@@ -335,14 +366,46 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
     {
         State = FestBeesSwarmState.BeenChecked;
         TargetPosition = transform.position;
-    }
+		m_ActionImage.enabled = true;
+		CoroutineUtils.ExecuteWhenFinished(this, new WaitForSeconds(2.0f), () =>
+		{
+			m_ActionImage.sprite = m_BreathOutImage;
+		});
+	}
 
+	public void SuccessPolitest()
+	{
+		m_ActionImage.sprite = m_SuccessImage;
+
+		CoroutineUtils.ExecuteWhenFinished(this, new WaitForSeconds(3.0f), () =>
+		{
+			EndChecked();
+			m_ActionImage.enabled = false;
+		});
+	}
+
+	public void FailedPolitest()
+	{
+		m_ActionImage.sprite = m_FailedImage;
+
+		CoroutineUtils.ExecuteWhenFinished(this, new WaitForSeconds(3.0f), () =>
+		{
+			GoToHive();
+			m_ActionImage.enabled = false;
+		});
+	}
     public void EndChecked()
     {
         State = FestBeesSwarmState.Idle;
         m_TargetFlower = null;
+
     }
 
+
+	public void PrepareToDestroy()
+	{
+		Destroy(m_ActionImage.gameObject);
+	}
 	#endregion
 
 	#region Debug
