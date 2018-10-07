@@ -18,14 +18,19 @@ public class SwarmObjectCop : SwarmObject
             _goesToUniqueTarget = value;
             if (previousState != value)
                 DrivenBySwarmMovement = !value;
-            }
+            if (!value)
+                animator.SetTrigger("Idle");
+        }
     }
     public FestBeeSwarm SwarmTarget;
 
+    public Animator animator;
     #endregion
 
     public void AssignNewTarget(Vector3 position )
     {
+        animator.SetTrigger("Alert");
+
         WorldTargetPosition = position;
         GoesToUniqueTarget = true;
     }
