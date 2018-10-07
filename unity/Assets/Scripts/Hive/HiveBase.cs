@@ -36,8 +36,9 @@ public class HiveBase : MonoBehaviour {
     int _totalNumberOfBeeStillAlive;
     public int TotalNumberOfBeeStillAlive {
         get { return _totalNumberOfBeeStillAlive; }
-        set{ _totalNumberOfBeeStillAlive = value;
-            if (_totalNumberOfBeeStillAlive < STARTING_POPULATION_NUMBER / 100 * Purcentage)
+        set{
+            _totalNumberOfBeeStillAlive = value;
+            if (_totalNumberOfBeeStillAlive <= STARTING_POPULATION_NUMBER - STARTING_POPULATION_NUMBER / 100 * Purcentage)
                 SceneLoadManager.m_Instance.LoadMenu();
         }
     }
