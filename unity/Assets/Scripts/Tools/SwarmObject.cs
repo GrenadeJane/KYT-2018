@@ -15,7 +15,7 @@ public class SwarmObject : MonoBehaviour
 
 	private Vector3 m_RelativeTargetPosition;
 
-	private Vector3 m_Velocity = Vector3.zero;
+	protected Vector3 m_Velocity = Vector3.zero;
 	#endregion
 
 	#region Properties
@@ -25,6 +25,8 @@ public class SwarmObject : MonoBehaviour
     public bool ReachedTargetPosition { get; private set; }
 
 	public bool DrivenBySwarmMovement { get; set; }
+
+	public bool RotationDrivenBySwarm { get; set; }
 
 	public Vector3 WorldTargetPosition
 	{
@@ -110,6 +112,12 @@ public class SwarmObject : MonoBehaviour
 				}
 			}
 			transform.position += m_Velocity;
+
+			if(RotationDrivenBySwarm)
+			{
+				transform.forward = swarmBaseData.swarmDirection;
+			}
+
 		}
 
 
