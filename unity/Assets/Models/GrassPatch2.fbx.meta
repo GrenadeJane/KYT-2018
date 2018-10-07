@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d251a6c8961a3cc438e4f0062843498e
+guid: e003c9b3156f3734591937bfaf61b586
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -8,7 +8,7 @@ ModelImporter:
     2100000: grass
     2300000: //RootNode
     3300000: //RootNode
-    4300000: GrassPatch_01
+    4300000: GrassPatch_02
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -48,7 +48,7 @@ ModelImporter:
     importCameras: 0
     importLights: 0
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
