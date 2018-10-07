@@ -1,14 +1,15 @@
 fileFormatVersion: 2
-guid: 7a310f9fb3ea5144a82794defe1a95bf
+guid: eaf60ff717e6d5f4dbff2acd38e2681d
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: lambert6
+    2100000: lambert4
+    2100002: lambert3
     2300000: //RootNode
     3300000: //RootNode
-    4300000: pPlane1
+    4300000: group5_pPlane16
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -43,16 +44,16 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    importVisibility: 0
-    importBlendShapes: 0
-    importCameras: 0
-    importLights: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
-    weldVertices: 0
+    weldVertices: 1
     preserveHierarchy: 0
     indexFormat: 0
     secondaryUVAngleDistortion: 8
