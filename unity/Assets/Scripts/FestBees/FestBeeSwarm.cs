@@ -9,7 +9,7 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 	#region Constants
 
 	private const float TIME_BEFORE_RETURN = 5.0f;
-	private const float CRITICAL_POLLEN_AMOUNT = 1.0f;
+	private const float CRITICAL_POLLEN_AMOUNT = 8.0f;
 
 	#endregion
 

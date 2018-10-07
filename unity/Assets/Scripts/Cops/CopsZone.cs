@@ -89,7 +89,7 @@ public class CopsZone : MonoBehaviour, IPointerClickHandler
                     if (!swarm.ComposedOfAMaya)
                         _countPoliTest--;
 
-                    SendCopToPlace(swarm, currentSwarm.transform.position + dir.normalized *(dis - rangeSqrSwarm));
+                    SendCopToPlace(swarm, currentSwarm.transform.position + dir.normalized *(dis - rangeSqrSwarm), dir);
                 }
                
 
@@ -107,12 +107,12 @@ public class CopsZone : MonoBehaviour, IPointerClickHandler
     /// </summary>
     /// <param name="swarm"></param>
     /// <param name="targetPos"></param>
-    void SendCopToPlace(FestBeeSwarm swarm, Vector3 targetPos)
+    void SendCopToPlace(FestBeeSwarm swarm, Vector3 targetPos, Vector3 dir)
     {
         SwarmObjectCop cop = currentSwarm.GetRandomnlyObject();
         if ( cop != null )
         {
-            cop.AssignNewTarget(targetPos);
+            cop.AssignNewTarget(targetPos, dir);
             cop.SwarmTarget = swarm;
 
             cop.OnTargetReached = null;

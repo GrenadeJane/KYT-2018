@@ -17,6 +17,8 @@ public class BeeBase : SwarmObject {
 
 	PollenHarvestingSpot m_CurrentTargetedSpot;
 
+	protected AudioSource m_AudioSource;
+
 	#endregion
 
 	#region Properties
@@ -51,6 +53,11 @@ public class BeeBase : SwarmObject {
 	#endregion
 
 	#region Methods
+
+	protected virtual void Awake()
+	{
+		m_AudioSource = GetComponent<AudioSource>();
+	}
 
 	private void Update()
 	{
