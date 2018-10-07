@@ -46,6 +46,8 @@ public class BeeBase : SwarmObject {
 		}
 	}
 
+    public BeeAnimator beeAnimator;
+
 	#endregion
 
 	#region Methods
@@ -65,7 +67,9 @@ public class BeeBase : SwarmObject {
 			case BeeState.GoToPollenSpot:
 				{
 					CurrentState = BeeState.Harvesting;
-					break;
+                    beeAnimator.Harvesting();
+
+                    break;
 				}
 			case BeeState.Harvesting:
 				{
@@ -89,7 +93,9 @@ public class BeeBase : SwarmObject {
 				CurrentState = BeeState.Idle;
 				CurrentTargetedSpot.IsTargeted = false;
 				DrivenBySwarmMovement = true;
-			}
+
+                beeAnimator.Idle();
+            }
 		}
 	}
 

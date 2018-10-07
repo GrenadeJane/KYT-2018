@@ -275,21 +275,16 @@ public class CopsZone : MonoBehaviour, IPointerClickHandler
 
     public void CheckPosition(Vector3 pos)
     {
-        if (pos.y < startRange)
-            pos.y = startRange;
-        else
+        pos.y = startRange;
+
+        RaycastHit hit;
+        Ray ray = new Ray(pos, Vector3.down);
+
+        if (Physics.Raycast(ray, out hit))
         {
-            RaycastHit hit;
-            Ray ray = new Ray(pos, Vector3.down);
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                Debug.Log("hit" + hit.distance);
-                if (hit.distance < startRange)
-                    pos.y = (hit.point + Vector3.up * startRange).y;
-            }
+            pos.y = (hit.point + Vector3.up * startRange).y;
         }
-
+        
         transform.position = pos;
     }
 
