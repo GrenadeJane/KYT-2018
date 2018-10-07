@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
-
+#endif
 public class FlowerBase : MonoBehaviour {
 
 	#region Constants
@@ -92,7 +93,9 @@ public class FlowerBase : MonoBehaviour {
 	#region Debug
 	private void OnDrawGizmos()
 	{
+#if UNITY_EDITOR
 		Handles.Label(transform.position, "Pollen	:	" + PollenQuantity);
+#endif
 	}
 	#endregion
 }

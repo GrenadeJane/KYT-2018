@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
-
+#endif
 public class HiveBase : MonoBehaviour {
 
 	#region Constants
@@ -138,8 +139,9 @@ public class HiveBase : MonoBehaviour {
 	#region Debug
 	private void OnDrawGizmos()
 	{
+#if UNITY_EDITOR
 		Handles.Label(transform.position, "Number of bee left :" + TotalNumberOfBeeStillAlive);
-
+#endif
 	}
 	#endregion
 }
