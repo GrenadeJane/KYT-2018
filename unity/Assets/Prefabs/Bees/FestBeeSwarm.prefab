@@ -148,3 +148,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SwarmRadius: 2
+  m_SuckImage: {fileID: 21300000, guid: 6ce91394c4e72ee409c14986532d74b9, type: 3}
+  m_BreathOutImage: {fileID: 21300000, guid: 42129a568aa66f6479bec19cc24e46e7, type: 3}
+  m_SuccessImage: {fileID: 21300000, guid: 9b74a7a398e54be4d9e0703c5f935f3c, type: 3}
+  m_FailedImage: {fileID: 21300000, guid: 08d3e1fc18cdd974f9fae1c70b8c35e7, type: 3}
+  m_ActionImagePrefab: {fileID: 114223517507082224, guid: 6efa4c7bd5e9f974c9c34be932790101,
+    type: 2}
