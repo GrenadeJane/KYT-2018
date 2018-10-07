@@ -29,11 +29,18 @@ public class HiveBase : MonoBehaviour {
     public List<FestBeeSwarm> m_festbeeSwarmList = new List<FestBeeSwarm>();
 
     private float m_NextSpawnTime = 0.0f;
-	#endregion
+    #endregion
 
-	#region Properties
-
-	public int TotalNumberOfBeeStillAlive { get; set; }
+    #region Properties
+    int _totalNumberOfBeeStillAlive;
+    public int TotalNumberOfBeeStillAlive {
+        get { return _totalNumberOfBeeStillAlive; }
+        set{ _totalNumberOfBeeStillAlive = value;
+            if (_totalNumberOfBeeStillAlive < STARTING_POPULATION_NUMBER / 100 * Purcentage)
+                SceneLoadManager.m_Instance.LoadMenu();
+        }
+    }
+    public float Purcentage = 1.0f;
 
 	#endregion
 
