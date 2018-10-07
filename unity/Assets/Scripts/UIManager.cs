@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,9 +13,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] Button hiveButton;
     [SerializeField] Button politestButton;
 
-    [SerializeField] Text zoneLabel;
-    [SerializeField] Text hiveLabel;
-
+    [SerializeField] TMP_Text zoneLabel;
+    [SerializeField] TMP_Text hiveLabel;
 
     Transform mainHiveTransform;
 

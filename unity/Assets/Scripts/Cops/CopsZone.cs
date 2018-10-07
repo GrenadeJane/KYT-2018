@@ -83,7 +83,6 @@ public class CopsZone : MonoBehaviour, IPointerClickHandler
                 if ( !ischecked && _countPoliTest > 0)
                 {
                     beeListChecking.Add(swarm);
-                    swarm.IsChecked();
 
                     // :: lost time when go checked to a maya even if we don't loose a polinotest
                     if (!swarm.ComposedOfAMaya)
@@ -112,6 +111,8 @@ public class CopsZone : MonoBehaviour, IPointerClickHandler
         SwarmObjectCop cop = currentSwarm.GetRandomnlyObject();
         if ( cop != null )
         {
+            swarm.IsChecked();
+
             cop.AssignNewTarget(targetPos, dir);
             cop.SwarmTarget = swarm;
 

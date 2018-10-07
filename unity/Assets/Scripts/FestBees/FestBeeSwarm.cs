@@ -84,9 +84,8 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 
 	protected override void Update()
 	{
-        if ( State != FestBeesSwarmState.BeenChecked)
-		    base.Update();
-		switch (State)
+		base.Update();
+        switch (State)
 		{
 			case FestBeesSwarmState.MoveToAPosition:
 				{
@@ -335,11 +334,13 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
     public void IsChecked()
     {
         State = FestBeesSwarmState.BeenChecked;
+        TargetPosition = transform.position;
     }
 
     public void EndChecked()
     {
         State = FestBeesSwarmState.Idle;
+        m_TargetFlower = null;
     }
 
 	#endregion
