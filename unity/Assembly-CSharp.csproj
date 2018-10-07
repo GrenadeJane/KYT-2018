@@ -113,6 +113,7 @@
     <Compile Include="Assets\Scripts\Cops\CopsZone.cs" />
     <Compile Include="Assets\Scripts\Cops\SwarmBaseCop.cs" />
     <Compile Include="Assets\Scripts\Cops\SwarmObjectCop.cs" />
+    <Compile Include="Assets\Scripts\FestBees\BeeAnimator.cs" />
     <Compile Include="Assets\Scripts\FestBees\BeeBase.cs" />
     <Compile Include="Assets\Scripts\FestBees\BeeDyingStyle.cs" />
     <Compile Include="Assets\Scripts\FestBees\BeeState.cs" />
@@ -126,6 +127,8 @@
     <Compile Include="Assets\Scripts\Hive\HiveBase.cs" />
     <Compile Include="Assets\Scripts\Hive\HiveMain.cs" />
     <Compile Include="Assets\Scripts\MaxDanceFloor.cs" />
+    <Compile Include="Assets\Scripts\SceneLoadManager.cs" />
+    <Compile Include="Assets\Scripts\Tools\AmbianceManager.cs" />
     <Compile Include="Assets\Scripts\Tools\SwarmBase.cs" />
     <Compile Include="Assets\Scripts\Tools\SwarmGenerator.cs" />
     <Compile Include="Assets\Scripts\Tools\SwarmManager.cs" />
