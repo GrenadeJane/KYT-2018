@@ -15,6 +15,33 @@ public class BuildingManager : MonoBehaviour
     GameObject currentObject;
     BuildingBase currentBuilding;
 
+    int _countAvailableZone = 1;
+    int CountAvailableZone
+    {
+        get { return _countAvailableZone; }
+        set
+        {
+            GetComponent<UIManager>().SetCountZone(value);
+            _countAvailableZone = value;
+        }
+    }
+    int _countAvailableHive = 1;
+    int CountAvailableHive
+    {
+        get { return _countAvailableHive; }
+        set
+        {
+            GetComponent<UIManager>().SetCountHive(value);
+            _countAvailableHive = value;
+        }
+    }
+
+    void Start()
+    {
+        CountAvailableHive = _countAvailableHive;
+        CountAvailableZone = _countAvailableZone;
+    }
+
     private void Awake()
     {
         BuildingBase.OnBuildingClick += OnBuildClick;
@@ -27,6 +54,7 @@ public class BuildingManager : MonoBehaviour
         currentObject = obj;
         currentBuilding = currentObject.GetComponent<BuildingBase>();
         currentBuilding.ChangePosition.Invoke();
+        CountAvailableZone--;
     }
 
     public void CreateCopHive()
@@ -36,11 +64,12 @@ public class BuildingManager : MonoBehaviour
         currentObject = obj;
         currentBuilding = currentObject.GetComponent<BuildingBase>();
         currentBuilding.ChangePosition.Invoke();
+        CountAvailableHive--;
     }
 
     public void OnBuildClick(GameObject obj)
     {
-        if ( currentObject == null )
+        if (currentObject == null)
         {
             currentObject = obj;
             currentBuilding = currentObject.GetComponent<BuildingBase>();
@@ -57,7 +86,7 @@ public class BuildingManager : MonoBehaviour
 
     void Update()
     {
-        if (currentObject != null )
+        if (currentObject != null)
         {
             Vector3 cursorPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z);
             Vector3 pos = Camera.main.ScreenToWorldPoint(cursorPos);

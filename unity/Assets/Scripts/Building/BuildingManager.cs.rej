@@ -1,0 +1,35 @@
+diff a/unity/Assets/Scripts/Building/BuildingManager.cs b/unity/Assets/Scripts/Building/BuildingManager.cs	(rejected hunks)
+@@ -15,6 +15,33 @@
+     GameObject currentObject;
+     BuildingBase currentBuilding;
+ 
++    int _countAvailableZone = 1;
++    int CountAvailableZone
++    {
++        get { return _countAvailableZone; }
++        set
++        {
++            GetComponent<UIManager>().SetCountZone(value);
++            _countAvailableZone = value;
++        }
++    }
++    int _countAvailableHive = 1;
++    int CountAvailableHive
++    {
++        get { return _countAvailableHive; }
++        set
++        {
++            GetComponent<UIManager>().SetCountHive(value);
++            _countAvailableHive = value;
++        }
++    }
++
++    void Start()
++    {
++        CountAvailableHive = _countAvailableHive;
++        CountAvailableZone = _countAvailableZone;
++    }
++
+     private void Awake()
+     {
+         BuildingBase.OnBuildingClick += OnBuildClick;
