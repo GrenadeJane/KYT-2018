@@ -26,13 +26,23 @@ public class SwarmObjectCop : SwarmObject
         }
     }
     public FestBeeSwarm SwarmTarget;
-
+    public AudioSource audio;
     public Animator animator;
     #endregion
 
     private void Start()
     {
         GoesToUniqueTarget = false;
+    }
+
+    public void Alert()
+    {
+        audio.Play();
+    }
+
+    public void EndAlert()
+    {
+        audio.Stop();
     }
 
     public void AssignNewTarget(Vector3 position, Vector3 dir )

@@ -111,6 +111,7 @@ public class CopsZone : MonoBehaviour, IPointerClickHandler
         if ( cop != null )
         {
             swarm.IsChecked();
+            cop.Alert();
 
             cop.AssignNewTarget(targetPos, dir);
             cop.SwarmTarget = swarm;
@@ -130,7 +131,7 @@ public class CopsZone : MonoBehaviour, IPointerClickHandler
     {
 
         SwarmObjectCop cop = swarmObject as SwarmObjectCop;
-
+        cop.EndAlert();
         if (cop.SwarmTarget.ComposedOfAMaya)
         {
             cop.GoesToUniqueTarget = false;
