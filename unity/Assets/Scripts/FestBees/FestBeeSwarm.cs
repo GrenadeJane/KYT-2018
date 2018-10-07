@@ -22,6 +22,8 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 	private float m_TimeBeforeReturn;
 
 	private BeeDyingStyle m_DyingStyle;
+
+	protected AudioSource m_AudioSource;
 	#endregion
 
 	#region Properties
@@ -63,6 +65,8 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 	protected void Start()
 	{
 		IsLost = false;
+
+		m_AudioSource = GetComponent<AudioSource>();
 
 		State = FestBeesSwarmState.Idle;
 		m_FlowerField = FindObjectOfType<FlowersField>();
@@ -193,10 +197,12 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 		{
 			case FestBeesSwarmState.Idle:
 				{
+					m_AudioSource.Play();
 					break;
 				}
 			case FestBeesSwarmState.GoToFlower:
 				{
+					m_AudioSource.Play();
 					m_TargetFlower.IsTargeted = true;
 					HarvestCurrentTargetedFlower();
 					State = FestBeesSwarmState.Harvesting;
@@ -204,17 +210,19 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 				}
 			case FestBeesSwarmState.GoBackToHive:
 				{
+					m_AudioSource.Play();
 					HiveMain.m_Instance.BackToHive(this);    
 					break;
 				}
 			case FestBeesSwarmState.Harvesting:
 				{
+					m_AudioSource.Stop();
 					break;
 				}
 
 			case FestBeesSwarmState.MoveToAPosition:
 				{
-
+					m_AudioSource.Play();
 					SearchPlaceToVisit();
 
 					break;
@@ -222,6 +230,8 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 
 			case FestBeesSwarmState.GoingToDie:
 				{
+					m_AudioSource.Stop();
+
 					HiveMain.m_Instance.TotalNumberOfBeeStillAlive -= SwarmObjects.Count;
 					if (m_DyingStyle == BeeDyingStyle.Misplace)
 					{
