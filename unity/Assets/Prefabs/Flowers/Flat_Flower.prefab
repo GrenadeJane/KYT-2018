@@ -53,7 +53,6 @@ GameObject:
   - component: {fileID: 4018409732140346}
   - component: {fileID: 33133915368333730}
   - component: {fileID: 23279289214842806}
-  - component: {fileID: 114306452858208162}
   m_Layer: 0
   m_Name: Flower_3
   m_TagString: Untagged
@@ -87,7 +86,6 @@ GameObject:
   - component: {fileID: 4532074940325644}
   - component: {fileID: 33164423264053200}
   - component: {fileID: 23414176392569186}
-  - component: {fileID: 114983268390097608}
   m_Layer: 0
   m_Name: Flower_3 (2)
   m_TagString: Untagged
@@ -105,7 +103,6 @@ GameObject:
   - component: {fileID: 4931413780110622}
   - component: {fileID: 33249327536626860}
   - component: {fileID: 23637865275730934}
-  - component: {fileID: 114212220023057856}
   m_Layer: 0
   m_Name: Flower_3 (4)
   m_TagString: Untagged
@@ -139,7 +136,6 @@ GameObject:
   - component: {fileID: 4824050988656998}
   - component: {fileID: 33744887148006566}
   - component: {fileID: 23815882343194152}
-  - component: {fileID: 114363631095866254}
   m_Layer: 0
   m_Name: Flower_3 (1)
   m_TagString: Untagged
@@ -157,7 +153,6 @@ GameObject:
   - component: {fileID: 4152163802326896}
   - component: {fileID: 33362381422481224}
   - component: {fileID: 23448689153081346}
-  - component: {fileID: 114484997862612548}
   m_Layer: 0
   m_Name: Flower_3 (3)
   m_TagString: Untagged
@@ -571,18 +566,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de2c8b6e95bb03c49bc797cfd384cb31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114212220023057856
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1680348472435122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PollenHarvestingSpot: []
 --- !u!114 &114272250247977556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -594,42 +577,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de2c8b6e95bb03c49bc797cfd384cb31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114306452858208162
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1277550216251990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PollenHarvestingSpot: []
---- !u!114 &114363631095866254
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1749634922224208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PollenHarvestingSpot: []
---- !u!114 &114484997862612548
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1875749213199474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PollenHarvestingSpot: []
 --- !u!114 &114531714409533242
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -679,15 +626,3 @@ MonoBehaviour:
   - {fileID: 114272250247977556}
   - {fileID: 114629775437720808}
   - {fileID: 114136449944416392}
---- !u!114 &114983268390097608
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1423491750816178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 684fdc438cae8874cbd731679a5ceecc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PollenHarvestingSpot: []

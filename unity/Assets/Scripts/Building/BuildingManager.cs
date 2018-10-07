@@ -97,9 +97,10 @@ public class BuildingManager : MonoBehaviour
     {
         if (currentObject != null)
         {
-            Vector3 cursorPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10);
-            Vector3 pos = Camera.main.ScreenToWorldPoint(cursorPos);
-            currentBuilding.CheckPosition.Invoke(pos);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            currentBuilding.CheckPosition.Invoke(ray);
+
+
         }
     }
 

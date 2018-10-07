@@ -34,8 +34,7 @@ public class CopsZone : MonoBehaviour, IPointerClickHandler
     [SerializeField] float timeToReload;
     [SerializeField] int baseCountCops;
     [SerializeField] int basePoliTest = 10;
-    [SerializeField] float legalAlcoholAmount;
-
+    [SerializeField] float purcentageLegal = 20;
 
     [SerializeField] SphereCollider collider;
     [SerializeField] SwarmBaseCop copSwarmPrefab;
@@ -144,7 +143,7 @@ public class CopsZone : MonoBehaviour, IPointerClickHandler
 
                 float alcoholAmount = cop.SwarmTarget.TotalSwarmPollenAmount;
 
-                if (alcoholAmount >= legalAlcoholAmount)
+                if (alcoholAmount >= (FestBeeSwarm.CRITICAL_POLLEN_AMOUNT / 100 * purcentageLegal ))
                     cop.SwarmTarget.GoToHive();
                 else
                     cop.SwarmTarget.EndChecked();
@@ -274,18 +273,31 @@ public class CopsZone : MonoBehaviour, IPointerClickHandler
     }
 
 
-    public void CheckPosition(Vector3 pos)
+    public void CheckPosition(Ray ray)
     {
-        pos.y = startRange;
-
         RaycastHit hit;
-        Ray ray = new Ray(pos, Vector3.down);
+        Vector3 pos = transform.position;
 
-        if (Physics.Raycast(ray, out hit))
+        int layerMaskFloor = LayerMask.GetMask("Floor");
+        if (Physics.Raycast(ray, out hit, layerMaskFloor))
         {
+            pos = hit.point;
+            Debug.Log("palce building");
             pos.y = (hit.point + Vector3.up * startRange).y;
         }
-        
+
+        int layerMaskBounds = LayerMask.GetMask("Bounds");
+        if (Physics.Raycast(ray, out hit, layerMaskBounds))
+        {
+            RaycastHit hitBound;
+            Ray bound = new Ray(hit.point + hit.normal * 2.0f, Vector3.down);
+            if (Physics.Raycast(bound, out hitBound, layerMaskFloor))
+            {
+                pos = hitBound.point;
+                Debug.Log("place building");
+                pos.y = (hitBound.point + Vector3.up * startRange).y;
+            }
+        }
         transform.position = pos;
     }
 
