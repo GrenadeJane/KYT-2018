@@ -5,11 +5,14 @@ using UnityEngine.EventSystems;
 
 public class BuildingManager : MonoBehaviour
 {
+
+    public static BuildingManager m_instance;
     [SerializeField] GameObject copZonePrefab;
     [SerializeField] GameObject copHive;
 
 
-    List<GameObject> copZoneList = new List<GameObject>();
+    public List<GameObject> copZoneList = new List<GameObject>();
+    public List<GameObject> copHiveList = new List<GameObject> ();
 
 
     GameObject currentObject;
@@ -44,7 +47,11 @@ public class BuildingManager : MonoBehaviour
 
     private void Awake()
     {
+        if (m_instance == null)
+            m_instance = this;
+
         BuildingBase.OnBuildingClick += OnBuildClick;
+
     }
 
     public void CreateCopZone()
@@ -64,6 +71,8 @@ public class BuildingManager : MonoBehaviour
         currentObject = obj;
         currentBuilding = currentObject.GetComponent<BuildingBase>();
         currentBuilding.ChangePosition.Invoke();
+        copHiveList.Add(currentObject);
+
         CountAvailableHive--;
     }
 

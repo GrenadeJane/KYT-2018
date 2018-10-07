@@ -163,7 +163,7 @@ public class CopsZone : MonoBehaviour, IPointerClickHandler
     void GoToHive()
     {
         state = CopState.GoToHive;
-        currentSwarm.TargetPosition =  HiveMain.m_Instance.gameObject.transform.position;
+        currentSwarm.TargetPosition = GetClosestHiveCop(); 
         currentSwarm.OnTargetReached = null;
         currentSwarm.OnTargetReached = ReturnFromHive;
     }
@@ -228,6 +228,25 @@ public class CopsZone : MonoBehaviour, IPointerClickHandler
         }
 
         currentSwarm.TargetPosition = HiveMain.m_Instance.gameObject.transform.position;
+    }
+
+    Vector3 GetClosestHiveCop()
+    {
+        Vector3 closest = HiveMain.m_Instance.gameObject.transform.position;
+        float minDistance = ( HiveMain.m_Instance.gameObject.transform.position - currentSwarm.transform.position ).magnitude;
+
+        foreach ( GameObject obj in BuildingManager.m_instance.copHiveList)
+        {
+            float distance = (obj.transform.position - currentSwarm.transform.position).magnitude;
+
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                closest = obj.transform.position;
+            }
+        }
+
+        return closest;
     }
 
     public void FixPosition()

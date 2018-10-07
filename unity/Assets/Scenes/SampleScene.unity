@@ -173,7 +173,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &61590346
 GameObject:
@@ -201,7 +201,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &170076733
 GameObject:
@@ -445,7 +445,7 @@ Transform:
   m_LocalScale: {x: 75.35, y: 1.88, z: 38.03}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1245362973
 Prefab:
@@ -489,60 +489,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c24d73c4b7465644af5317e905d9a72, type: 2}
   m_IsPrefabAsset: 0
---- !u!114 &1406230198 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114612868224109610, guid: 23be8e29a2534bd47954cd0bc2368d59,
-    type: 2}
-  m_PrefabInternal: {fileID: 1616273706}
-  m_Script: {fileID: 11500000, guid: ce4f39a570135ee45a81b89329f61d02, type: 3}
---- !u!1001 &1616273706
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4378861584651920, guid: 23be8e29a2534bd47954cd0bc2368d59, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 17.177195
-      objectReference: {fileID: 0}
-    - target: {fileID: 4378861584651920, guid: 23be8e29a2534bd47954cd0bc2368d59, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 2.9873247
-      objectReference: {fileID: 0}
-    - target: {fileID: 4378861584651920, guid: 23be8e29a2534bd47954cd0bc2368d59, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4378861584651920, guid: 23be8e29a2534bd47954cd0bc2368d59, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4378861584651920, guid: 23be8e29a2534bd47954cd0bc2368d59, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4378861584651920, guid: 23be8e29a2534bd47954cd0bc2368d59, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4378861584651920, guid: 23be8e29a2534bd47954cd0bc2368d59, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4378861584651920, guid: 23be8e29a2534bd47954cd0bc2368d59, type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114612868224109610, guid: 23be8e29a2534bd47954cd0bc2368d59,
-        type: 2}
-      propertyPath: copHive
-      value: 
-      objectReference: {fileID: 1982119224949064, guid: c8cff556815d76e47abd8705d7baabc1,
-        type: 2}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 23be8e29a2534bd47954cd0bc2368d59, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1001 &1968903633
 Prefab:
   m_ObjectHideFlags: 0
@@ -550,11 +496,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114703783757107520, guid: b218f5feb1853cd40978fc56f32dce9b,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 224133873762808502, guid: b218f5feb1853cd40978fc56f32dce9b,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -643,53 +584,6 @@ Prefab:
     - target: {fileID: 224133873762808502, guid: b218f5feb1853cd40978fc56f32dce9b,
         type: 2}
       propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114537321273389910, guid: b218f5feb1853cd40978fc56f32dce9b,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1406230198}
-    - target: {fileID: 114703783757107520, guid: b218f5feb1853cd40978fc56f32dce9b,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114703783757107520, guid: b218f5feb1853cd40978fc56f32dce9b,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114703783757107520, guid: b218f5feb1853cd40978fc56f32dce9b,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1406230198}
-    - target: {fileID: 114703783757107520, guid: b218f5feb1853cd40978fc56f32dce9b,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CreateCopHive
-      objectReference: {fileID: 0}
-    - target: {fileID: 114703783757107520, guid: b218f5feb1853cd40978fc56f32dce9b,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 224317080229602268, guid: b218f5feb1853cd40978fc56f32dce9b,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: -31.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1867913390490774, guid: b218f5feb1853cd40978fc56f32dce9b, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1324310264431880, guid: b218f5feb1853cd40978fc56f32dce9b, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1135626773880860, guid: b218f5feb1853cd40978fc56f32dce9b, type: 2}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

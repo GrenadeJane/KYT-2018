@@ -44,7 +44,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1571859814154386
 GameObject:
   m_ObjectHideFlags: 1
@@ -524,6 +524,8 @@ MonoBehaviour:
   copZonePrefab: {fileID: 1087009897606494, guid: 0dad7f35aad455942b1537038912558b,
     type: 2}
   copHive: {fileID: 1982119224949064, guid: c8cff556815d76e47abd8705d7baabc1, type: 2}
+  copZoneList: []
+  copHiveList: []
 --- !u!114 &114803322585063454
 MonoBehaviour:
   m_ObjectHideFlags: 1

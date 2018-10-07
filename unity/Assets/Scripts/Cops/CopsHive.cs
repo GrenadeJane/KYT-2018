@@ -5,7 +5,6 @@ using UnityEngine.EventSystems;
 
 public class CopsHive : MonoBehaviour, IPointerClickHandler
 {
-
     [SerializeField] BoxCollider collider;
 
     float heightCollider;
