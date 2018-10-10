@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine.UI;
 
 public class FestBeeSwarm : SwarmBase<BeeBase>
@@ -411,8 +413,9 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 	#region Debug
 	private void OnDrawGizmos()
 	{
-		Handles.Label(transform.position, "Average Pollen	:" + TotalSwarmPollenAmount);
-
-	}
-	#endregion
+#if UNITY_EDITOR
+        Handles.Label(transform.position, "Average Pollen	:" + TotalSwarmPollenAmount);
+#endif
+    }
+#endregion
 }
