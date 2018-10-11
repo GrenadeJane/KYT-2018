@@ -4,6 +4,8 @@ using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
+using TMPro;
+
 public class HiveBase : MonoBehaviour {
 
 	#region Constants
@@ -24,7 +26,10 @@ public class HiveBase : MonoBehaviour {
 	[SerializeField]
 	private MayaBee m_MayaBeePrefab;
 
-	[SerializeField]
+    [SerializeField]
+    private TMP_Text alivePanel;
+
+    [SerializeField]
 	private List<Transform> m_SwarmExits = new List<Transform>();
 
     public List<FestBeeSwarm> m_festbeeSwarmList = new List<FestBeeSwarm>();
@@ -38,6 +43,7 @@ public class HiveBase : MonoBehaviour {
         get { return _totalNumberOfBeeStillAlive; }
         set{
             _totalNumberOfBeeStillAlive = value;
+            alivePanel.text = "Bees still alive    " + _totalNumberOfBeeStillAlive.ToString() + "/" + STARTING_POPULATION_NUMBER.ToString();
             if (_totalNumberOfBeeStillAlive <= STARTING_POPULATION_NUMBER - STARTING_POPULATION_NUMBER / 100 * Purcentage)
                 SceneLoadManager.m_Instance.LoadMenu();
         }

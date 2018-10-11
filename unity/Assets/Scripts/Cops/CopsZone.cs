@@ -34,7 +34,6 @@ public class CopsZone : MonoBehaviour, IPointerClickHandler
     [SerializeField] float timeToReload;
     [SerializeField] int baseCountCops;
     [SerializeField] int basePoliTest = 10;
-    [SerializeField] float purcentageLegal = 20;
 
     [SerializeField] SphereCollider collider;
     [SerializeField] SwarmBaseCop copSwarmPrefab;
@@ -129,7 +128,6 @@ public class CopsZone : MonoBehaviour, IPointerClickHandler
     /// </summary>
     void ProceedToCheck(SwarmObject swarmObject) // param current swarm
     {
-
         SwarmObjectCop cop = swarmObject as SwarmObjectCop;
         cop.EndAlert();
         if (cop.SwarmTarget.ComposedOfAMaya)
@@ -144,7 +142,7 @@ public class CopsZone : MonoBehaviour, IPointerClickHandler
 
                 float alcoholAmount = cop.SwarmTarget.TotalSwarmPollenAmount;
 
-                if (alcoholAmount >= (FestBeeSwarm.CRITICAL_POLLEN_AMOUNT / 100 * purcentageLegal ))
+                if (alcoholAmount >= (FestBeeSwarm.DRUNK_POLLEN_AMOUNT ))
                     cop.SwarmTarget.FailedPolitest();
                 else
                     cop.SwarmTarget.SuccessPolitest();

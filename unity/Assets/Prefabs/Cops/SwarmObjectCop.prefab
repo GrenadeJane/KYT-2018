@@ -1612,3 +1612,4 @@ MonoBehaviour:
   SwarmTarget: {fileID: 0}
   audio: {fileID: 82877423645606760}
   animator: {fileID: 95338481874908540}
+  alarmObject: {fileID: 1401965113708804}

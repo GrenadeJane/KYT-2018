@@ -12,13 +12,14 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 	#region Constants
 
 	private const float TIME_BEFORE_RETURN = 5.0f;
-	public static float CRITICAL_POLLEN_AMOUNT = 6.0f;
+	private static float CRITICAL_POLLEN_AMOUNT = 9.0f;
+	public static float DRUNK_POLLEN_AMOUNT = CRITICAL_POLLEN_AMOUNT / 100 * 20;
 
-	#endregion
+    #endregion
 
-	#region Fields
+    #region Fields
 
-	private FlowersField m_FlowerField;
+    private FlowersField m_FlowerField;
 
 	private FlowerBase m_TargetFlower;
 
@@ -40,7 +41,10 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 	[SerializeField]
 	private Sprite m_FailedImage;
 
-	private GameObject m_UiCanvas;
+    [SerializeField]
+    private Sprite m_DrunkImage;
+
+    private GameObject m_UiCanvas;
 
 	[SerializeField]
 	private Image m_ActionImagePrefab;
@@ -180,7 +184,12 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 							bee.CurrentTargetedSpot = null;
 						}
 
-						if(TotalSwarmPollenAmount > CRITICAL_POLLEN_AMOUNT)
+                        if (TotalSwarmPollenAmount > DRUNK_POLLEN_AMOUNT && TotalSwarmPollenAmount <= CRITICAL_POLLEN_AMOUNT)
+                        {
+                            SetSwarmDrunk();
+                        }
+
+                        if (TotalSwarmPollenAmount > CRITICAL_POLLEN_AMOUNT)
 						{
 							SetupDeath();
 						}
@@ -213,11 +222,17 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
 		{
 			TargetPosition = m_FlowerField.GetPositionInGarden();
         }
-
-        SetBeeAnimatorDrunk();
     }
 
-	protected virtual void UpdateDeath()
+    protected virtual void SetSwarmDrunk()
+    {
+        SetBeeAnimatorDrunk();
+
+        m_ActionImage.sprite = m_DrunkImage;
+        m_ActionImage.enabled = true;
+    }
+
+    protected virtual void UpdateDeath()
 	{
 
 	}
@@ -368,8 +383,10 @@ public class FestBeeSwarm : SwarmBase<BeeBase>
     {
         State = FestBeesSwarmState.BeenChecked;
         TargetPosition = transform.position;
+        m_ActionImage.sprite = m_SuckImage;
 		m_ActionImage.enabled = true;
-		CoroutineUtils.ExecuteWhenFinished(this, new WaitForSeconds(2.0f), () =>
+
+        CoroutineUtils.ExecuteWhenFinished(this, new WaitForSeconds(2.0f), () =>
 		{
 			m_ActionImage.sprite = m_BreathOutImage;
 		});
